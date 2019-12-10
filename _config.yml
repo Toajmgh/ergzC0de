@@ -2,6 +2,19 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
+#search:
+  #path: ./public/search.xml
+  #field: post
+  #format: html
+  #limit: 10000
+
+# hexo-admin authentification
+admin:
+  username: ergz
+  password_hash: $2a$10$3ypC2lVKWeFzBS7eIvPgWu8lHv/tPMbq/ckaSRY.m2WV5U4yLqFRu
+  secret: my hexo key
+  deployCommand: './hexo_deploy.sh'
+
 # Site
 title: ergzC0de
 subtitle: ''

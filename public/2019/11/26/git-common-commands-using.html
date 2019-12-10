@@ -5,16 +5,23 @@
   
 
   
-  <title>ergzC0de</title>
+  <title>Git常用命令使用 | ergzC0de</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java,Python,Code">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ergzC0de">
-<meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;">
+  <meta name="description" content="1.查看工作区的状态：git status 2.查看文件具体修改了什么内容：git diff file 3.查看提交的历史记录，该命令显示从最近到最远的历史记录：git log，如果嫌输出信息太多，可以试试加上--pretty=oneline参数：git log --graph --pretty=oneline --abbrev-commit，命令如下： 123git log --graph --">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git常用命令使用">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;2019&#x2F;11&#x2F;26&#x2F;git-common-commands-using.html">
 <meta property="og:site_name" content="ergzC0de">
-<meta property="og:description" content="Java,Python,Code">
+<meta property="og:description" content="1.查看工作区的状态：git status 2.查看文件具体修改了什么内容：git diff file 3.查看提交的历史记录，该命令显示从最近到最远的历史记录：git log，如果嫌输出信息太多，可以试试加上--pretty=oneline参数：git log --graph --pretty=oneline --abbrev-commit，命令如下： 123git log --graph --">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;git_201912101316.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;git_201912101318.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;201912101319.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;git_201912101326.png">
+<meta property="og:updated_time" content="2019-12-10T05:31:40.968Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;git_201912101316.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -57,104 +64,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-pm2-common-commands-introduction" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/10/pm2-common-commands-introduction.html" class="article-date">
-  <time datetime="2019-12-10T03:22:00.000Z" itemprop="datePublished">2019-12-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>pm2 是一个带有负载均衡功能的Node应用的进程管理器。当你要把你的独立代码利用全部的服务器上的所有CPU，并保证进程永远都活着，0秒的重载， PM2是完美的。</p>
-<p>主要特性：</p>
-<p>1.内建负载均衡（使用Node cluster 集群模块）<br>2.后台运行<br>3.0秒停机重载，我理解大概意思是维护升级的时候不需要停机<br>4.具有Ubuntu和CentOS的启动脚本<br>5.停止不稳定的进程（避免无限循环）<br>6.控制台检测<br>7.提供 HTTP API<br>8.远程控制和实时的接口API(Nodejs模块,允许和PM2进程管理器交互 )</p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2 <span class="comment">#命令行安装pm2</span></span><br></pre></td></tr></table></figure>
-<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">pm2 start app.js -i 4 <span class="comment">#后台运行pm2，启动4个app.js</span></span><br><span class="line">pm2 start app.js --name my-api  <span class="comment">#命名进程</span></span><br><span class="line">pm2 list  <span class="comment">#显示所有进程状态</span></span><br><span class="line">pm2 monit  <span class="comment">#监视所有进程</span></span><br><span class="line">pm2 logs  <span class="comment">#显示所有进程日志</span></span><br><span class="line">pm2 stop all  <span class="comment">#停止所有进程</span></span><br><span class="line">pm2 restart all  <span class="comment">#重启所有进程</span></span><br><span class="line">pm2 reload all  <span class="comment">#0秒停机重载进程 (用于 NETWORKED 进程)</span></span><br><span class="line">pm2 stop 0  <span class="comment">#停止指定的进程</span></span><br><span class="line">pm2 restart 0  <span class="comment">#重启指定的进程</span></span><br><span class="line">pm2 startup  <span class="comment">#产生 init 脚本 保持进程活着</span></span><br><span class="line">pm2 web  <span class="comment">#运行健壮的 computer API endpoint</span></span><br><span class="line">pm2 delete 0  <span class="comment">#杀死指定的进程</span></span><br><span class="line">pm2 delete all  <span class="comment">#杀死全部进程</span></span><br><span class="line"></span><br><span class="line">运行进程的不同方式：</span><br><span class="line">pm2 start app.js -i max  <span class="comment">#根据有效CPU数目启动最大进程数目</span></span><br><span class="line">pm2 start app.js -i 3  <span class="comment">#启动3个进程</span></span><br><span class="line">pm2 start app.js -x  <span class="comment">#用fork模式启动 app.js 而不是使用 cluster</span></span><br><span class="line">pm2 start app.js -x -- -a 23  <span class="comment">#用fork模式启动 app.js 并且传递参数 (-a 23)</span></span><br><span class="line">pm2 start app.js --name serverone <span class="comment">#启动一个进程并把它命名为 serverone</span></span><br><span class="line">pm2 stop serverone  <span class="comment">#停止serverone进程</span></span><br><span class="line">pm2 start app.json  <span class="comment">#启动进程, 在app.json里设置选项</span></span><br><span class="line">pm2 start app.js -i max -- -a 23  <span class="comment">#在--之后给app.js传递参数</span></span><br><span class="line">pm2 start app.js -i max -e err.log -o out.log  <span class="comment">#启动 并生成一个配置文件</span></span><br><span class="line">你也可以执行用其他语言编写的app ( fork 模式):</span><br><span class="line">pm2 start my-bash-script.sh -x --interpreter bash</span><br><span class="line">pm2 start my-python-script.py -x --interpreter python</span><br><span class="line">pm2 list <span class="comment">#列出由pm2管理的所有进程信息，还会显示一个进程会被启动多少次</span></span><br><span class="line">pm2 monit <span class="comment">#监视每个node进程的CPU和内存的使用情况。</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.ergzcode.com/2019/12/10/pm2-common-commands-introduction.html" data-id="ck3zcrkwb0001p0d2c0tv2hc1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pm2/" rel="tag">pm2</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-pm2-watch-hexo-process" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/08/pm2-watch-hexo-process.html" class="article-date">
-  <time datetime="2019-12-08T00:01:00.000Z" itemprop="datePublished">2019-12-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/shell/">shell</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在服务器上安装好了hexo，执行hexo sever来启动它的服务，会发现过了一段时间hexo的进程总是莫名其妙的挂掉，然后导致网站无法访问。从网上搜索了一些解决方案，发现能使用PM2来接管hexo的后台进程，从而让hexo进程一直常驻后台。</p>
-<p>操作步骤如下：</p>
-<h5 id="1-首先安装pm2"><a href="#1-首先安装pm2" class="headerlink" title="1.首先安装pm2"></a>1.首先安装pm2</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
-<h5 id="2-写一个shell-hexo-daemon-js"><a href="#2-写一个shell-hexo-daemon-js" class="headerlink" title="2.写一个shell hexo_daemon.js"></a>2.写一个shell hexo_daemon.js</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//run</span><br><span class="line">const &#123; <span class="built_in">exec</span> &#125; = require(<span class="string">'child_process'</span>)</span><br><span class="line"><span class="built_in">exec</span>(<span class="string">'hexo server -p 80 &amp; '</span>,(error, stdout, stderr) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span>(error)&#123;</span><br><span class="line">                console.log(<span class="string">'exec error: $&#123;error&#125;'</span>)</span><br><span class="line">                <span class="built_in">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        console.log(<span class="string">'stdout: $&#123;stdout&#125;'</span>);</span><br><span class="line">        console.log(<span class="string">'stderr: $&#123;stderr&#125;'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h5 id="3-在根目录下执行shell"><a href="#3-在根目录下执行shell" class="headerlink" title="3.在根目录下执行shell"></a>3.在根目录下执行shell</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start hexo_daemon.js</span><br></pre></td></tr></table></figure>
-<p>参考:<br><a href="https://www.jianshu.com/p/4a3d4d144ab2" target="_blank" rel="noopener">PM2使用</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.ergzcode.com/2019/12/08/pm2-watch-hexo-process.html" data-id="ck3z8h59600002hd2f2uuhb5l" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pm2/" rel="tag">pm2</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git-common-commands-using" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-git-common-commands-using" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/26/git-common-commands-using.html" class="article-date">
   <time datetime="2019-11-26T11:26:00.000Z" itemprop="datePublished">2019-11-26</time>
@@ -171,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/26/git-common-commands-using.html">Git常用命令使用</a>
+    <h1 class="article-title" itemprop="name">
+      Git常用命令使用
     </h1>
   
 
@@ -220,11 +130,23 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/08/pm2-watch-hexo-process.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PM2守护hexo的进程
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
-
+</article>
 
 </section>
         
