@@ -42,6 +42,19 @@ google_plus:
 fb_admins:
 fb_app_id:
 
+# valine comment system. https://valine.js.org
+valine:
+  enable: true  # if you want use valine,please set this value is ture
+  appId: teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz # leancloud application app id
+  appKey: bjpKKR1Pq36WNhwSImLKdVNd  # leancloud application app key
+  notify: false # valine mail notify (true/false) https://github.com/xCss/Valine/wiki
+  verify: false # valine verify code (true/false)
+  pageSize: 10 # comment list page size
+  avatar: ''  # gravatar style https://valine.js.org/#/avatar
+  lang: zh-cn # i18n: zh-cn/en
+  placeholder: Please leave your footprints  # valine comment input placeholder(like: Please leave your footprints )
+  guest_info: nick,mail,link #valine comment header info
+
 mysite: www.ergzcode.com
 mybeian: '苏ICP备19067763号-1'
 
