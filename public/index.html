@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
   <meta charset="utf-8">
   
 
   
   <title>ergzC0de</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java,Python,Code">
+  <meta name="description" content="Java,Python,编程">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ergzC0de">
 <meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;">
 <meta property="og:site_name" content="ergzC0de">
-<meta property="og:description" content="Java,Python,Code">
+<meta property="og:description" content="Java,Python,编程">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
   
@@ -36,14 +37,20 @@
         <a href="/" id="logo">ergzC0de</a>
       </h1>
       
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">代码也是一种艺术</a>
+        </h2>
+      
     </div>
     <div id="header-inner" class="inner">
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="/">首页</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about/me.html">联系站长</a>
         
       </nav>
       <nav id="sub-nav">
@@ -58,6 +65,54 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-some-common-and-free-apis-for-developing" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/11/some-common-and-free-apis-for-developing.html" class="article-date">
+  <time datetime="2019-12-11T10:20:00.000Z" itemprop="datePublished">2019-12-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>为了方便广大的开发者，特此统计了网上诸多的免费API，为您收集免费的接口服务，做一个api的搬运工，以后会每月定时更新新的接口。有些接口来自第三方，在第三方注册就可以成为他们的会员，免费使用他们的部分接口。</strong></p>
+<p><b>百度AccessToken</b>:针对HTTP API调用者，百度AIP开…——<a href="https://www.free-api.com/doc/1" target='_blank'>接口地址</a><br><b>语音识别</b>:通过场景识别优化，为车载导航，智能家居和…——<a href="https://www.free-api.com/doc/2" target='_blank'>接口地址</a><br><b>语音合成</b>:将用户输入的文字，转换成流畅自然的语音输…——<a href="https://www.free-api.com/doc/4" target='_blank'>接口地址</a><br><b>出租车票识别(可在线调用)</b>:针对出租车票（现支持北京、上海、深圳）的…——<a href="https://www.free-api.com/doc/6" target='_blank'>接口地址</a><br><b>火车票识别(可在线调用)</b>:支持对大陆火车票的车票号、始发站、目的站…——<a href="https://www.free-api.com/doc/7" target='_blank'>接口地址</a><br>
+        
+          <p class="article-more-link">
+            <a href="/2019/12/11/some-common-and-free-apis-for-developing.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2019/12/11/some-common-and-free-apis-for-developing.html" data-id="ck418h06i0000hnd21bdgdch7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/" rel="tag">API</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-pm2-common-commands-introduction" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -86,11 +141,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>pm2 是一个带有负载均衡功能的Node应用的进程管理器。当你要把你的独立代码利用全部的服务器上的所有CPU，并保证进程永远都活着，0秒的重载， PM2是完美的。</p>
-<p>主要特性：</p>
-<p>1.内建负载均衡（使用Node cluster 集群模块）<br>2.后台运行<br>3.0秒停机重载，我理解大概意思是维护升级的时候不需要停机<br>4.具有Ubuntu和CentOS的启动脚本<br>5.停止不稳定的进程（避免无限循环）<br>6.控制台检测<br>7.提供 HTTP API<br>8.远程控制和实时的接口API(Nodejs模块,允许和PM2进程管理器交互 )</p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2 <span class="comment">#命令行安装pm2</span></span><br></pre></td></tr></table></figure>
-<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">pm2 start app.js -i 4 <span class="comment">#后台运行pm2，启动4个app.js</span></span><br><span class="line">pm2 start app.js --name my-api  <span class="comment">#命名进程</span></span><br><span class="line">pm2 list  <span class="comment">#显示所有进程状态</span></span><br><span class="line">pm2 monit  <span class="comment">#监视所有进程</span></span><br><span class="line">pm2 logs  <span class="comment">#显示所有进程日志</span></span><br><span class="line">pm2 stop all  <span class="comment">#停止所有进程</span></span><br><span class="line">pm2 restart all  <span class="comment">#重启所有进程</span></span><br><span class="line">pm2 reload all  <span class="comment">#0秒停机重载进程 (用于 NETWORKED 进程)</span></span><br><span class="line">pm2 stop 0  <span class="comment">#停止指定的进程</span></span><br><span class="line">pm2 restart 0  <span class="comment">#重启指定的进程</span></span><br><span class="line">pm2 startup  <span class="comment">#产生 init 脚本 保持进程活着</span></span><br><span class="line">pm2 web  <span class="comment">#运行健壮的 computer API endpoint</span></span><br><span class="line">pm2 delete 0  <span class="comment">#杀死指定的进程</span></span><br><span class="line">pm2 delete all  <span class="comment">#杀死全部进程</span></span><br><span class="line"></span><br><span class="line">运行进程的不同方式：</span><br><span class="line">pm2 start app.js -i max  <span class="comment">#根据有效CPU数目启动最大进程数目</span></span><br><span class="line">pm2 start app.js -i 3  <span class="comment">#启动3个进程</span></span><br><span class="line">pm2 start app.js -x  <span class="comment">#用fork模式启动 app.js 而不是使用 cluster</span></span><br><span class="line">pm2 start app.js -x -- -a 23  <span class="comment">#用fork模式启动 app.js 并且传递参数 (-a 23)</span></span><br><span class="line">pm2 start app.js --name serverone <span class="comment">#启动一个进程并把它命名为 serverone</span></span><br><span class="line">pm2 stop serverone  <span class="comment">#停止serverone进程</span></span><br><span class="line">pm2 start app.json  <span class="comment">#启动进程, 在app.json里设置选项</span></span><br><span class="line">pm2 start app.js -i max -- -a 23  <span class="comment">#在--之后给app.js传递参数</span></span><br><span class="line">pm2 start app.js -i max -e err.log -o out.log  <span class="comment">#启动 并生成一个配置文件</span></span><br><span class="line">你也可以执行用其他语言编写的app ( fork 模式):</span><br><span class="line">pm2 start my-bash-script.sh -x --interpreter bash</span><br><span class="line">pm2 start my-python-script.py -x --interpreter python</span><br><span class="line">pm2 list <span class="comment">#列出由pm2管理的所有进程信息，还会显示一个进程会被启动多少次</span></span><br><span class="line">pm2 monit <span class="comment">#监视每个node进程的CPU和内存的使用情况。</span></span><br></pre></td></tr></table></figure>
-
+<p>主要特性：<br>1.内建负载均衡（使用Node cluster 集群模块）<br>2.后台运行
+        
+          <p class="article-more-link">
+            <a href="/2019/12/10/pm2-common-commands-introduction.html#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -133,12 +189,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>在服务器上安装好了hexo，执行hexo sever来启动它的服务，会发现过了一段时间hexo的进程总是莫名其妙的挂掉，然后导致网站无法访问。从网上搜索了一些解决方案，发现能使用PM2来接管hexo的后台进程，从而让hexo进程一直常驻后台。</p>
-<p>操作步骤如下：</p>
-<h5 id="1-首先安装pm2"><a href="#1-首先安装pm2" class="headerlink" title="1.首先安装pm2"></a>1.首先安装pm2</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
-<h5 id="2-写一个shell-hexo-daemon-js"><a href="#2-写一个shell-hexo-daemon-js" class="headerlink" title="2.写一个shell hexo_daemon.js"></a>2.写一个shell hexo_daemon.js</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//run</span><br><span class="line">const &#123; <span class="built_in">exec</span> &#125; = require(<span class="string">'child_process'</span>)</span><br><span class="line"><span class="built_in">exec</span>(<span class="string">'hexo server -p 80 &amp; '</span>,(error, stdout, stderr) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span>(error)&#123;</span><br><span class="line">                console.log(<span class="string">'exec error: $&#123;error&#125;'</span>)</span><br><span class="line">                <span class="built_in">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        console.log(<span class="string">'stdout: $&#123;stdout&#125;'</span>);</span><br><span class="line">        console.log(<span class="string">'stderr: $&#123;stderr&#125;'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h5 id="3-在根目录下执行shell"><a href="#3-在根目录下执行shell" class="headerlink" title="3.在根目录下执行shell"></a>3.在根目录下执行shell</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start hexo_daemon.js</span><br></pre></td></tr></table></figure>
-<p>参考:<br><a href="https://www.jianshu.com/p/4a3d4d144ab2" target="_blank" rel="noopener">PM2使用</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2019/12/08/pm2-watch-hexo-process.html#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -185,30 +240,11 @@
 <p>3.查看提交的历史记录，该命令显示从最近到最远的历史记录：<code>git log</code>，如果嫌输出信息太多，可以试试加上<code>--pretty=oneline</code>参数：<code>git log --graph --pretty=oneline --abbrev-commit</code>，命令如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --graph --pretty=oneline --abbrev-commit</span><br><span class="line">eede197ffb267fbda60482da9554ba654ff523e3 init hexo repo</span><br><span class="line">1f2508638115730cb301f73c51b9971fca5c7f09 Initial commit</span><br></pre></td></tr></table></figure>
 <p>上面输出的一大串数字其实是 commit id(版本号)，这是一个SHA1计算出来的一个非常大的数字，用十六进制表示</p>
-<p>4.<code>git reset</code>该命令用来回退到某个版本，在git中用<code>HEAD</code>表示当前版本，<code>HEAD^</code>表示上个版本，<code>HEAD^^</code>表示上上版本……<br>以此类推，<code>HEAD~100</code>表示往上100个版本<br>现在我们用命令回退到上个版本：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br><span class="line">HEAD is now at 1f2508</span><br></pre></td></tr></table></figure>
-<p>可以根据版本号<code>commit id</code>指定回退到某个版本：<br><code>git reset --hard eede19</code><br>这里的版本号没必要写全，前几位就可以了，Git会自动去找，这样我们就又回到最新的版本了。Git版本的回退速度非常快，在Git内部有个指向当前版本的指针<code>HEAD</code>，所以我们在进行版本回退或回到最新的版本的时候，Git只是帮我们将<code>HEAD</code>指针指向某个版本号。</p>
-<p>5.<code>git reflog</code>记录你的每一条命令，可以查看<code>commit id</code>,提交具体的操作和提交输入的信息，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@instance-my0hsclo:/usr/<span class="built_in">local</span>/ergzC0de<span class="comment"># git reflog </span></span><br><span class="line">eede197 HEAD@&#123;0&#125;: rebase finished: returning to refs/heads/master</span><br><span class="line">eede197 HEAD@&#123;1&#125;: pull --rebase origin master: init hexo repo</span><br><span class="line">1f25086 HEAD@&#123;2&#125;: pull --rebase origin master: checkout 1f2508638115730cb301f73c51b9971fca5c7f09</span><br><span class="line">fe14566 HEAD@&#123;3&#125;: commit (initial): init hexo repo</span><br></pre></td></tr></table></figure>
-
-<p>6.<code>git checkout -- file</code>丢弃工作区的修改，文件修改还没有添加到暂存区，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
-<p>当文件修改后已经添加到了暂存区又作了修改，现在撤销修改就回到添加到暂存区后的状态。</p>
-<p>7.<code>git reset HEAD file</code>把添加到暂存区的内容撤销，<code>HEAD</code>表示最新的版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@instance-my0hsclo:/usr/<span class="built_in">local</span>/learngit<span class="comment"># git reset HEAD readme.txt</span></span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M	readme.txt</span><br></pre></td></tr></table></figure>
-<p>8.查看分支：<code>git branch</code></p>
-<p>9.创建分支：<code>git branch &lt;name&gt;</code><br>我们创建新分支dev时，Git会新建一个指针叫<code>dev</code>，指向当前分支<code>master</code>的相同的提交点（HEAD指针指向的是当前分支），再把<code>HEAD</code>指向<code>dev</code>，之后的操作就在<code>dev</code>分支上完成，如图：</p>
-<p><img src="/images/git_201912101316.png" alt="upload successful"></p>
-<p>10.切换分支:<code>git checkout &lt;name&gt;</code>或者<code>git switch &lt;name&gt;</code><br>创建并切换分支<code>git checkout -b &lt;name&gt;</code>或者<code>git switch -c &lt;name&gt;</code></p>
-<p>11.合并指定分支到当前分支上：<code>git merge &lt;name&gt;</code><br>当<code>dev</code>分支开发结束后，我们需要把<code>dev</code>分支合并到<code>master</code>（主分支）上，Git是如何操作的呢？Git直接把<code>master</code>指向<code>dev</code>的当前提交，就完成了合并，这些操作都是靠指针来完成，文件并没有发生变化，如图：</p>
-<p><img src="/images/git_201912101318.png" alt="upload successful"><br>分支合并时，Git默认使用<code>Fast forward</code>模式，使用这种模式，删除分支后，会丢掉分支的历史信息，使用<code>--no-ff</code>可以禁用<code>Fast forward</code>模式 <code>git merge --no-ff -m &quot;merge with no-ff&quot; dev</code>，这样每次合并会创建一个新的commit，加上<code>-m</code>参数，写上commit的描述。</p>
-<p>12.删除分支:<code>git branch -d &lt;name&gt;</code><br>合并完分支后就可以删除<code>dev</code>分支，，删除<code>dev</code>分支就是把<code>dev</code>指针给删掉，删掉后我们就剩下了一条<code>master</code>分支，如图：</p>
-<p><img src="/images/201912101319.png" alt="upload successful"></p>
-<p>13.查看分支合并图:<code>git log --graph</code></p>
-<p>团队协作的分支开发流程图：</p>
-<p><img src="/images/git_201912101326.png" alt="upload successful"></p>
-<p>参考：<br><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2019/11/26/git-common-commands-using.html#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -216,6 +252,54 @@
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-diagrams-for-various-join-uses-of-sql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html" class="article-date">
+  <time datetime="2019-11-09T07:50:00.000Z" itemprop="datePublished">2019-11-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html">图解SQL的各种join用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>下图展示了LEFT JOIN、RIGHT JOIN、INNER JOIN、OUTER JOIN 相关的 7 种用法</strong></p>
+<p><img src="/images/sql_201912121520.png" alt="upload successful"></p>
+        
+          <p class="article-more-link">
+            <a href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2019/11/09/diagrams-for-various-join-uses-of-sql.html" data-id="ck42fq5lv0000m9d2268vbs31" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/" rel="tag">sql</a></li></ul>
 
     </footer>
   </div>
@@ -234,7 +318,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li></ul>
     </div>
   </div>
 
@@ -244,7 +328,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/pm2/" style="font-size: 20px;">pm2</a>
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/pm2/" style="font-size: 20px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a>
     </div>
   </div>
 
@@ -253,7 +337,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -266,6 +350,10 @@
       <ul>
         
           <li>
+            <a href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
+          </li>
+        
+          <li>
             <a href="/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a>
           </li>
         
@@ -275,6 +363,10 @@
         
           <li>
             <a href="/2019/11/26/git-common-commands-using.html">Git常用命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html">图解SQL的各种join用法</a>
           </li>
         
       </ul>
@@ -289,19 +381,24 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 ergz<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+          Hosted by BCC<br/>
+          Copyright 2019 www.ergzcode.com All Rights Reserved <br>
+          苏ICP备19067763号-1
     </div>
   </div>
 </footer>
+
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/" class="mobile-nav-link">首页</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about/me.html" class="mobile-nav-link">联系站长</a>
   
 </nav>
+
     
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

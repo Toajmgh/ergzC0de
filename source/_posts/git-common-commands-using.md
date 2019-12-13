@@ -16,7 +16,7 @@ eede197ffb267fbda60482da9554ba654ff523e3 init hexo repo
 1f2508638115730cb301f73c51b9971fca5c7f09 Initial commit
 ```
 上面输出的一大串数字其实是 commit id(版本号)，这是一个SHA1计算出来的一个非常大的数字，用十六进制表示
-
+<!-- more -->
 4.`git reset`该命令用来回退到某个版本，在git中用`HEAD`表示当前版本，`HEAD^`表示上个版本，`HEAD^^`表示上上版本......
 以此类推，`HEAD~100`表示往上100个版本
 现在我们用命令回退到上个版本：
@@ -78,4 +78,3 @@ M	readme.txt
 
 参考：
 <https://www.liaoxuefeng.com/wiki/896043488029600>
-

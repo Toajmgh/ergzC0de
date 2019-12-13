@@ -1,11 +1,12 @@
 # Header
 menu:
-  Home: /
-  Archives: /archives
+  首页: /
+  归档: /archives
+  联系站长: /about/me.html
 #rss: /atom.xml
 
 # Content
-excerpt_link: Read More
+excerpt_link: 阅读全文
 fancybox: true
 
 # Sidebar
@@ -15,6 +16,12 @@ widgets:
 - tagcloud
 - archive
 - recent_posts
+
+# Automatically scroll page to section which is under <!-- more --> mark.
+scroll_to_more: false
+
+# baidu_tongji
+# baidu_tongji: true
 
 # display widgets at the bottom of index pages (pagination == 2)
 index_widgets:
@@ -34,3 +41,7 @@ twitter:
 google_plus:
 fb_admins:
 fb_app_id:
+
+mysite: www.ergzcode.com
+mybeian: '苏ICP备19067763号-1'
+
