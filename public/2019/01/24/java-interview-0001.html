@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  
+
+  
+  <title>面试官：说一下八种基本数据类型及其包装类吧 | ergzC0de</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍Java基本数据类型分为4大类：  整数型：byte,short,int,long 浮点型：flost,double 逻辑型：boolean 字符型：char     原始类型 原始类型所占字节数 包装类    byte 1个字节 Byte   short 2个字节 Short   int 4个字节 Integer   long 8个字节 Long   float 4个字节 Float   d">
+<meta name="keywords" content="Java,面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试官：说一下八种基本数据类型及其包装类吧">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;2019&#x2F;01&#x2F;24&#x2F;java-interview-0001.html">
+<meta property="og:site_name" content="ergzC0de">
+<meta property="og:description" content="介绍Java基本数据类型分为4大类：  整数型：byte,short,int,long 浮点型：flost,double 逻辑型：boolean 字符型：char     原始类型 原始类型所占字节数 包装类    byte 1个字节 Byte   short 2个字节 Short   int 4个字节 Integer   long 8个字节 Long   float 4个字节 Float   d">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-26T14:42:37.705Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ergzC0de</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">代码也是一种艺术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about/me.html">联系站长</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.ergzcode.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-java-interview-0001" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/24/java-interview-0001.html" class="article-date">
+  <time datetime="2019-01-24T14:40:00.000Z" itemprop="datePublished">2019-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      面试官：说一下八种基本数据类型及其包装类吧
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><strong>Java基本数据类型分为4大类：</strong></p>
+<ul>
+<li>整数型：byte,short,int,long</li>
+<li>浮点型：flost,double</li>
+<li>逻辑型：boolean</li>
+<li>字符型：char</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>原始类型</th>
+<th>原始类型所占字节数</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>1个字节</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2个字节</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4个字节</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8个字节</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4个字节</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8个字节</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>1个字节</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>char</td>
+<td>2个字节</td>
+<td>Character</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+<h3 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h3><p>要注意的是基本数据的包装类很多都实现了享元模式。享元模式就是运用共享技术有效地支持大量细粒度对象的复用。用一个常见的面试题来解释</p>
+<p><strong>1.判断如下代码的输出，并说出原因</strong></p>
+<pre><code>Integer a1 = 40;
+Integer a2 = 40;
+System.out.println(a1==a2);
+
+Integer a3 = 200;
+Integer a4 = 200;
+System.out.println(a3 == a4);</code></pre><p>由自动装箱和拆箱可以知道这2种写法是等价的</p>
+<pre><code>Integer a1 = 40;
+Integer a1 = Integer.valueOf(40);</code></pre><p>看一下Integer.valueOf(int i)的方法</p>
+<pre><code>//...valueOf(int):Integer
+public static Integer valueOf(int i) {
+    assert IntegerCache.high &gt;= 127;
+    if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)
+        return IntegerCache.cache[i + (-IntegerCache.low)];
+    return new Integer(i);
+}
+
+//...IntegerCache
+private static class IntegerCache {
+    static final int low = -128;
+    static final int high;
+    static final Integer cache[];
+
+    static {
+        // high value may be configured by property
+        int h = 127;
+        String integerCacheHighPropValue =
+            sun.misc.VM.getSavedProperty(&quot;java.lang.Integer.IntegerCache.high&quot;);
+        if (integerCacheHighPropValue != null) {
+            int i = parseInt(integerCacheHighPropValue);
+            i = Math.max(i, 127);
+            // Maximum array size is Integer.MAX_VALUE
+            h = Math.min(i, Integer.MAX_VALUE - (-low) -1);
+        }
+        high = h;
+
+        cache = new Integer[(high - low) + 1];
+        int j = low;
+        for(int k = 0; k &lt; cache.length; k++)
+            cache[k] = new Integer(j++);
+    }
+
+    private IntegerCache() {}
+}</code></pre><p>IntegerCache是Integer的静态内部类，默认创建了[-128,127]的对象，并放到IntegerCache内部的一个cache数组中，在[-128,127]这个范围内的整数对象，不用创建。直接从IntegerCache中的cache数组中根据下标拿就可以了,超出这个范围的每次去创建新的对象。其他几种包装类型的常量池和Integer的思路差不多，源码都很相似。<br>所以答案如下：</p>
+<pre><code>Integer a1 = 40;
+Integer a2 = 40;
+System.out.println(a1 == a2);//true
+
+Integer a3 = 200;
+Integer a4 = 200;
+System.out.println(a3 == a4);//false</code></pre><p>包装类缓存数据范围如下：</p>
+<table>
+<thead>
+<tr>
+<th>包装类</th>
+<th>缓存范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Byte</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>Short</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>Character</td>
+<td>0~127</td>
+</tr>
+</tbody></table>
+<p><strong>2.Java一个char类型可以存储中文吗？</strong></p>
+<p>可以，因为Java中使用了Unicode字符，不论是中文还是英文固定占用2个字节。</p>
+<pre><code>char a = &apos;中&apos;；
+// 中
+System.out.println(a);    </code></pre><p><strong>3.什么是自动装箱，自动拆箱</strong></p>
+<p>自动装箱就是Java自动将原始类型转换为对应的对象，比如将int的变量转换为Integer对象，这个过程就是装箱，反之将Integer对象转换为int类型的值，这个过程就是拆箱。因为这里的装箱和拆箱是自动进行的非人为转换的，所以就称作自动装箱和自动拆箱。</p>
+<p>自动装箱时编译器调用ValueOf将原始类型值转换为对象，同时自动拆箱时，编译器通过调用类似intValue(),doubleValue()这类的方法将对象转换为原始类型值</p>
+<pre><code>//jdk1.5之前的写法
+Integer tempNum1 = Integer.valueOf(5);
+int num1 = tempNum1.intValue();
+
+//jdk1.5之后的写法，自动装箱和拆箱
+Integer tempNum2= 5;
+int num1 = tempNum2;</code></pre><p><strong>4.为什么要需要基本数据类型的包装类</strong></p>
+<p>（1）Java是面向对象的语言，很多地方是需要使用的是对象而不是基本数据类型。例如，List,Map等容器类中基本数据类型是放不进去的。<br>（2）包装类在原先的基本数据类型上，新增加了很多方法，比如Integer.valueOf(String s)等</p>
+<p><strong>5.既然包装类能完成所有的功能，为啥还需要基本数据类型</strong></p>
+<p>基本数据类型基于数值，对象类型基于引用。基本数据类型存储在栈的局部变量表中。</p>
+<p>而对象类型的变量则是存储堆中引用，实例放在堆中，因此对象类型的变量需要占用更多的内存空间，基本数据类型因为占用更少内存被保留下来。</p>
+<p><strong>6.写出如下代码的输出</strong></p>
+<pre><code>Integer i1 = 40;
+Integer i2 = 40;
+Integer i3 = 0;
+Integer i4 = new Integer(40);
+Integer i5 = new Integer(40);
+Integer i6 = new Integer(0);
+
+System.out.println(i1 == i2);
+System.out.println(i1 == i2 + i3);
+System.out.println(i1 == i4);
+System.out.println(i4 == i5);
+System.out.println(i4 == i5 + i6);
+System.out.println(40 == i5 + i6);</code></pre><p>输出及解释如下</p>
+<pre><code>Integer i1 = 40;
+Integer i2 = 40;
+Integer i3 = 0;
+Integer i4 = new Integer(40);
+Integer i5 = new Integer(40);
+Integer i6 = new Integer(0);
+
+System.out.println(i1 == i2);//true
+//Integer.valueOf()用了常量池，看上面的源码
+//比较是内存地址
+
+System.out.println(i1 == i2 + i3);//true
+// + 操作会导致左右两边都转换为基本数据类型
+//比较是值
+
+System.out.println(i1 == i4);//false
+//Integer.valueOf()使用常量池中的对象
+//new Integer每次都会创建新对象
+//比较是内存地址
+
+System.out.println(i4 == i5);//false
+//new关键字会创建新的实例所以这是2个不同的对象
+//比较是内存地址
+
+System.out.println(i4 == i5 + i6);//true
+//解释在下面，比较的是值
+
+
+System.out.println(40 == i5 + i6);//true
+//解释在下面，比较的是值</code></pre><p>语句i4 = i5 + i6,因为这个 + 操作符不适用于Integer对象，首先i5和i6进行了自动拆箱的操作，进行数值相加，即i4 == 40。然后Integer对象无法与数值进行直接比较，所以i4自动拆箱转为int数据类型，值为40，最终这条语句转为40 == 40进行数值的比较。</p>
+<p><strong>本文链接：<a href="http://www.ergzcode.com/2019/01/24/java-interview-0001.html">面试官：说一下八种基本数据类型及其包装类吧</a><br>欢迎转载，请注明出处！</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2019/01/24/java-interview-0001.html" data-id="ck4mu6l3z0000n2d21j9kedhw" class="article-share-link">Share</a>
+      
+      
+        <a href="/2019/01/24/java-interview-0001.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2019/01/24/java-interview-0001.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/25/java-interview-0002.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          面试官：说一下构造函数，静态代码块，构造代码块的加载顺序
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/18/mysql-database-optimization-this-article-is-enough.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MySQL数据库优化，看这篇就够了</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+  <section id="comments" class="vcomment">
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 15px;">Nginx</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 15px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 20px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html">Nginx反向代理实现二级域名与端口的映射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-common-commands-using.html">Git常用命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html">图解SQL的各种join用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/26/java-interview-0003.html">面试官：说一下Spring StringBuffer StringBuilder的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/25/java-interview-0002.html">面试官：说一下构造函数，静态代码块，构造代码块的加载顺序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+          Hosted by BCC<br/>
+          Copyright 2019 www.ergzcode.com All Rights Reserved <br>
+          苏ICP备19067763号-1
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about/me.html" class="mobile-nav-link">联系站长</a>
+  
+</nav>
+
+    
+
+<script src="//cdn.jsdelivr.net/gh/jquery/jquery@3/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'false' == true;
+    var verify = 'false' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz",
+        appKey: "bjpKKR1Pq36WNhwSImLKdVNd",
+        placeholder: "Please leave your footprints",
+        pageSize:'10',
+        avatar:'',
+        lang:'zh-cn'
+    });
+</script>
+ 
+
+  </div>
+</body>
+</html>

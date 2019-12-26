@@ -76,5 +76,6 @@ M	readme.txt
 
 ![upload successful](/images/git_201912101326.png)
 
-参考：
-<https://www.liaoxuefeng.com/wiki/896043488029600>
+**本文链接：[Git常用命令使用](http://www.ergzcode.com/2019/11/26/git-common-commands-using.html)
+欢迎转载，请注明出处！
+参考：<https://www.liaoxuefeng.com/wiki/896043488029600>**

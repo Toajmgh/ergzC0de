@@ -24,7 +24,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;sql_201912121531.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;sql_201912121552.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;sql_201912121553.png">
-<meta property="og:updated_time" content="2019-12-12T08:04:30.554Z">
+<meta property="og:updated_time" content="2019-12-18T15:43:04.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;sql_201912121520.png">
   
@@ -82,7 +82,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
   </div>
 
   </div>
@@ -118,10 +118,19 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;select_list&gt;</span><br><span class="line"><span class="keyword">FROM</span> Table_A A</span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> Table_B B</span><br><span class="line"><span class="keyword">ON</span> A.Key = B.Key</span><br><span class="line"><span class="keyword">WHERE</span> A.Key <span class="keyword">IS</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
 <h5 id="7-OUTER-JOIN-EXCLUDING-INNER-JOIN（外连接-内连接）"><a href="#7-OUTER-JOIN-EXCLUDING-INNER-JOIN（外连接-内连接）" class="headerlink" title="7.OUTER JOIN EXCLUDING INNER JOIN（外连接-内连接）"></a>7.OUTER JOIN EXCLUDING INNER JOIN（外连接-内连接）</h5><p><img src="/images/sql_201912121553.png" alt="upload successful"></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;select_list&gt;</span><br><span class="line"><span class="keyword">FROM</span> Table_A A</span><br><span class="line"><span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Table_B B</span><br><span class="line"><span class="keyword">ON</span> A.Key = B.Key</span><br><span class="line"><span class="keyword">WHERE</span> A.Key <span class="keyword">IS</span> <span class="literal">NULL</span> <span class="keyword">OR</span> B.Key <span class="keyword">IS</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>原文链接：<a href="https://www.toutiao.com/i6766789647902179847" target="_blank" rel="noopener">看一张图秒懂SQL的各种JOIN用法</a><br>欢迎转载，请注明出处！</strong></p>
+
       
     </div>
     <footer class="article-footer">
       <a data-url="http://www.ergzcode.com/2019/11/09/diagrams-for-various-join-uses-of-sql.html" data-id="ck42fq5lv0000m9d2268vbs31" class="article-share-link">Share</a>
+      
+      
+        <a href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2019/11/09/diagrams-for-various-join-uses-of-sql.html" itemprop="commentCount"></span>
+      留言
+        </a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/" rel="tag">sql</a></li></ul>
@@ -132,20 +141,30 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/11/26/git-common-commands-using.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/14/nginx-build-http-file-system.html" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Git常用命令使用
+          Nginx搭建HTTP文件服务器
         
       </div>
     </a>
   
   
+    <a href="/2019/01/26/java-interview-0003.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">面试官：说一下Spring StringBuffer StringBuilder的区别</div>
+    </a>
+  
 </nav>
 
   
 </article>
+
+
+
+  <section id="comments" class="vcomment">
+  </section>
 
 </section>
         
@@ -155,7 +174,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li></ul>
     </div>
   </div>
 
@@ -165,7 +184,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/pm2/" style="font-size: 20px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a>
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 15px;">Nginx</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 15px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 20px;">面试题</a>
     </div>
   </div>
 
@@ -174,7 +193,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -185,6 +204,14 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html">Nginx反向代理实现二级域名与端口的映射</a>
+          </li>
         
           <li>
             <a href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
@@ -203,12 +230,25 @@
           </li>
         
           <li>
+            <a href="/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html">图解SQL的各种join用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/26/java-interview-0003.html">面试官：说一下Spring StringBuffer StringBuilder的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/25/java-interview-0002.html">面试官：说一下构造函数，静态代码块，构造代码块的加载顺序</a>
           </li>
         
       </ul>
     </div>
   </div>
+
 
   
 </aside>
@@ -238,7 +278,7 @@
 
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/jquery/jquery@3/dist/jquery.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -248,6 +288,29 @@
 <script src="/js/script.js"></script>
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'false' == true;
+    var verify = 'false' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz",
+        appKey: "bjpKKR1Pq36WNhwSImLKdVNd",
+        placeholder: "Please leave your footprints",
+        pageSize:'10',
+        avatar:'',
+        lang:'zh-cn'
+    });
+</script>
+ 
 
   </div>
 </body>

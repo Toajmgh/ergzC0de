@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  
+
+  
+  <title>MySQL数据库优化，看这篇就够了 | ergzC0de</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言数据库优化一方面是找出系统的瓶颈,提高MySQL数据库的整体性能,而另一方面需要合理的结构设计和参数调整,以提高用户的相应速度,同时还要尽可能的节约系统资源,以便让系统提供更大的负荷. 1. 优化一览图">
+<meta name="keywords" content="Mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL数据库优化，看这篇就够了">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;2018&#x2F;10&#x2F;18&#x2F;mysql-database-optimization-this-article-is-enough.html">
+<meta property="og:site_name" content="ergzC0de">
+<meta property="og:description" content="前言数据库优化一方面是找出系统的瓶颈,提高MySQL数据库的整体性能,而另一方面需要合理的结构设计和参数调整,以提高用户的相应速度,同时还要尽可能的节约系统资源,以便让系统提供更大的负荷. 1. 优化一览图">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;mysql_201912182301.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;mysql_201912182306.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;mysql_201912182311.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;mysql_201912182321.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;mysql_201912182322.png">
+<meta property="og:updated_time" content="2019-12-20T05:27:26.199Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;mysql_201912182301.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ergzC0de</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">代码也是一种艺术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about/me.html">联系站长</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.ergzcode.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-mysql-database-optimization-this-article-is-enough" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/18/mysql-database-optimization-this-article-is-enough.html" class="article-date">
+  <time datetime="2018-10-18T15:00:00.000Z" itemprop="datePublished">2018-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MySQL数据库优化，看这篇就够了
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>数据库优化一方面是找出系统的瓶颈,提高MySQL数据库的整体性能,而另一方面需要合理的结构设计和参数调整,以提高用户的相应速度,同时还要尽可能的节约系统资源,以便让系统提供更大的负荷.</strong></p>
+<h3 id="1-优化一览图"><a href="#1-优化一览图" class="headerlink" title="1. 优化一览图"></a>1. 优化一览图</h3><p><img src="/images/mysql_201912182301.png" alt="upload successful"></p>
+<a id="more"></a>
+<h3 id="2-优化"><a href="#2-优化" class="headerlink" title="2. 优化"></a>2. 优化</h3><p>笔者将优化分为了两大类,软优化和硬优化,软优化一般是操作数据库即可,而硬优化则是操作服务器硬件及参数设置.</p>
+<h4 id="2-1-软优化"><a href="#2-1-软优化" class="headerlink" title="2.1 软优化"></a>2.1 软优化</h4><h5 id="2-1-1-查询语句优化"><a href="#2-1-1-查询语句优化" class="headerlink" title="2.1.1 查询语句优化"></a>2.1.1 查询语句优化</h5><p>1.首先我们可以用EXPLAIN或DESCRIBE(简写:DESC)命令分析一条查询语句的执行信息.<br>2.例:<strong>DESC SELECT * FROM user</strong><br>显示：<br><img src="/images/mysql_201912182306.png" alt="upload successful"><br>其中会显示索引和查询数据读取数据条数等信息.</p>
+<h5 id="2-1-2-优化子查询"><a href="#2-1-2-优化子查询" class="headerlink" title="2.1.2 优化子查询"></a>2.1.2 优化子查询</h5><p>在MySQL中,尽量使用JOIN来代替子查询.因为子查询需要嵌套查询,嵌套查询时会建立一张临时表,临时表的建立和删除都会有较大的系统开销,而连接查询不会创建临时表,因此效率比嵌套子查询高.</p>
+<h5 id="2-1-3-使用索引"><a href="#2-1-3-使用索引" class="headerlink" title="2.1.3 使用索引"></a>2.1.3 使用索引</h5><p>索引是提高数据库查询速度最重要的方法之一,关于索引可以参高笔者&lt;MySQL数据库索引&gt;一文,介绍比较详细,此处记录使用索引的三大注意事项:<br>    1.LIKE关键字匹配’%’开头的字符串,不会使用索引.<br>    2.OR关键字的两个字段必须都是用了索引,该查询才会使用索引.<br>    3.使用多列索引必须满足最左匹配.</p>
+<h5 id="2-1-4-分解表"><a href="#2-1-4-分解表" class="headerlink" title="2.1.4 分解表"></a>2.1.4 分解表</h5><p>对于字段较多的表,如果某些字段使用频率较低,此时应当,将其分离出来从而形成新的表,</p>
+<h5 id="2-1-5-中间表"><a href="#2-1-5-中间表" class="headerlink" title="2.1.5 中间表"></a>2.1.5 中间表</h5><p>对于将大量连接查询的表可以创建中间表,从而减少在查询时造成的连接耗时.</p>
+<h5 id="2-1-6-增加冗余字段"><a href="#2-1-6-增加冗余字段" class="headerlink" title="2.1.6 增加冗余字段"></a>2.1.6 增加冗余字段</h5><p>类似于创建中间表,增加冗余也是为了减少连接查询.</p>
+<h5 id="2-1-7-分析表-检查表-优化表"><a href="#2-1-7-分析表-检查表-优化表" class="headerlink" title="2.1.7 分析表,检查表,优化表"></a>2.1.7 分析表,检查表,优化表</h5><p>分析表主要是分析表中关键字的分布,检查表主要是检查表中是否存在错误,优化表主要是消除删除或更新造成的表空间浪费.</p>
+<p>一.分析表: 使用 <strong>ANALYZE</strong> 关键字,如<strong>ANALYZE TABLE user;</strong><br><img src="/images/mysql_201912182311.png" alt="upload successful"><br>1.Op:表示执行的操作.<br>2.Msg_type:信息类型,有status,info,note,warning,error.<br>3.Msg_text:显示信息.</p>
+<p>二.检查表: 使用<strong>CHECK</strong>关键字,如<strong>CHECK TABLE user [option]</strong><br>option只对MyISAM有效,共五个参数值:<br>1.QUICK:不扫描行,不检查错误的连接.<br>2.FAST:只检查没有正确关闭的表.<br>3.CHANGED:只检查上次检查后被更改的表和没被正确关闭的表.<br>4.MEDIUM:扫描行,以验证被删除的连接是有效的,也可以计算各行关键字校验和.<br>5.EXTENDED:最全面的的检查,对每行关键字全面查找.</p>
+<p>三.优化表:使用<strong>OPTIMIZE</strong>关键字,如<strong>OPTIMIZE [LOCAL|NO_WRITE_TO_BINLOG] TABLE user;</strong><br>LOCAL|NO_WRITE_TO_BINLOG都是表示不写入日志.,优化表只对VARCHAR,BLOB和TEXT有效,通过OPTIMIZE TABLE语句可以消除文件碎片,在执行过程中会加上只读锁.</p>
+<h4 id="2-2-硬优化"><a href="#2-2-硬优化" class="headerlink" title="2.2 硬优化"></a>2.2 硬优化</h4><h5 id="2-2-1-硬件三件套"><a href="#2-2-1-硬件三件套" class="headerlink" title="2.2.1 硬件三件套"></a>2.2.1 硬件三件套</h5><p>1.配置多核心和频率高的cpu,多核心可以执行多个线程.<br>2.配置大内存,提高内存,即可提高缓存区容量,因此能减少磁盘I/O时间,从而提高响应速度.<br>3.配置高速磁盘或合理分布磁盘:高速磁盘提高I/O,分布磁盘能提高并行操作的能力.</p>
+<h5 id="2-2-2-优化数据库参数"><a href="#2-2-2-优化数据库参数" class="headerlink" title="2.2.2 优化数据库参数"></a>2.2.2 优化数据库参数</h5><p>优化数据库参数可以提高资源利用率,从而提高MySQL服务器性能.MySQL服务的配置参数都在my.cnf或my.ini,下面列出性能影响较大的几个参数.</p>
+<p>1.key_buffer_size:索引缓冲区大小<br>2.table_cache:能同时打开表的个数<br>3.query_cache_size和query_cache_type:前者是查询缓冲区大小,后者是前面参数的开关,0表示不使用缓冲区,1表示使用缓冲区,但可以在查询中使用4.SQL_NO_CACHE表示不要使用缓冲区,2表示在查询中明确指出使用缓冲区才用缓冲区,即SQL_CACHE.<br>5.sort_buffer_size:排序缓冲区</p>
+<p><strong>传送门:<a href="https://www.mysql.com/cn/why-mysql/performance/index.html" target="_blank" rel="noopener">更多参数</a></strong></p>
+<h5 id="2-2-3-分库分表"><a href="#2-2-3-分库分表" class="headerlink" title="2.2.3 分库分表"></a>2.2.3 分库分表</h5><p>因为数据库压力过大，首先一个问题就是高峰期系统性能可能会降低，因为数据库负载过高对性能会有影响。另外一个，压力过大把你的数据库给搞挂了怎么办？所以此时你必须得对系统做分库分表 + 读写分离，也就是把一个库拆分为多个库，部署在多个数据库服务上，这时作为主库承载写入请求。然后每个主库都挂载至少一个从库，由从库来承载读请求。<br><img src="/images/mysql_201912182321.png" alt="upload successful"></p>
+<h5 id="2-2-4-缓存集群"><a href="#2-2-4-缓存集群" class="headerlink" title="2.2.4 缓存集群"></a>2.2.4 缓存集群</h5><p><img src="/images/mysql_201912182322.png" alt="upload successful"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>一个完整而复杂的高并发系统架构中，一定会包含各种复杂的自研基础架构系统和各种精妙的架构设计.因此一篇小文顶多具有抛砖引玉的效果,但是数据库优化的思想差不多就这些了.</p>
+<p><strong>原文链接:<a href="https://segmentfault.com/a/1190000018631870" target="_blank" rel="noopener">MySQL数据库优化</a><br>欢迎转载，请注明出处！</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2018/10/18/mysql-database-optimization-this-article-is-enough.html" data-id="ck4bgfyjw000004d250p6fxlv" class="article-share-link">Share</a>
+      
+      
+        <a href="/2018/10/18/mysql-database-optimization-this-article-is-enough.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2018/10/18/mysql-database-optimization-this-article-is-enough.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/24/java-interview-0001.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          面试官：说一下八种基本数据类型及其包装类吧
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/18/tomcat-modifying-memory-configuration-for-optimization.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Tomcat优化之修改内存配置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+  <section id="comments" class="vcomment">
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 15px;">Nginx</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 15px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 20px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html">Nginx反向代理实现二级域名与端口的映射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-common-commands-using.html">Git常用命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html">图解SQL的各种join用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/26/java-interview-0003.html">面试官：说一下Spring StringBuffer StringBuilder的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/25/java-interview-0002.html">面试官：说一下构造函数，静态代码块，构造代码块的加载顺序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+          Hosted by BCC<br/>
+          Copyright 2019 www.ergzcode.com All Rights Reserved <br>
+          苏ICP备19067763号-1
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about/me.html" class="mobile-nav-link">联系站长</a>
+  
+</nav>
+
+    
+
+<script src="//cdn.jsdelivr.net/gh/jquery/jquery@3/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'false' == true;
+    var verify = 'false' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz",
+        appKey: "bjpKKR1Pq36WNhwSImLKdVNd",
+        placeholder: "Please leave your footprints",
+        pageSize:'10',
+        avatar:'',
+        lang:'zh-cn'
+    });
+</script>
+ 
+
+  </div>
+</body>
+</html>

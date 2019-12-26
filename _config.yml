@@ -11,9 +11,10 @@
 # hexo-admin authentification
 admin:
   username: ergz
-  password_hash: $2a$10$3ypC2lVKWeFzBS7eIvPgWu8lHv/tPMbq/ckaSRY.m2WV5U4yLqFRu
-  secret: my hexo key
+  password_hash: $2a$10$6FNoPf66zpDJZbkUMdf/0Ou0Ew7xy9OpipAQz99yUYCzDigAn1otW
+  secret: hexo key
   deployCommand: './hexo_deploy.sh'
+
 
 # Site
 title: ergzC0de
@@ -68,7 +69,7 @@ highlight:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 10
+  per_page: 5
   order_by: -date
 
 # Category & Tag

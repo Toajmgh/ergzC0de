@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>最新IDEA永久激活</title>
+    <url>/2019/12/25/idea-latest-active.html</url>
+    <content><![CDATA[<p><strong>已支持2019.2的版本且适用Windows、Mac、Ubuntu等所有平台</strong></p>
+<h3 id="1-下载新版破解补丁"><a href="#1-下载新版破解补丁" class="headerlink" title="1.下载新版破解补丁"></a>1.下载新版破解补丁</h3><p>下载链接：<a href="http://cdn.ergzcode.com/jetbrains/jetbrains-agent.jar" target="_blank" rel="noopener">http://cdn.ergzcode.com/jetbrains/jetbrains-agent.jar</a>，并将它放置到IDEA安装目录的bin目录下（位置可随意）。</p>
+<h3 id="2-修改配置文件"><a href="#2-修改配置文件" class="headerlink" title="2.修改配置文件"></a>2.修改配置文件</h3><p>如果你是刚下载的IDEA，先点击激活窗口的免费试用，创建一个新项目来进入到IDEA的工作目录。进入IDEA的工作界面后，点击IDEA的上方的菜单栏‘Help’-&gt;‘Edit Custom VM Options…’，如果提示是否要创建文件，请点‘Yes’，打开idea64.exe.vmoptions文件在末行添加：-javaagent:你的IDEA安装目录\bin\jetbrains-agent.jar</p>
+<a id="more"></a>
+
+<pre><code>-Xms512m
+-Xmx2048m
+-XX:ReservedCodeCacheSize=480m
+-XX:+UseConcMarkSweepGC
+-XX:SoftRefLRUPolicyMSPerMB=50
+-ea
+-XX:CICompilerCount=2
+-Dsun.io.useCanonPrefixCache=false
+-Djava.net.preferIPv4Stack=true
+-Djdk.http.auth.tunneling.disabledSchemes=&quot;&quot;
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
+-Djdk.attach.allowAttachSelf
+-Dkotlinx.coroutines.debug=off
+-Djdk.module.illegalAccess.silent=true
+-javaagent:C:\Program Files\JetBrains\ideaIU 2019.2.3\bin\jetbrains-agent.jar</code></pre><p>请仔细检查补丁路径是否正确，如果错误则会出现IDEA打不开的情况，这时候可以删除用户配置目录下的IDEA文件夹:</p>
+<ul>
+<li>windwos：C:\Users\用户名\</li>
+<li>macos：~/Library/Preferences/</li>
+<li>ubuntu：~/.    </li>
+</ul>
+<p><strong>修改完配置文件之后重启IDEA</strong></p>
+<h3 id="3-输入激活码"><a href="#3-输入激活码" class="headerlink" title="3.输入激活码"></a>3.输入激活码</h3><p>重启IDEA之后，点击菜单栏中的 ‘Help ’-&gt; ‘Register…’，这里有两种激活方式：</p>
+<p>一.选择最后一种License server激活方式，地址填入：<a href="http://jetbrains-license-server" target="_blank" rel="noopener">http://jetbrains-license-server</a> ,或者点击按钮：‘Discover Server’来自动填充地址，完成激活。</p>
+<p>二.如果服务器激活方式无法激活，还可以选择Activation code方式激活，激活码下载:<a href="http://cdn.ergzcode.com/jetbrains/%E6%BF%80%E6%B4%BB%E7%A0%81.txt" target="_blank" rel="noopener">激活码.txt</a>，下载复制激活码填入，点击OK即可。</p>
+<p>服务器激活是没有期限的，是永久有效。激活码激活的有效期到2089年。</p>
+<p><strong>本文链接：<a href="http://www.ergzcode.com/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a><br>欢迎转载，请注明出处！</strong></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>IDEA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx反向代理实现二级域名与端口的映射</title>
+    <url>/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html</url>
+    <content><![CDATA[<p><strong>在之前的一篇文章：<a href="http://www.ergzcode.com/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a>中,我们搭建了一个HTTP的文件服务器，通过8080端口来访问服务。现在我们想通过域名的方式（二级域名）来访问这个HTTP的文件服务器，我们知道通过浏览器URL地址的方式访问一个网站，比如<code>http://www.ergzcode.com</code>,默认的是去服务器找80端口下的服务，也就是<code>http://www.ergzcode.com:80</code>这个地址。考虑到80端口是比较特殊的端口，所以部署hexo时指定的端口是4000，这样将会导致只有使用<code>http://www.ergzcode.com:4000</code>才能访问到本站，但这种的URL无疑是让人接受不了的。</strong></p>
+<a id="more"></a>
+<p><strong>现在需要做到以下两点：</strong></p>
+<ul>
+<li>将<code>http://www.ergzcode.com</code>的请求转发给4000端口下的应用程序，也就是通过这种URL访问本站</li>
+<li>将<code>http://cdn.ergzcode.com</code>的请求转发给8080端口下的http文件服务器</li>
+</ul>
+<p><strong>当然在这之前，有个前提就是你需要让<code>cdn.ergzcode.com</code>和<code>www.ergzcode.com</code>这两个域名解析到你的服务器IP上，DNS解析在域名提供商那里作处理,这里不再介绍</strong></p>
+<p><strong>现在要做到上面的请求转发，就要用到Nginx的反向代理机制，下面来创建Nginx的配置文件，在<code>/etc/nginx/conf.d</code>目录下创建一个叫做reverse_proxy.conf的文件，文件名可以随意指定，但要以.conf为后缀名，然后加入下面的内容</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">        listen 80;<span class="comment">#监听端口</span></span><br><span class="line">        server_name www.ergzcode.com;<span class="comment">#根据域名跳转</span></span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_redirect off;</span><br><span class="line">                proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">                proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">                proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">                proxy_pass http://127.0.0.1:4000;<span class="comment">#跳转的路径</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name cdn.ergzcode.com;</span><br><span class="line">        <span class="comment">#root /usr/local/data/file;</span></span><br><span class="line">        location / &#123;</span><br><span class="line">                <span class="comment"># try_files $uri $uri/ =404;</span></span><br><span class="line">                proxy_redirect off;</span><br><span class="line">                proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">                proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">                proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">                proxy_pass http://127.0.0.1:8080;<span class="comment">#跳转的路径</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>执行命令使修改配置生效<code>/etc/init.d/nginx reload</code></strong></p>
+<p>访问本站：<a href="http://www.ergzcode.com">http://www.ergzcode.com</a><br>访问HTTP服务器：<a href="http://cdn.ergzcode.com" target="_blank" rel="noopener">http://cdn.ergzcode.com</a><br><strong>完成！！</strong></p>
+<p><strong>本文链接：<a href="http://www.ergzcode.com/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html">Nginx反向代理实现二级域名与端口的映射</a><br>欢迎转载，请注明出处！</strong></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>开发中常用的一些免费API</title>
     <url>/2019/12/11/some-common-and-free-apis-for-developing.html</url>
     <content><![CDATA[<p><strong>为了方便广大的开发者，特此统计了网上诸多的免费API，为您收集免费的接口服务，做一个api的搬运工，以后会每月定时更新新的接口。有些接口来自第三方，在第三方注册就可以成为他们的会员，免费使用他们的部分接口。</strong></p>
@@ -31,7 +98,7 @@
 <p><b>经纬度信息(可在线调用)</b>:获取当前经纬度信息——<a href="https://www.free-api.com/doc/316" target="_blank" rel="noopener">接口地址</a><br><b>历史上的今天(可在线调用)</b>:历史上的今天——<a href="https://www.free-api.com/doc/317" target="_blank" rel="noopener">接口地址</a><br><b>Bing 壁纸获取(可在线调用)</b>:获取最近的Bing 壁纸——<a href="https://www.free-api.com/doc/318" target="_blank" rel="noopener">接口地址</a><br><b>天气查询(可在线调用)</b>:获取今天和未来三天的天气情况，来源于高德——<a href="https://www.free-api.com/doc/319" target="_blank" rel="noopener">接口地址</a><br><b>天气查询(可在线调用)</b>:根据城市名，获取今天和未来三天的天气情况…——<a href="https://www.free-api.com/doc/320" target="_blank" rel="noopener">接口地址</a><br><b>天气查询(可在线调用)</b>:根据城市id，获取未来15天的天气情况，…——<a href="https://www.free-api.com/doc/321" target="_blank" rel="noopener">接口地址</a><br><b>手机归属地查询(可在线调用)</b>:根据手机号码查询手机号的归属地信息——<a href="https://www.free-api.com/doc/322" target="_blank" rel="noopener">接口地址</a><br><b>手机归属地查询</b>:根据手机号码查询手机号的归属地信息，来源…——<a href="https://www.free-api.com/doc/323" target="_blank" rel="noopener">接口地址</a><br><b>IP域名归属地查询(可在线调用)</b>:查询IP或者域名归属地——<a href="https://www.free-api.com/doc/324" target="_blank" rel="noopener">接口地址</a><br><b>身份证查询(可在线调用)</b>:根据身份证获取该身份证号码的籍贯，出生年…——<a href="https://www.free-api.com/doc/325" target="_blank" rel="noopener">接口地址</a><br><b>淘宝关键字(可在线调用)</b>:淘宝搜索关键字——<a href="https://www.free-api.com/doc/326" target="_blank" rel="noopener">接口地址</a><br><b>百度关键字</b>:百度搜索关键字——<a href="https://www.free-api.com/doc/327" target="_blank" rel="noopener">接口地址</a><br><b>Bing关键字(可在线调用)</b>:Bing搜索关键字——<a href="https://www.free-api.com/doc/328" target="_blank" rel="noopener">接口地址</a><br><b>获取用户设备信息(可在线调用)</b>:通过 user-agent 分析用户设备…——<a href="https://www.free-api.com/doc/329" target="_blank" rel="noopener">接口地址</a><br><b>百度音乐搜索(可在线调用)</b>:根据关键字获取音乐的相关信息——<a href="https://www.free-api.com/doc/330" target="_blank" rel="noopener">接口地址</a></p>
 <hr>
 <p>努力添加中……</p>
-<p>原文链接：<a href="https://github.com/fangzesheng/free-api" target="_blank" rel="noopener">https://github.com/fangzesheng/free-api</a></p>
+<p><strong>原文链接：<a href="https://github.com/fangzesheng/free-api" target="_blank" rel="noopener">https://github.com/fangzesheng/free-api</a><br>欢迎转载，请注明出处！</strong></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -44,9 +111,13 @@
     <title>PM2介绍</title>
     <url>/2019/12/10/pm2-common-commands-introduction.html</url>
     <content><![CDATA[<p>pm2 是一个带有负载均衡功能的Node应用的进程管理器。当你要把你的独立代码利用全部的服务器上的所有CPU，并保证进程永远都活着，0秒的重载， PM2是完美的。</p>
-<p>主要特性：<br>1.内建负载均衡（使用Node cluster 集群模块）<br>2.后台运行<a id="more"></a><br>3.0秒停机重载，我理解大概意思是维护升级的时候不需要停机<br>4.具有Ubuntu和CentOS的启动脚本<br>5.停止不稳定的进程（避免无限循环）<br>6.控制台检测<br>7.提供 HTTP API<br>8.远程控制和实时的接口API(Nodejs模块,允许和PM2进程管理器交互 )</p>
+<p>主要特性：<br>1.内建负载均衡（使用Node cluster 集群模块）<br>2.后台运行<br>3.0秒停机重载，我理解大概意思是维护升级的时候不需要停机<br>4.具有Ubuntu和CentOS的启动脚本<br>5.停止不稳定的进程（避免无限循环）<br>6.控制台检测<br>7.提供 HTTP API<br>8.远程控制和实时的接口API(Nodejs模块,允许和PM2进程管理器交互 )</p>
+<a id="more"></a>
 <h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g pm2 <span class="comment">#命令行安装pm2</span></span><br></pre></td></tr></table></figure>
-<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 start app.js -i 4 <span class="comment">#后台运行pm2，启动4个app.js</span></span><br><span class="line">pm2 start app.js --name my-api  <span class="comment">#命名进程</span></span><br><span class="line">pm2 list  <span class="comment">#显示所有进程状态</span></span><br><span class="line">pm2 monit  <span class="comment">#监视所有进程</span></span><br><span class="line">pm2 logs  <span class="comment">#显示所有进程日志</span></span><br><span class="line">pm2 stop all  <span class="comment">#停止所有进程</span></span><br><span class="line">pm2 restart all  <span class="comment">#重启所有进程</span></span><br><span class="line">pm2 reload all  <span class="comment">#0秒停机重载进程 (用于 NETWORKED 进程)</span></span><br><span class="line">pm2 stop 0  <span class="comment">#停止指定的进程</span></span><br><span class="line">pm2 restart 0  <span class="comment">#重启指定的进程</span></span><br><span class="line">pm2 startup  <span class="comment">#产生 init 脚本 保持进程活着</span></span><br><span class="line">pm2 web  <span class="comment">#运行健壮的 computer API endpoint</span></span><br><span class="line">pm2 delete 0  <span class="comment">#杀死指定的进程</span></span><br><span class="line">pm2 delete all  <span class="comment">#杀死全部进程</span></span><br><span class="line"></span><br><span class="line">运行进程的不同方式：</span><br><span class="line">pm2 start app.js -i max  <span class="comment">#根据有效CPU数目启动最大进程数目</span></span><br><span class="line">pm2 start app.js -i 3  <span class="comment">#启动3个进程</span></span><br><span class="line">pm2 start app.js -x  <span class="comment">#用fork模式启动 app.js 而不是使用 cluster</span></span><br><span class="line">pm2 start app.js -x -- -a 23  <span class="comment">#用fork模式启动 app.js 并且传递参数 (-a 23)</span></span><br><span class="line">pm2 start app.js --name serverone <span class="comment">#启动一个进程并把它命名为 serverone</span></span><br><span class="line">pm2 stop serverone  <span class="comment">#停止serverone进程</span></span><br><span class="line">pm2 start app.json  <span class="comment">#启动进程, 在app.json里设置选项</span></span><br><span class="line">pm2 start app.js -i max -- -a 23  <span class="comment">#在--之后给app.js传递参数</span></span><br><span class="line">pm2 start app.js -i max -e err.log -o out.log  <span class="comment">#启动 并生成一个配置文件</span></span><br><span class="line">你也可以执行用其他语言编写的app ( fork 模式):</span><br><span class="line">pm2 start my-bash-script.sh -x --interpreter bash</span><br><span class="line">pm2 start my-python-script.py -x --interpreter python</span><br><span class="line">pm2 list <span class="comment">#列出由pm2管理的所有进程信息，还会显示一个进程会被启动多少次</span></span><br><span class="line">pm2 monit <span class="comment">#监视每个node进程的CPU和内存的使用情况。</span></span><br></pre></td></tr></table></figure>]]></content>
+<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 start app.js -i 4 <span class="comment">#后台运行pm2，启动4个app.js</span></span><br><span class="line">pm2 start app.js --name my-api  <span class="comment">#命名进程</span></span><br><span class="line">pm2 list  <span class="comment">#显示所有进程状态</span></span><br><span class="line">pm2 monit  <span class="comment">#监视所有进程</span></span><br><span class="line">pm2 logs  <span class="comment">#显示所有进程日志</span></span><br><span class="line">pm2 stop all  <span class="comment">#停止所有进程</span></span><br><span class="line">pm2 restart all  <span class="comment">#重启所有进程</span></span><br><span class="line">pm2 reload all  <span class="comment">#0秒停机重载进程 (用于 NETWORKED 进程)</span></span><br><span class="line">pm2 stop 0  <span class="comment">#停止指定的进程</span></span><br><span class="line">pm2 restart 0  <span class="comment">#重启指定的进程</span></span><br><span class="line">pm2 startup  <span class="comment">#产生 init 脚本 保持进程活着</span></span><br><span class="line">pm2 web  <span class="comment">#运行健壮的 computer API endpoint</span></span><br><span class="line">pm2 delete 0  <span class="comment">#杀死指定的进程</span></span><br><span class="line">pm2 delete all  <span class="comment">#杀死全部进程</span></span><br><span class="line"></span><br><span class="line">运行进程的不同方式：</span><br><span class="line">pm2 start app.js -i max  <span class="comment">#根据有效CPU数目启动最大进程数目</span></span><br><span class="line">pm2 start app.js -i 3  <span class="comment">#启动3个进程</span></span><br><span class="line">pm2 start app.js -x  <span class="comment">#用fork模式启动 app.js 而不是使用 cluster</span></span><br><span class="line">pm2 start app.js -x -- -a 23  <span class="comment">#用fork模式启动 app.js 并且传递参数 (-a 23)</span></span><br><span class="line">pm2 start app.js --name serverone <span class="comment">#启动一个进程并把它命名为 serverone</span></span><br><span class="line">pm2 stop serverone  <span class="comment">#停止serverone进程</span></span><br><span class="line">pm2 start app.json  <span class="comment">#启动进程, 在app.json里设置选项</span></span><br><span class="line">pm2 start app.js -i max -- -a 23  <span class="comment">#在--之后给app.js传递参数</span></span><br><span class="line">pm2 start app.js -i max -e err.log -o out.log  <span class="comment">#启动 并生成一个配置文件</span></span><br><span class="line">你也可以执行用其他语言编写的app ( fork 模式):</span><br><span class="line">pm2 start my-bash-script.sh -x --interpreter bash</span><br><span class="line">pm2 start my-python-script.py -x --interpreter python</span><br><span class="line">pm2 list <span class="comment">#列出由pm2管理的所有进程信息，还会显示一个进程会被启动多少次</span></span><br><span class="line">pm2 monit <span class="comment">#监视每个node进程的CPU和内存的使用情况。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>本文链接：<a href="http://www.ergzcode.com/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a><br>欢迎转载，请注明出处！</strong></p>
+]]></content>
       <categories>
         <category>linux</category>
       </categories>
@@ -58,12 +129,12 @@
     <title>PM2守护hexo的进程</title>
     <url>/2019/12/08/pm2-watch-hexo-process.html</url>
     <content><![CDATA[<p>在服务器上安装好了hexo，执行hexo sever来启动它的服务，会发现过了一段时间hexo的进程总是莫名其妙的挂掉，然后导致网站无法访问。从网上搜索了一些解决方案，发现能使用PM2来接管hexo的后台进程，从而让hexo进程一直常驻后台。</p>
-<a id="more"></a>
 <p>操作步骤如下：</p>
 <h5 id="1-首先安装pm2"><a href="#1-首先安装pm2" class="headerlink" title="1.首先安装pm2"></a>1.首先安装pm2</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h5 id="2-写一个shell-hexo-daemon-js"><a href="#2-写一个shell-hexo-daemon-js" class="headerlink" title="2.写一个shell hexo_daemon.js"></a>2.写一个shell hexo_daemon.js</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//run</span><br><span class="line">const &#123; <span class="built_in">exec</span> &#125; = require(<span class="string">'child_process'</span>)</span><br><span class="line"><span class="built_in">exec</span>(<span class="string">'hexo server -p 80 &amp; '</span>,(error, stdout, stderr) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span>(error)&#123;</span><br><span class="line">                console.log(<span class="string">'exec error: $&#123;error&#125;'</span>)</span><br><span class="line">                <span class="built_in">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        console.log(<span class="string">'stdout: $&#123;stdout&#125;'</span>);</span><br><span class="line">        console.log(<span class="string">'stderr: $&#123;stderr&#125;'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h5 id="3-在根目录下执行shell"><a href="#3-在根目录下执行shell" class="headerlink" title="3.在根目录下执行shell"></a>3.在根目录下执行shell</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 start hexo_daemon.js</span><br></pre></td></tr></table></figure>
-<p>参考:<br><a href="https://www.jianshu.com/p/4a3d4d144ab2" target="_blank" rel="noopener">PM2使用</a></p>
+<p><strong>本文链接：<a href="http://www.ergzcode.com/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a><br>欢迎转载，请注明出处！<br>参考:<a href="https://www.jianshu.com/p/4a3d4d144ab2" target="_blank" rel="noopener">PM2使用</a></strong></p>
 ]]></content>
       <categories>
         <category>shell</category>
@@ -104,13 +175,47 @@
 <p>13.查看分支合并图:<code>git log --graph</code></p>
 <p>团队协作的分支开发流程图：</p>
 <p><img src="/images/git_201912101326.png" alt="upload successful"></p>
-<p>参考：<br><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
+<p><strong>本文链接：<a href="http://www.ergzcode.com/2019/11/26/git-common-commands-using.html">Git常用命令使用</a><br>欢迎转载，请注明出处！<br>参考：<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600</a></strong></p>
 ]]></content>
       <categories>
         <category>git</category>
       </categories>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx搭建HTTP文件服务器</title>
+    <url>/2019/11/14/nginx-build-http-file-system.html</url>
+    <content><![CDATA[<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><strong>Nginx(engine x)是一个高性能的HTTP和反向代理web服务器，同时能提供了IMAP/POP3/SMTP服务，Nginx的优点：</strong></p>
+<h5 id="1-高性能，支持高并发连接"><a href="#1-高性能，支持高并发连接" class="headerlink" title="1.高性能，支持高并发连接"></a>1.高性能，支持高并发连接</h5><h5 id="2-低资源消耗，内存占用少"><a href="#2-低资源消耗，内存占用少" class="headerlink" title="2.低资源消耗，内存占用少"></a>2.低资源消耗，内存占用少</h5><h5 id="3-稳定性高"><a href="#3-稳定性高" class="headerlink" title="3.稳定性高"></a>3.稳定性高</h5><h5 id="4-配置简单"><a href="#4-配置简单" class="headerlink" title="4.配置简单"></a>4.配置简单</h5><h5 id="5-支持热部署"><a href="#5-支持热部署" class="headerlink" title="5.支持热部署"></a>5.支持热部署</h5><a id="more"></a>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="1-检查Nignx是否安装"><a href="#1-检查Nignx是否安装" class="headerlink" title="1.检查Nignx是否安装"></a>1.检查Nignx是否安装</h4><p><strong>使用以下命令检查Nginx服务器状态：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status nginx</span><br></pre></td></tr></table></figure>
+<h4 id="2-安装Nginx-ubuntu"><a href="#2-安装Nginx-ubuntu" class="headerlink" title="2.安装Nginx(ubuntu)"></a>2.安装Nginx(ubuntu)</h4><p><strong>命令：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br></pre></td></tr></table></figure>
+<p><strong>Ubuntu安装之后的文件结构大致为：</strong></p>
+<ul>
+<li>所有的配置文件都在/etc/nginx下，并且每个虚拟主机已经安排在了/etc/nginx/sites-available下</li>
+<li>程序文件/usr/sbin/nginx</li>
+<li>日志在/var/log/nginx目录中</li>
+<li>启动脚本nginx在/etc/init.d/下</li>
+<li>默认的虚拟主机的目录设置在了/var/www/nginx-default (有的版本默认的虚拟主机的目录设置在了/var/www, 请参考/etc/nginx/sites-available里的配置)</li>
+</ul>
+<p><strong>在/etc/nginx目录下，nginx.conf是Nginx的核心配置文件，可以修改处理器数量、日志路径、pid文件等。在nginx.conf文件中有一段代码：<code>inxclude /etc/nginx/conf.d/*.conf</code>,这表示可以将自己的配置文件放在conf.d/中，Nginx会自动识别这个配置文件</strong></p>
+<h4 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3.修改配置文件"></a>3.修改配置文件</h4><p><code>vim /etc/nginx/sites-available/default</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 8080 default_server;</span><br><span class="line">        listen [::]:8080 default_server;</span><br><span class="line">        <span class="comment">#root /usr/share/nginx/html;</span></span><br><span class="line">        root /usr/<span class="built_in">local</span>/data/file;</span><br><span class="line">        server_name _;</span><br><span class="line">        location / &#123;</span><br><span class="line">           <span class="comment"># First attempt to serve request as file, then</span></span><br><span class="line">           <span class="comment"># as directory, then fall back to displaying a 404.</span></span><br><span class="line">           try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ =404;</span><br><span class="line">           autoindex on;<span class="comment">#显示目录</span></span><br><span class="line">           autoindex_exact_size on;<span class="comment">#显示文件大小</span></span><br><span class="line">           autoindex_localtime on;<span class="comment">#显示文件时间</span></span><br><span class="line">           charset utf-8;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-启动nginx"><a href="#4-启动nginx" class="headerlink" title="4.启动nginx"></a>4.启动nginx</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/etc/init.d/nginx start</span><br></pre></td></tr></table></figure>
+<h4 id="5-浏览器访问"><a href="#5-浏览器访问" class="headerlink" title="5.浏览器访问"></a>5.浏览器访问</h4><p>浏览器打开：<code>http://localhost:8080</code>可以看到/data/file目录下的文件，点击可下载</p>
+<h4 id="6-修改配置后重载"><a href="#6-修改配置后重载" class="headerlink" title="6.修改配置后重载"></a>6.修改配置后重载</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/etc/init.d/nginx reload</span><br></pre></td></tr></table></figure>
+
+<p><strong>本文链接：<a href="http://www.ergzcode.com/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a><br>欢迎转载，请注明出处！</strong></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -132,12 +237,601 @@
 <h5 id="6-RIGHT-JOIN-EXCLUDING-INNER-JOIN（右连接-内连接）"><a href="#6-RIGHT-JOIN-EXCLUDING-INNER-JOIN（右连接-内连接）" class="headerlink" title="6.RIGHT JOIN EXCLUDING INNER JOIN（右连接-内连接）"></a>6.RIGHT JOIN EXCLUDING INNER JOIN（右连接-内连接）</h5><p><img src="/images/sql_201912121552.png" alt="upload successful"></p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;select_list&gt;</span><br><span class="line"><span class="keyword">FROM</span> Table_A A</span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> Table_B B</span><br><span class="line"><span class="keyword">ON</span> A.Key = B.Key</span><br><span class="line"><span class="keyword">WHERE</span> A.Key <span class="keyword">IS</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
 <h5 id="7-OUTER-JOIN-EXCLUDING-INNER-JOIN（外连接-内连接）"><a href="#7-OUTER-JOIN-EXCLUDING-INNER-JOIN（外连接-内连接）" class="headerlink" title="7.OUTER JOIN EXCLUDING INNER JOIN（外连接-内连接）"></a>7.OUTER JOIN EXCLUDING INNER JOIN（外连接-内连接）</h5><p><img src="/images/sql_201912121553.png" alt="upload successful"></p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;select_list&gt;</span><br><span class="line"><span class="keyword">FROM</span> Table_A A</span><br><span class="line"><span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Table_B B</span><br><span class="line"><span class="keyword">ON</span> A.Key = B.Key</span><br><span class="line"><span class="keyword">WHERE</span> A.Key <span class="keyword">IS</span> <span class="literal">NULL</span> <span class="keyword">OR</span> B.Key <span class="keyword">IS</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;select_list&gt;</span><br><span class="line"><span class="keyword">FROM</span> Table_A A</span><br><span class="line"><span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Table_B B</span><br><span class="line"><span class="keyword">ON</span> A.Key = B.Key</span><br><span class="line"><span class="keyword">WHERE</span> A.Key <span class="keyword">IS</span> <span class="literal">NULL</span> <span class="keyword">OR</span> B.Key <span class="keyword">IS</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>原文链接：<a href="https://www.toutiao.com/i6766789647902179847" target="_blank" rel="noopener">看一张图秒懂SQL的各种JOIN用法</a><br>欢迎转载，请注明出处！</strong></p>
+]]></content>
       <categories>
-        <category>SQL</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试官：说一下Spring StringBuffer StringBuilder的区别</title>
+    <url>/2019/01/26/java-interview-0003.html</url>
+    <content><![CDATA[<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>先来看String类的实现</p>
+<pre><code>public final class String implements      java.io.serializable,Comparable&lt;String&gt;,CharSequence{
+    /** The value is used for character storage **/
+
+    private final char value[];
+}</code></pre><p>先来说说final关键字的作用</p>
+<ul>
+<li>final修饰类时，表明这个类不能被继承</li>
+<li>final修饰方法时，表明方法不能被重写</li>
+<li>final修饰变量时，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象</li>
+</ul>
+<a id="more"></a>
+
+<p>可以看到String类和保存变量的value数组都被final修饰，表明String类是不可变的。</p>
+<p>StringBuffer和StringBuilder都继承自AbstractStringBuilder类，看一下AbstractStringBuilder类的定义</p>
+<pre><code>abstract class AbstractStringBuilder implements Appendable,CharSequence{
+    /**
+     *The value is userd for character storage
+     */
+    char[] value;
+    }</code></pre><p>看到区别了吗？ value数组没有用private和final修饰，说明了StringBuffer和StringBuilder是可变的。</p>
+<p>而StringBuilder和StringBuffer的方法是差不多的，只不过StringBuffer在方法上添加了<code>synchronized</code>关键字，所以在多线程环境下用StringBuffer来获得更高的效率。</p>
+<p>看2个类中同一个方法的定义</p>
+<p>StringBUffer类</p>
+<pre><code>//StringBuffer append方法
+@Override
+public synchronized StringBuffer append(char[] str){
+    toStringCache = null;
+    super.append(str);    
+    return this;
+}</code></pre><p>StringBuilder类</p>
+<pre><code>//StringBuilder append方法
+@Override
+public StringBuilder append(char[] str){
+    super.append(str);
+    return this;
+}</code></pre><p>因为StringBuffer和StringBulider的实现类似，所以性能比较就落在String和StringBuilder之间了。</p>
+<p>1.String是不可变对象，每次操作都会生成新的String对象，然后指针指向新的对象。</p>
+<p>2.抽象类AbstractStringBuilder内部提供了一个自动扩容机制，当发现长度不够的时候，会自动进行扩容工作（具体扩容可以看源码，很容易理解），会创建一个新的数组，并将原来数组的数据复制到新的数组，不会创建新的对象，所以拼接字符串的效率高。</p>
+<p>用源码证实一下</p>
+<p>String类</p>
+<pre><code>public String substring(int beginIndex) {
+    if (beginIndex &lt; 0) {
+        throw new StringIndexOutOfBoundsException(beginIndex);
+    }
+    int subLen = value.length - beginIndex;
+    if (subLen &lt; 0) {
+        throw new StringIndexOutOfBoundsException(subLen);
+    }
+    return (beginIndex == 0) ? this : new String(value, beginIndex, subLen);
+}</code></pre><p>StringBuilder类</p>
+<pre><code>public StringBuilder append(String str) {
+    super.append(str);
+    return this;
+}</code></pre><p>介绍完毕，所以你应该知道这道题应该怎么答了</p>
+<h3 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h3><p><strong>1. 说一下String StringBuffer StringBuilder的区别</strong></p>
+<ul>
+<li>都是final类，不能被继承</li>
+<li>String长度是不可变的，StringBuffer和StringBuilder长度是可变的</li>
+<li>StringBuffer是线程安全的，StringBuilder不是线程安全的。但他们的方法很相似，StringBuffer在方法上添加了<code>synchronized</code>关键字修饰，保证了线程安全</li>
+<li>StringBuilder比StringBuffer拥有更好的性能</li>
+<li>如果一个String类型的字符串，在编译时可以确定是一个字符串常量，则编译完成后，字符串会自动拼接成一个常量，此时String比StringBuffer和StringBuilder的性能好的多</li>
+</ul>
+<p>我用例子解释一下第五条</p>
+<pre><code>String a = &quot;a&quot;;
+String b = &quot;b&quot;;
+String c = a+b;
+String d = &quot;a&quot;+&quot;b&quot;+&quot;c&quot;;</code></pre><p>反编译class的文件是这样的</p>
+<pre><code>String a = &quot;a&quot;;
+String b = &quot;b&quot;;
+(new StringBuilder()).append(a).append(b).toString();
+String d = &quot;abc&quot;;</code></pre><p>看到String d,理解了吗？</p>
+<p>同时看c的拼接过程，先生成一个StringBuilder对象，再调用2次append方法，最后再返回一个String对象，知道StringBuilder比String慢的愿意了吧。</p>
+<p><strong>本文链接：<a href="http://www.ergzcode.com/2019/01/26/java-interview-0003.html">面试官：说一下Spring StringBuffer StringBuilder的区别</a><br>欢迎转载，请注明出处！</strong></p>
+]]></content>
+      <categories>
+        <category>搞定Java面试题</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试官：说一下构造函数，静态代码块，构造代码块的加载顺序</title>
+    <url>/2019/01/25/java-interview-0002.html</url>
+    <content><![CDATA[<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><strong>构造函数，静态代码块，构造代码块的执行顺序</strong></p>
+<pre><code>class Test{
+    //静态代码块1
+    static{
+        System.out.println(&quot;我的静态代码块1&quot;);        
+    }
+    //构造代码块1
+    {
+        System.out.println(&quot;我的构造代码块1&quot;);
+    }
+    //构造函数1
+    public Test(){
+        System.out.println(&quot;我是无参数构造函数&quot;);            
+    }
+    //构造函数2
+    public Test(int t){
+        System.out.println(&quot;我是带参数构造函数，&quot;+&quot;参数是&quot;+t);            
+    }
+
+    //静态代码块2
+    static{
+        System.out.println(&quot;我的静态代码块2&quot;);        
+    }
+    //构造代码块2
+    {
+        System.out.println(&quot;我的构造代码块2&quot;);
+    }
+} </code></pre><a id="more"></a>
+<p>来New一个Test类看看会输出什么？</p>
+<pre><code>public class TestShow{
+    public static void main(String[] args){
+        /*创建第一个对象
+         我是静态代码块1
+         我的静态代码块2
+         我的构造代码块1
+         我的构造代码块2
+         我是无参数构造函数
+        */
+        System.out.println(&quot;创建第一个对象：&quot;);
+        Test test1 = new Test();
+
+        /*创建第二个对象
+          我的构造代码块1
+          我的构造代码块2
+          我是带参数构造函数，参数是5
+        */
+        System.out.println(&quot;创建第二个对象：&quot;);
+        Test test2 = new Test(5);
+    }    
+
+}</code></pre><p>从输出我们可以总结处如下结论：</p>
+<p>执行时间：<strong>静态代码块 &gt; 构造代码块 &gt; 构造函数，静态代码块只会在类被加载入内存时加载一次，构造代码块和构造函数都是在对象创建的时候执行，有几个对象就会执行几次</strong>，所以一般将加载配置文件的过程写在静态代码块中。</p>
+<p><strong>没有继承的加载顺序</strong></p>
+<p>先定义一个类作为成员变量，方便看打印输出</p>
+<pre><code>public class Parameter {
+    public Parameter(String str){
+        System.out.println(str);
+    }    
+}</code></pre><p>写一个测试类</p>
+<pre><code>public Test1{
+    public static Prarmeter parameter1 =  new Parameter(&quot;静态成员变量&quot;);
+    public Prarmeter parameter2 =  new Parameter(&quot;非静态成员变量&quot;);    
+    public Test1(){
+        System.out.println(&quot;构造函数&quot;);        
+    }
+    //静态代码块
+    static{
+        System.out.println(&quot;静态代码块&quot;);        
+    }
+    //构造代码块a
+    {
+        System.out.println(&quot;构造代码块a&quot;);
+    }
+    //构造代码块b
+    {
+        System.out.println(&quot;构造代码块b&quot;);
+    }
+}</code></pre><p>输出如下</p>
+<pre><code>public class ForShow{
+    public static void main(String[] args){
+        /*静态成员变量
+          静态代码块
+          非静态成员变量
+          构造代码块a    
+          构造代码块b
+          构造函数
+        */
+        new Test1();
+        /*非静态成员变量
+          构造代码块a    
+          构造代码块b
+          构造函数
+        */
+        new Test1();
+    }    
+
+}</code></pre><p><strong>可以看出静态成员变量和静态代码块一样，只会在类被加载到内存时加载唯一的一次</strong></p>
+<p>改变一下Test类中定义的顺序，看看有什么变化。</p>
+<pre><code>public Test2{
+
+    //静态代码块
+    static{
+        System.out.println(&quot;静态代码块&quot;);        
+    }
+    //构造函数
+    public Test2(){
+        System.out.println(&quot;构造函数&quot;);        
+    }
+    //构造代码块b
+    {
+        System.out.println(&quot;构造代码块b&quot;);
+    }
+    //构造代码块a
+    {
+        System.out.println(&quot;构造代码块a&quot;);
+    }
+    public static Prarmeter parameter1 =  new Parameter(&quot;静态成员变量&quot;);
+    public Prarmeter parameter2 =  new Parameter(&quot;非静态成员变量&quot;);    
+}</code></pre><p>输出如下</p>
+<pre><code>public class ForShow{
+    public static void main(String[] args){
+
+        /*静态代码块
+          静态成员变量
+          构造代码块b    
+          构造代码块a
+          非静态成员变量
+          构造函数
+        */
+        new Test2();
+    }    
+
+}</code></pre><p><strong>没有继承情况的执行顺序</strong></p>
+<ul>
+<li>静态代码块和静态成员变量，加载的顺序由编写的顺序决定</li>
+<li>构造代码块和非静态成员变量，加载顺序由编写顺序决定</li>
+<li>构造函数</li>
+</ul>
+<p><strong>有继承情况的执行顺序</strong></p>
+<p>定义父类</p>
+<pre><code>public class Father{
+    public static Prarmeter parameter1 =  new Parameter(&quot;父类静态成员变量&quot;);
+    public Prarmeter parameter2 =  new Parameter(&quot;父类非静态成员变量&quot;);    
+
+    public Father(){
+        System.out.println(&quot;父类构造函数&quot;);        
+    }
+}</code></pre><p>定义子类</p>
+<pre><code>public class Son extends Father{
+    public static Prarmeter parameter1 =  new Parameter(&quot;子类静态成员变量&quot;);
+    public Prarmeter parameter2 =  new Parameter(&quot;子类非静态成员变量&quot;);    
+
+    public Son(){
+        System.out.println(&quot;子类构造函数&quot;);        
+    }
+}</code></pre><p><strong>有继承情况的执行顺序</strong></p>
+<ul>
+<li>父类的静态（静态代码块，静态成员变量），子类的静态（静态代码块，静态成员变量）</li>
+<li>父类的非静态（构造代码块，非静态成员变量），父类的构造函数</li>
+<li>子类的非静态（构造代码块，非静态成员变量），子类的构造函数</li>
+</ul>
+<p>记住这几条规则足以应付这一类型的所有面试题</p>
+<h3 id="常见的面试题"><a href="#常见的面试题" class="headerlink" title="常见的面试题"></a>常见的面试题</h3><p><strong>1.Java类定义如下，写出main函数执行后的输出结果</strong></p>
+<pre><code>public class A{
+    static {
+        System.out.println(&quot;static A&quot;);
+    }    
+    public A(){
+        System.out.println(&quot;class A&quot;);
+    }
+}
+
+public class B extends A{
+    public B(){
+        System.out.println(&quot;class B&quot;);
+    }
+    public static void main(String[] args){
+        B instance = new B();            
+    }
+}</code></pre><p>上面的知识点如果理解的很清楚的话，这个结果立马就能写出来</p>
+<p>所以输出如下</p>
+<pre><code>static A
+class A
+class B</code></pre><p><strong>2.问题是如果main函数中的代码如下呢？就是B这个类new了2次</strong></p>
+<pre><code>public static void main(String[] args){
+        B instance1 = new B();
+        B instance2 = new B();            
+    }</code></pre><p>万变不离其宗，输出如下</p>
+<pre><code>static A
+class A
+class B
+class A
+class B</code></pre><p>因为静态成员变量和静态代码块只会在类被载入内存时加载一次。</p>
+<p><strong>本文链接：<a href="http://www.ergzcode.com/2019/01/25/java-interview-0002.html">面试官：说一下构造函数，静态代码块，构造代码块的加载顺序</a><br>欢迎转载，请注明出处！</strong></p>
+]]></content>
+      <categories>
+        <category>搞定Java面试题</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试官：说一下八种基本数据类型及其包装类吧</title>
+    <url>/2019/01/24/java-interview-0001.html</url>
+    <content><![CDATA[<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><strong>Java基本数据类型分为4大类：</strong></p>
+<ul>
+<li>整数型：byte,short,int,long</li>
+<li>浮点型：flost,double</li>
+<li>逻辑型：boolean</li>
+<li>字符型：char</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>原始类型</th>
+<th>原始类型所占字节数</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>1个字节</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2个字节</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4个字节</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8个字节</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4个字节</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8个字节</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>1个字节</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>char</td>
+<td>2个字节</td>
+<td>Character</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+<h3 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h3><p>要注意的是基本数据的包装类很多都实现了享元模式。享元模式就是运用共享技术有效地支持大量细粒度对象的复用。用一个常见的面试题来解释</p>
+<p><strong>1.判断如下代码的输出，并说出原因</strong></p>
+<pre><code>Integer a1 = 40;
+Integer a2 = 40;
+System.out.println(a1==a2);
+
+Integer a3 = 200;
+Integer a4 = 200;
+System.out.println(a3 == a4);</code></pre><p>由自动装箱和拆箱可以知道这2种写法是等价的</p>
+<pre><code>Integer a1 = 40;
+Integer a1 = Integer.valueOf(40);</code></pre><p>看一下Integer.valueOf(int i)的方法</p>
+<pre><code>//...valueOf(int):Integer
+public static Integer valueOf(int i) {
+    assert IntegerCache.high &gt;= 127;
+    if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)
+        return IntegerCache.cache[i + (-IntegerCache.low)];
+    return new Integer(i);
+}
+
+//...IntegerCache
+private static class IntegerCache {
+    static final int low = -128;
+    static final int high;
+    static final Integer cache[];
+
+    static {
+        // high value may be configured by property
+        int h = 127;
+        String integerCacheHighPropValue =
+            sun.misc.VM.getSavedProperty(&quot;java.lang.Integer.IntegerCache.high&quot;);
+        if (integerCacheHighPropValue != null) {
+            int i = parseInt(integerCacheHighPropValue);
+            i = Math.max(i, 127);
+            // Maximum array size is Integer.MAX_VALUE
+            h = Math.min(i, Integer.MAX_VALUE - (-low) -1);
+        }
+        high = h;
+
+        cache = new Integer[(high - low) + 1];
+        int j = low;
+        for(int k = 0; k &lt; cache.length; k++)
+            cache[k] = new Integer(j++);
+    }
+
+    private IntegerCache() {}
+}</code></pre><p>IntegerCache是Integer的静态内部类，默认创建了[-128,127]的对象，并放到IntegerCache内部的一个cache数组中，在[-128,127]这个范围内的整数对象，不用创建。直接从IntegerCache中的cache数组中根据下标拿就可以了,超出这个范围的每次去创建新的对象。其他几种包装类型的常量池和Integer的思路差不多，源码都很相似。<br>所以答案如下：</p>
+<pre><code>Integer a1 = 40;
+Integer a2 = 40;
+System.out.println(a1 == a2);//true
+
+Integer a3 = 200;
+Integer a4 = 200;
+System.out.println(a3 == a4);//false</code></pre><p>包装类缓存数据范围如下：</p>
+<table>
+<thead>
+<tr>
+<th>包装类</th>
+<th>缓存范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Byte</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>Short</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>Character</td>
+<td>0~127</td>
+</tr>
+</tbody></table>
+<p><strong>2.Java一个char类型可以存储中文吗？</strong></p>
+<p>可以，因为Java中使用了Unicode字符，不论是中文还是英文固定占用2个字节。</p>
+<pre><code>char a = &apos;中&apos;；
+// 中
+System.out.println(a);    </code></pre><p><strong>3.什么是自动装箱，自动拆箱</strong></p>
+<p>自动装箱就是Java自动将原始类型转换为对应的对象，比如将int的变量转换为Integer对象，这个过程就是装箱，反之将Integer对象转换为int类型的值，这个过程就是拆箱。因为这里的装箱和拆箱是自动进行的非人为转换的，所以就称作自动装箱和自动拆箱。</p>
+<p>自动装箱时编译器调用ValueOf将原始类型值转换为对象，同时自动拆箱时，编译器通过调用类似intValue(),doubleValue()这类的方法将对象转换为原始类型值</p>
+<pre><code>//jdk1.5之前的写法
+Integer tempNum1 = Integer.valueOf(5);
+int num1 = tempNum1.intValue();
+
+//jdk1.5之后的写法，自动装箱和拆箱
+Integer tempNum2= 5;
+int num1 = tempNum2;</code></pre><p><strong>4.为什么要需要基本数据类型的包装类</strong></p>
+<p>（1）Java是面向对象的语言，很多地方是需要使用的是对象而不是基本数据类型。例如，List,Map等容器类中基本数据类型是放不进去的。<br>（2）包装类在原先的基本数据类型上，新增加了很多方法，比如Integer.valueOf(String s)等</p>
+<p><strong>5.既然包装类能完成所有的功能，为啥还需要基本数据类型</strong></p>
+<p>基本数据类型基于数值，对象类型基于引用。基本数据类型存储在栈的局部变量表中。</p>
+<p>而对象类型的变量则是存储堆中引用，实例放在堆中，因此对象类型的变量需要占用更多的内存空间，基本数据类型因为占用更少内存被保留下来。</p>
+<p><strong>6.写出如下代码的输出</strong></p>
+<pre><code>Integer i1 = 40;
+Integer i2 = 40;
+Integer i3 = 0;
+Integer i4 = new Integer(40);
+Integer i5 = new Integer(40);
+Integer i6 = new Integer(0);
+
+System.out.println(i1 == i2);
+System.out.println(i1 == i2 + i3);
+System.out.println(i1 == i4);
+System.out.println(i4 == i5);
+System.out.println(i4 == i5 + i6);
+System.out.println(40 == i5 + i6);</code></pre><p>输出及解释如下</p>
+<pre><code>Integer i1 = 40;
+Integer i2 = 40;
+Integer i3 = 0;
+Integer i4 = new Integer(40);
+Integer i5 = new Integer(40);
+Integer i6 = new Integer(0);
+
+System.out.println(i1 == i2);//true
+//Integer.valueOf()用了常量池，看上面的源码
+//比较是内存地址
+
+System.out.println(i1 == i2 + i3);//true
+// + 操作会导致左右两边都转换为基本数据类型
+//比较是值
+
+System.out.println(i1 == i4);//false
+//Integer.valueOf()使用常量池中的对象
+//new Integer每次都会创建新对象
+//比较是内存地址
+
+System.out.println(i4 == i5);//false
+//new关键字会创建新的实例所以这是2个不同的对象
+//比较是内存地址
+
+System.out.println(i4 == i5 + i6);//true
+//解释在下面，比较的是值
+
+
+System.out.println(40 == i5 + i6);//true
+//解释在下面，比较的是值</code></pre><p>语句i4 = i5 + i6,因为这个 + 操作符不适用于Integer对象，首先i5和i6进行了自动拆箱的操作，进行数值相加，即i4 == 40。然后Integer对象无法与数值进行直接比较，所以i4自动拆箱转为int数据类型，值为40，最终这条语句转为40 == 40进行数值的比较。</p>
+<p><strong>本文链接：<a href="http://www.ergzcode.com/2019/01/24/java-interview-0001.html">面试官：说一下八种基本数据类型及其包装类吧</a><br>欢迎转载，请注明出处！</strong></p>
+]]></content>
+      <categories>
+        <category>搞定Java面试题</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL数据库优化，看这篇就够了</title>
+    <url>/2018/10/18/mysql-database-optimization-this-article-is-enough.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>数据库优化一方面是找出系统的瓶颈,提高MySQL数据库的整体性能,而另一方面需要合理的结构设计和参数调整,以提高用户的相应速度,同时还要尽可能的节约系统资源,以便让系统提供更大的负荷.</strong></p>
+<h3 id="1-优化一览图"><a href="#1-优化一览图" class="headerlink" title="1. 优化一览图"></a>1. 优化一览图</h3><p><img src="/images/mysql_201912182301.png" alt="upload successful"></p>
+<a id="more"></a>
+<h3 id="2-优化"><a href="#2-优化" class="headerlink" title="2. 优化"></a>2. 优化</h3><p>笔者将优化分为了两大类,软优化和硬优化,软优化一般是操作数据库即可,而硬优化则是操作服务器硬件及参数设置.</p>
+<h4 id="2-1-软优化"><a href="#2-1-软优化" class="headerlink" title="2.1 软优化"></a>2.1 软优化</h4><h5 id="2-1-1-查询语句优化"><a href="#2-1-1-查询语句优化" class="headerlink" title="2.1.1 查询语句优化"></a>2.1.1 查询语句优化</h5><p>1.首先我们可以用EXPLAIN或DESCRIBE(简写:DESC)命令分析一条查询语句的执行信息.<br>2.例:<strong>DESC SELECT * FROM user</strong><br>显示：<br><img src="/images/mysql_201912182306.png" alt="upload successful"><br>其中会显示索引和查询数据读取数据条数等信息.</p>
+<h5 id="2-1-2-优化子查询"><a href="#2-1-2-优化子查询" class="headerlink" title="2.1.2 优化子查询"></a>2.1.2 优化子查询</h5><p>在MySQL中,尽量使用JOIN来代替子查询.因为子查询需要嵌套查询,嵌套查询时会建立一张临时表,临时表的建立和删除都会有较大的系统开销,而连接查询不会创建临时表,因此效率比嵌套子查询高.</p>
+<h5 id="2-1-3-使用索引"><a href="#2-1-3-使用索引" class="headerlink" title="2.1.3 使用索引"></a>2.1.3 使用索引</h5><p>索引是提高数据库查询速度最重要的方法之一,关于索引可以参高笔者&lt;MySQL数据库索引&gt;一文,介绍比较详细,此处记录使用索引的三大注意事项:<br>    1.LIKE关键字匹配’%’开头的字符串,不会使用索引.<br>    2.OR关键字的两个字段必须都是用了索引,该查询才会使用索引.<br>    3.使用多列索引必须满足最左匹配.</p>
+<h5 id="2-1-4-分解表"><a href="#2-1-4-分解表" class="headerlink" title="2.1.4 分解表"></a>2.1.4 分解表</h5><p>对于字段较多的表,如果某些字段使用频率较低,此时应当,将其分离出来从而形成新的表,</p>
+<h5 id="2-1-5-中间表"><a href="#2-1-5-中间表" class="headerlink" title="2.1.5 中间表"></a>2.1.5 中间表</h5><p>对于将大量连接查询的表可以创建中间表,从而减少在查询时造成的连接耗时.</p>
+<h5 id="2-1-6-增加冗余字段"><a href="#2-1-6-增加冗余字段" class="headerlink" title="2.1.6 增加冗余字段"></a>2.1.6 增加冗余字段</h5><p>类似于创建中间表,增加冗余也是为了减少连接查询.</p>
+<h5 id="2-1-7-分析表-检查表-优化表"><a href="#2-1-7-分析表-检查表-优化表" class="headerlink" title="2.1.7 分析表,检查表,优化表"></a>2.1.7 分析表,检查表,优化表</h5><p>分析表主要是分析表中关键字的分布,检查表主要是检查表中是否存在错误,优化表主要是消除删除或更新造成的表空间浪费.</p>
+<p>一.分析表: 使用 <strong>ANALYZE</strong> 关键字,如<strong>ANALYZE TABLE user;</strong><br><img src="/images/mysql_201912182311.png" alt="upload successful"><br>1.Op:表示执行的操作.<br>2.Msg_type:信息类型,有status,info,note,warning,error.<br>3.Msg_text:显示信息.</p>
+<p>二.检查表: 使用<strong>CHECK</strong>关键字,如<strong>CHECK TABLE user [option]</strong><br>option只对MyISAM有效,共五个参数值:<br>1.QUICK:不扫描行,不检查错误的连接.<br>2.FAST:只检查没有正确关闭的表.<br>3.CHANGED:只检查上次检查后被更改的表和没被正确关闭的表.<br>4.MEDIUM:扫描行,以验证被删除的连接是有效的,也可以计算各行关键字校验和.<br>5.EXTENDED:最全面的的检查,对每行关键字全面查找.</p>
+<p>三.优化表:使用<strong>OPTIMIZE</strong>关键字,如<strong>OPTIMIZE [LOCAL|NO_WRITE_TO_BINLOG] TABLE user;</strong><br>LOCAL|NO_WRITE_TO_BINLOG都是表示不写入日志.,优化表只对VARCHAR,BLOB和TEXT有效,通过OPTIMIZE TABLE语句可以消除文件碎片,在执行过程中会加上只读锁.</p>
+<h4 id="2-2-硬优化"><a href="#2-2-硬优化" class="headerlink" title="2.2 硬优化"></a>2.2 硬优化</h4><h5 id="2-2-1-硬件三件套"><a href="#2-2-1-硬件三件套" class="headerlink" title="2.2.1 硬件三件套"></a>2.2.1 硬件三件套</h5><p>1.配置多核心和频率高的cpu,多核心可以执行多个线程.<br>2.配置大内存,提高内存,即可提高缓存区容量,因此能减少磁盘I/O时间,从而提高响应速度.<br>3.配置高速磁盘或合理分布磁盘:高速磁盘提高I/O,分布磁盘能提高并行操作的能力.</p>
+<h5 id="2-2-2-优化数据库参数"><a href="#2-2-2-优化数据库参数" class="headerlink" title="2.2.2 优化数据库参数"></a>2.2.2 优化数据库参数</h5><p>优化数据库参数可以提高资源利用率,从而提高MySQL服务器性能.MySQL服务的配置参数都在my.cnf或my.ini,下面列出性能影响较大的几个参数.</p>
+<p>1.key_buffer_size:索引缓冲区大小<br>2.table_cache:能同时打开表的个数<br>3.query_cache_size和query_cache_type:前者是查询缓冲区大小,后者是前面参数的开关,0表示不使用缓冲区,1表示使用缓冲区,但可以在查询中使用4.SQL_NO_CACHE表示不要使用缓冲区,2表示在查询中明确指出使用缓冲区才用缓冲区,即SQL_CACHE.<br>5.sort_buffer_size:排序缓冲区</p>
+<p><strong>传送门:<a href="https://www.mysql.com/cn/why-mysql/performance/index.html" target="_blank" rel="noopener">更多参数</a></strong></p>
+<h5 id="2-2-3-分库分表"><a href="#2-2-3-分库分表" class="headerlink" title="2.2.3 分库分表"></a>2.2.3 分库分表</h5><p>因为数据库压力过大，首先一个问题就是高峰期系统性能可能会降低，因为数据库负载过高对性能会有影响。另外一个，压力过大把你的数据库给搞挂了怎么办？所以此时你必须得对系统做分库分表 + 读写分离，也就是把一个库拆分为多个库，部署在多个数据库服务上，这时作为主库承载写入请求。然后每个主库都挂载至少一个从库，由从库来承载读请求。<br><img src="/images/mysql_201912182321.png" alt="upload successful"></p>
+<h5 id="2-2-4-缓存集群"><a href="#2-2-4-缓存集群" class="headerlink" title="2.2.4 缓存集群"></a>2.2.4 缓存集群</h5><p><img src="/images/mysql_201912182322.png" alt="upload successful"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>一个完整而复杂的高并发系统架构中，一定会包含各种复杂的自研基础架构系统和各种精妙的架构设计.因此一篇小文顶多具有抛砖引玉的效果,但是数据库优化的思想差不多就这些了.</p>
+<p><strong>原文链接:<a href="https://segmentfault.com/a/1190000018631870" target="_blank" rel="noopener">MySQL数据库优化</a><br>欢迎转载，请注明出处！</strong></p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>Mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Tomcat优化之修改内存配置</title>
+    <url>/2018/10/18/tomcat-modifying-memory-configuration-for-optimization.html</url>
+    <content><![CDATA[<h5 id="一、配置"><a href="#一、配置" class="headerlink" title="一、配置"></a>一、配置</h5><p><strong>Tomcat/conf/server.xml修改配置</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">connector</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"org.apache.coyote.http11.Http11NioProtocol"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">redirectPort</span>=<span class="string">"8443"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">URIEncoding</span>=<span class="string">"UTF-8"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">minSpareThreads</span>=<span class="string">"25"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">maxSpareThreads</span>=<span class="string">"300"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">maxThreads</span>=<span class="string">"500"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">acceptCount</span>=<span class="string">"500"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">connectionTimeout</span>=<span class="string">"30000"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">enableLookups</span>=<span class="string">"false"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="二、参数说明"><a href="#二、参数说明" class="headerlink" title="二、参数说明"></a>二、参数说明</h5><a id="more"></a>
+<p><strong>maxIdleTime</strong>：最大空闲时间，超过这个空闲时间，且线程数大于minSpareThreads的，都会被回收，默认值1分钟（60000ms）；</p>
+<p><strong>minSpareThreads</strong>：最小空闲线程数，任何情况都会存活的线程数，即便超过了最大空闲时间，也不会被回收，默认值4；</p>
+<p><strong>maxSpareThreads</strong>：最大空闲线程数，在最大空闲时间（maxIdleTime）内活跃过，此时空闲，当空闲时间大于maxIdleTime则被回收，小则继续存活，等待被调度，默认值50；</p>
+<p><strong>maxThreads</strong>：最大线程数，大并发请求时，tomcat能创建来处理请求的最大线程数，超过则放入请求队列中进行排队，默认值为200；</p>
+<p><strong>acceptCount</strong>：当最大线程数（maxThreads）被使用完时，可以放入请求队列排队个数，超过这个数返回connection refused（请求被拒绝），一般设置和maxThreads一样，不过这个具体需要根据自己的应用实际访问峰值和平均值来权衡，默认值为100；</p>
+<p><strong>connectionTimeout</strong>：网络连接超时，假设设置为0表示永不超时，这样设置隐患巨大，通常可设置为30000ms，默认60000ms；</p>
+<p>Windows Tomcat允许每个进程maxThreads（最大线程数）2000，Linux Tomcat允许每个进程maxThreads（最大线程数）1000</p>
+<p><img src="/images/tomcat_201912182226.png" alt="upload successful"></p>
+<p><strong>请看下面三种情况</strong><br>情况1：接受一个请求，此时tomcat起动的线程数没有到达maxThreads，tomcat会起动一个线程来处理此请求。</p>
+<p>情况2：接受一个请求，此时tomcat起动的线程数已经到达maxThreads，tomcat会把此请求放入等待队列，等待空闲线程。</p>
+<p>情况3：接受一个请求，此时tomcat起动的线程数已经到达maxThreads，等待队列中的请求个数也达到了acceptCount，此时tomcat会直接拒绝此次请求，返回connection refused</p>
+<p><strong>maxThreads如何配置</strong><br>一般的服务器操作都包括两方面：1计算（主要消耗cpu），2等待（io、数据库等）。</p>
+<p>第一种极端情况，如果我们的操作是纯粹的计算，那么系统响应时间的主要限制就是cpu的运算能力，此时maxThreads应该尽量设的小，降低同一时间内争抢cpu的线程个数，可以提高计算效率，提高系统的整体处理能力。</p>
+<p>第二种极端情况，如果我们的操作纯粹是IO或者数据库，那么响应时间的主要限制就变为等待外部资源，此时maxThreads应该尽量设的大，这样才能提高同时处理请求的个数，从而提高系统整体的处理能力。此情况下因为tomcat同时处理的请求量会比较大，所以需要关注一下tomcat的虚拟机内存设置和linux的open file限制。</p>
+<p>我在测试时遇到一个问题，maxThreads我设置的比较大比如3000，当服务的线程数大到一定程度时，一般是2000出头，单次请求的响应时间就会急剧的增加，百思不得其解这是为什么，四处寻求答案无果，最后我总结的原因可能是cpu在线程切换时消耗的时间随着线程数量的增加越来越大，cpu把大多数时间都用来在这2000多个线程直接切换上了，当然cpu就没有时间来处理我们的程序了。以前一直简单的认为多线程=高效率。其实多线程本身并不能提高cpu效率，线程过多反而会降低cpu效率。当cpu核心数&lt;线程数时，cpu就需要在多个线程直接来回切换，以保证每个线程都会获得cpu时间，即通常我们说的并发执行。所以maxThreads的配置绝对不是越大越好。</p>
+<p>现实应用中，我们的操作都会包含以上两种类型（计算、等待），所以maxThreads的配置并没有一个最优值，一定要根据具体情况来配置。最好的做法是：在不断测试的基础上，不断调整、优化，才能得到最合理的配置。acceptCount的配置，我一般是设置的跟maxThreads一样大，这个值应该是主要根据应用的访问峰值与平均值来权衡配置的。如果设的较小，可以保证接受的请求较快相应，但是超出的请求可能就直接被拒绝。如果设的较大，可能就会出现大量的请求超时的情况，因为我们系统的处理能力是一定的。</p>
+<p><strong>原文链接：<a href="https://www.toutiao.com/a6771285271473291783" target="_blank" rel="noopener">Tomcat修改内存配置</a><br>欢迎转载，请注明出处！</strong></p>
+]]></content>
+      <categories>
+        <category>web服务器</category>
+      </categories>
+      <tags>
+        <tag>tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MarkdownPad2.5注册码</title>
+    <url>/2016/05/15/markdownpad2.5-license-key.html</url>
+    <content><![CDATA[<p><strong>邮箱 <a href="mailto:Soar360@live.com" target="_blank" rel="noopener">Soar360@live.com</a></strong></p>
+<p><strong>注册码</strong><br>GBPduHjWfJU1mZqcPM3BikjYKF6xKhlKIys3i1MU2eJHqWGImDHzWdD6xhMNLGVpbP2M5SN6bnxn2kSE8qHqNY5QaaRxmO3<br>YSMHxlv2EYpjdwLcPwfeTG7kUdnhKE0vVy4RidP6Y2wZ0q74f47fzsZo45JE2hfQBFi2O9Jldjp1mW8HUpTtLA2a5/sQytXJUQl/QKO<br>0jUQY4pa5CCx20sV1ClOTZtAGngSOJtIOFXK599sBr5aIEFyH0K7H4BoNMiiDMnxt1rD8Vb/ikJdhGMMQr0R4B+L3nWU97eaVPTR<br>KfWGDE8/eAgKzpGwrQQoDh+nzX1xoVQ8NAuH+s4UcSeQ==</p>
+<a id="more"></a>
+<p><strong>输入Email address和license key</strong><br><img src="/images/markdown_201912251552.png" alt="upload successful"></p>
+<p><strong>注册完成</strong><br><img src="/images/markdown_201912251554.png" alt="upload successful"></p>
+<p><strong>本文链接：<a href="http://www.ergzcode.com/2016/05/15/markdownpad2.5-license-key.html">MarkdownPad2.5注册码</a><br>欢迎转载，请注明出处！</strong></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
       </tags>
   </entry>
 </search>

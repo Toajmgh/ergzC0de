@@ -3,7 +3,7 @@ author: ergz
 tags:
   - sql
 categories:
-  - SQL
+  - 数据库
 date: 2019-11-09 15:50:00
 ---
 **下图展示了LEFT JOIN、RIGHT JOIN、INNER JOIN、OUTER JOIN 相关的 7 种用法**
@@ -70,3 +70,6 @@ FULL OUTER JOIN Table_B B
 ON A.Key = B.Key
 WHERE A.Key IS NULL OR B.Key IS NULL
 ```
+
+**原文链接：[看一张图秒懂SQL的各种JOIN用法](https://www.toutiao.com/i6766789647902179847)
+欢迎转载，请注明出处！**
