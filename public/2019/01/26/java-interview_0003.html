@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  
+
+  
+  <title>面试官：说一下Spring StringBuffer StringBuilder的区别 | ergzC0de</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍先来看String类的实现 public final class String implements      java.io.serializable,Comparable&amp;lt;String&amp;gt;,CharSequence{     &#x2F;** The value is used for character storage **&#x2F;      private final char value[">
+<meta name="keywords" content="Java,面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试官：说一下Spring StringBuffer StringBuilder的区别">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;2019&#x2F;01&#x2F;26&#x2F;java-interview_0003.html">
+<meta property="og:site_name" content="ergzC0de">
+<meta property="og:description" content="介绍先来看String类的实现 public final class String implements      java.io.serializable,Comparable&amp;lt;String&amp;gt;,CharSequence{     &#x2F;** The value is used for character storage **&#x2F;      private final char value[">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-30T04:33:23.161Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ergzC0de</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">代码也是一种艺术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/contact/me.html">Call我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.ergzcode.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-java-interview_0003" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/26/java-interview_0003.html" class="article-date">
+  <time datetime="2019-01-26T14:23:00.000Z" itemprop="datePublished">2019-01-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      面试官：说一下Spring StringBuffer StringBuilder的区别
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>先来看String类的实现</p>
+<pre><code>public final class String implements      java.io.serializable,Comparable&lt;String&gt;,CharSequence{
+    /** The value is used for character storage **/
+
+    private final char value[];
+}</code></pre><p>先来说说final关键字的作用</p>
+<ul>
+<li>final修饰类时，表明这个类不能被继承</li>
+<li>final修饰方法时，表明方法不能被重写</li>
+<li>final修饰变量时，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象</li>
+</ul>
+<a id="more"></a>
+
+<p>可以看到String类和保存变量的value数组都被final修饰，表明String类是不可变的。</p>
+<p>StringBuffer和StringBuilder都继承自AbstractStringBuilder类，看一下AbstractStringBuilder类的定义</p>
+<pre><code>abstract class AbstractStringBuilder implements Appendable,CharSequence{
+    /**
+     *The value is userd for character storage
+     */
+    char[] value;
+    }</code></pre><p>看到区别了吗？ value数组没有用private和final修饰，说明了StringBuffer和StringBuilder是可变的。</p>
+<p>而StringBuilder和StringBuffer的方法是差不多的，只不过StringBuffer在方法上添加了<code>synchronized</code>关键字，所以在多线程环境下用StringBuffer来获得更高的效率。</p>
+<p>看2个类中同一个方法的定义</p>
+<p>StringBUffer类</p>
+<pre><code>//StringBuffer append方法
+@Override
+public synchronized StringBuffer append(char[] str){
+    toStringCache = null;
+    super.append(str);    
+    return this;
+}</code></pre><p>StringBuilder类</p>
+<pre><code>//StringBuilder append方法
+@Override
+public StringBuilder append(char[] str){
+    super.append(str);
+    return this;
+}</code></pre><p>因为StringBuffer和StringBulider的实现类似，所以性能比较就落在String和StringBuilder之间了。</p>
+<p>1.String是不可变对象，每次操作都会生成新的String对象，然后指针指向新的对象。</p>
+<p>2.抽象类AbstractStringBuilder内部提供了一个自动扩容机制，当发现长度不够的时候，会自动进行扩容工作（具体扩容可以看源码，很容易理解），会创建一个新的数组，并将原来数组的数据复制到新的数组，不会创建新的对象，所以拼接字符串的效率高。</p>
+<p>用源码证实一下</p>
+<p>String类</p>
+<pre><code>public String substring(int beginIndex) {
+    if (beginIndex &lt; 0) {
+        throw new StringIndexOutOfBoundsException(beginIndex);
+    }
+    int subLen = value.length - beginIndex;
+    if (subLen &lt; 0) {
+        throw new StringIndexOutOfBoundsException(subLen);
+    }
+    return (beginIndex == 0) ? this : new String(value, beginIndex, subLen);
+}</code></pre><p>StringBuilder类</p>
+<pre><code>public StringBuilder append(String str) {
+    super.append(str);
+    return this;
+}</code></pre><p>介绍完毕，所以你应该知道这道题应该怎么答了</p>
+<h3 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h3><p><strong>1. 说一下String StringBuffer StringBuilder的区别</strong></p>
+<ul>
+<li>都是final类，不能被继承</li>
+<li>String长度是不可变的，StringBuffer和StringBuilder长度是可变的</li>
+<li>StringBuffer是线程安全的，StringBuilder不是线程安全的。但他们的方法很相似，StringBuffer在方法上添加了<code>synchronized</code>关键字修饰，保证了线程安全</li>
+<li>StringBuilder比StringBuffer拥有更好的性能</li>
+<li>如果一个String类型的字符串，在编译时可以确定是一个字符串常量，则编译完成后，字符串会自动拼接成一个常量，此时String比StringBuffer和StringBuilder的性能好的多</li>
+</ul>
+<p>我用例子解释一下第五条</p>
+<pre><code>String a = &quot;a&quot;;
+String b = &quot;b&quot;;
+String c = a+b;
+String d = &quot;a&quot;+&quot;b&quot;+&quot;c&quot;;</code></pre><p>反编译class的文件是这样的</p>
+<pre><code>String a = &quot;a&quot;;
+String b = &quot;b&quot;;
+(new StringBuilder()).append(a).append(b).toString();
+String d = &quot;abc&quot;;</code></pre><p>看到String d,理解了吗？</p>
+<p>同时看c的拼接过程，先生成一个StringBuilder对象，再调用2次append方法，最后再返回一个String对象，知道StringBuilder比String慢的愿意了吧。</p>
+<p><strong>本文链接：<a href="">面试官：说一下Spring StringBuffer StringBuilder的区别</a><br>欢迎转载，请注明出处！</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2019/01/26/java-interview_0003.html" data-id="ck4ry8ozh0003yld2dzhz9ri5" class="article-share-link">Share</a>
+      
+      
+        <a href="/2019/01/26/java-interview_0003.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2019/01/26/java-interview_0003.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/27/java-interview_0017.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          面试官：volatile关键字用过吧？说一下作用和实现吧
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/25/java-interview_0002.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">面试官：说一下构造函数，静态代码块，构造代码块的加载顺序</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+  <section id="comments" class="vcomment">
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Json/">Json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%81%8C%E5%9C%BA/">生活职场</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/DesignPattern/" style="font-size: 10px;">DesignPattern</a> <a href="/tags/IDEA/" style="font-size: 12.5px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 12.5px;">Nginx</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 12.5px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 17.5px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">2016年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">2015年 05月</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/resources-collection-top.html">资源整理[置顶]</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html">Nginx反向代理实现二级域名与端口的映射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_02.html">Git常用命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_01.html">工作中99%能用到的Git命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/git-cheat-sheet.html">GIT命令清单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+          Hosted by BCC<br/>
+          Copyright 2020 www.ergzcode.com All Rights Reserved <br>
+          苏ICP备19067763号-1
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/contact/me.html" class="mobile-nav-link">Call我</a>
+  
+</nav>
+
+    
+
+<script src="//cdn.jsdelivr.net/gh/jquery/jquery@3/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'false' == true;
+    var verify = 'true' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz",
+        appKey: "bjpKKR1Pq36WNhwSImLKdVNd",
+        placeholder: "Please leave your footprints",
+        pageSize:'10',
+        avatar:'',
+        lang:'zh-cn'
+    });
+</script>
+ 
+
+  </div>
+</body>
+</html>

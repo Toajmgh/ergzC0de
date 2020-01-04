@@ -1,3 +1,6 @@
 options:
   askImageFilename: true
-  overwriteImages: true
+  overwriteImages: false
+  lineNumbers: false
+editor:
+  lineNumbers: false

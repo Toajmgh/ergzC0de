@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  
+
+  
+  <title>Git常用命令使用 | ergzC0de</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.查看工作区的状态$ git status 2.查看文件具体修改了什么内容$ git diff &amp;lt;file&amp;gt; 3.查看提交的历史记录该命令显示从最近到最远的历史记录：$ git log。如果嫌输出信息太多，可以试试加上--pretty=oneline参数：$ git log --graph --pretty=oneline --abbrev-commit，命令如下： 123$ git">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git常用命令使用">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;2019&#x2F;11&#x2F;26&#x2F;git-orders_02.html">
+<meta property="og:site_name" content="ergzC0de">
+<meta property="og:description" content="1.查看工作区的状态$ git status 2.查看文件具体修改了什么内容$ git diff &amp;lt;file&amp;gt; 3.查看提交的历史记录该命令显示从最近到最远的历史记录：$ git log。如果嫌输出信息太多，可以试试加上--pretty=oneline参数：$ git log --graph --pretty=oneline --abbrev-commit，命令如下： 123$ git">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;git_201912101316.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;git_201912101318.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;201912101319.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;git_201912101326.png">
+<meta property="og:updated_time" content="2019-12-31T08:56:23.134Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;images&#x2F;git_201912101316.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ergzC0de</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">代码也是一种艺术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/contact/me.html">Call我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.ergzcode.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-git-orders_02" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/26/git-orders_02.html" class="article-date">
+  <time datetime="2019-11-26T14:26:00.000Z" itemprop="datePublished">2019-11-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git常用命令使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-查看工作区的状态"><a href="#1-查看工作区的状态" class="headerlink" title="1.查看工作区的状态"></a>1.查看工作区的状态</h3><p><code>$ git status</code></p>
+<h3 id="2-查看文件具体修改了什么内容"><a href="#2-查看文件具体修改了什么内容" class="headerlink" title="2.查看文件具体修改了什么内容"></a>2.查看文件具体修改了什么内容</h3><p><code>$ git diff &lt;file&gt;</code></p>
+<h3 id="3-查看提交的历史记录"><a href="#3-查看提交的历史记录" class="headerlink" title="3.查看提交的历史记录"></a>3.查看提交的历史记录</h3><p>该命令显示从最近到最远的历史记录：<code>$ git log</code>。如果嫌输出信息太多，可以试试加上<code>--pretty=oneline</code>参数：<code>$ git log --graph --pretty=oneline --abbrev-commit</code>，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --graph --pretty=oneline --abbrev-commit</span><br><span class="line">eede197ffb267fbda60482da9554ba654ff523e3 init hexo repo</span><br><span class="line">1f2508638115730cb301f73c51b9971fca5c7f09 Initial commit</span><br></pre></td></tr></table></figure>
+<p>上面输出的一大串数字其实是 commit id(版本号)，这是一个SHA1计算出来的一个非常大的数字，用十六进制表示</p>
+<a id="more"></a>
+
+<h3 id="4-回退版本"><a href="#4-回退版本" class="headerlink" title="4.回退版本"></a>4.回退版本</h3><p><code>$ git reset</code>在git中用<code>HEAD</code>表示当前版本，<code>HEAD^</code>表示上个版本，<code>HEAD^^</code>表示上上版本……以此类推，<code>HEAD~100</code>表示往上100个版本<br>现在我们用命令回退到上个版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br><span class="line">HEAD is now at 1f2508</span><br></pre></td></tr></table></figure>
+<p>可以根据版本号<code>commit id</code>指定回退到某个版本：<br><code>$ git reset --hard eede19</code><br>这里的版本号没必要写全，前几位就可以了，Git会自动去找，这样我们就又回到最新的版本了。Git版本的回退速度非常快，在Git内部有个指向当前版本的指针<code>HEAD</code>，所以我们在进行版本回退或回到最新的版本的时候，Git只是帮我们将<code>HEAD</code>指针指向某个版本号。</p>
+<h3 id="5-记录你的每一条命令"><a href="#5-记录你的每一条命令" class="headerlink" title="5.记录你的每一条命令"></a>5.记录你的每一条命令</h3><p><code>$ git reflog</code>可以查看<code>commit id</code>,提交具体的操作和提交输入的信息，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog </span><br><span class="line">eede197 HEAD@&#123;0&#125;: rebase finished: returning to refs/heads/master</span><br><span class="line">eede197 HEAD@&#123;1&#125;: pull --rebase origin master: init hexo repo</span><br><span class="line">1f25086 HEAD@&#123;2&#125;: pull --rebase origin master: checkout 1f2508638115730cb301f73c51b9971fca5c7f09</span><br><span class="line">fe14566 HEAD@&#123;3&#125;: commit (initial): init hexo repo</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-丢弃工作区的修改"><a href="#6-丢弃工作区的修改" class="headerlink" title="6.丢弃工作区的修改"></a>6.丢弃工作区的修改</h3><p><code>$ git checkout -- &lt;file&gt;</code>文件修改还没有添加到暂存区，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
+<p>当文件修改后已经添加到了暂存区又作了修改，现在撤销修改就回到添加到暂存区后的状态。</p>
+<h3 id="7-把添加到暂存区的内容撤销"><a href="#7-把添加到暂存区的内容撤销" class="headerlink" title="7.把添加到暂存区的内容撤销"></a>7.把添加到暂存区的内容撤销</h3><p><code>$ git reset HEAD &lt;file&gt;</code> <code>HEAD</code>表示当前分支的最新提交</p>
+<h3 id="8-分支"><a href="#8-分支" class="headerlink" title="8.分支"></a>8.分支</h3><ul>
+<li>查看分支：<code>$ git branch</code></li>
+<li>创建分支：<code>$ git branch &lt;name&gt;</code>。我们创建新分支dev时，Git会新建一个指针叫<code>dev</code>，指向当前分支<code>master</code>的相同的提交点（HEAD指针指向的是当前分支），再把<code>HEAD</code>指向<code>dev</code>，之后的操作就在<code>dev</code>分支上完成，如图：<br><img src="/images/git_201912101316.png" alt="upload successful"></li>
+<li>切换分支：<code>$ git checkout &lt;name&gt;</code> OR <code>$ git switch &lt;name&gt;</code></li>
+<li>创建并切换分支：<code>$ git checkout -b &lt;name&gt;</code> OR <code>$ git switch -c &lt;name&gt;</code></li>
+<li>合并分支到当前分支:<code>$ git merge &lt;name&gt;</code>。当<code>dev</code>分支开发结束后，我们需要把<code>dev</code>分支合并到<code>master</code>（主分支）上，Git是如何操作的呢？Git直接把<code>master</code>指向<code>dev</code>的当前提交，就完成了合并，这些操作都是靠指针来完成，文件并没有发生变化，如图：<br><img src="/images/git_201912101318.png" alt="upload successful"><br>分支合并时，Git默认使用<code>Fast forward</code>模式，使用这种模式，删除分支后，会丢掉分支的历史信息，使用<code>--no-ff</code>可以禁用<code>Fast forward</code>模式 <code>$ git merge --no-ff -m &quot;merge with no-ff&quot; dev</code>，这样每次合并会创建一个新的commit，加上<code>-m</code>参数，写上commit的描述。</li>
+<li>删除分支：<code>$ git branch -d &lt;name&gt;</code>。合并完分支后就可以删除<code>dev</code>分支，删除<code>dev</code>分支就是把<code>dev</code>指针给删掉，删掉后我们就剩下了一条<code>master</code>分支，如图：<br><img src="/images/201912101319.png" alt="upload successful"></li>
+<li>12.查看分支合并图：<code>$ git log --graph</code></li>
+</ul>
+<h3 id="9-标签"><a href="#9-标签" class="headerlink" title="9.标签"></a>9.标签</h3><ul>
+<li>新建一个标签，默认为<code>HEAD</code>,也可以指定一个commit id:<code>$ git tag &lt;tagname&gt; &lt;commit&gt;</code>,不指定commit id时，默认标签是打在最新提交的commit上</li>
+<li>创建带有说明的标签，用<code>-a</code>指定标签名，<code>-m</code>指定说明文字:<code>$ git tag -a &lt;tagname&gt; -m &quot;tag message&quot; &lt;commit&gt;</code></li>
+<li>查看所有标签：<code>$ git tag</code></li>
+<li>删除指定标签：<code>$ git tag -d &lt;tagname&gt;</code></li>
+<li>推送某个标签到远程：<code>$ git push &lt;remote&gt; &lt;tagname&gt;</code></li>
+<li>一次性推送全部尚未推送到远程的本地标签:<code>$ git push &lt;remote&gt; --tags</code></li>
+<li>删除远程标签,先从本地删除:<code>$ git tag -d &lt;tagname&gt;</code> ，然后 <code>$ git push &lt;remote&gt; :refs/tags/&lt;tagname&gt;</code></li>
+</ul>
+<h3 id="10-cherry-pick"><a href="#10-cherry-pick" class="headerlink" title="10.cherry-pick"></a>10.cherry-pick</h3><p>从不同的分支里选择某次提交并且把它合并到当前的分支。首先切换到我想要放入该提交的分支，然后执行如下命令：<br><code>$ git cherry-pick [commit_hash]</code></p>
+<p>团队协作的分支开发流程图，如图：<br><img src="/images/git_201912101326.png" alt="upload successful"></p>
+<p><strong>本文链接：<a href="">Git常用命令使用</a><br>欢迎转载，请注明出处！<br>参考：<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600</a></strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2019/11/26/git-orders_02.html" data-id="ck4s3tlbz00000id28lt560r5" class="article-share-link">Share</a>
+      
+      
+        <a href="/2019/11/26/git-orders_02.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2019/11/26/git-orders_02.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/08/pm2-watch-hexo-process.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PM2守护hexo的进程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/26/git-orders_01.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">工作中99%能用到的Git命令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+  <section id="comments" class="vcomment">
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Json/">Json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%81%8C%E5%9C%BA/">生活职场</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/DesignPattern/" style="font-size: 10px;">DesignPattern</a> <a href="/tags/IDEA/" style="font-size: 12.5px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 12.5px;">Nginx</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 12.5px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 17.5px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">2016年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">2015年 05月</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/resources-collection-top.html">资源整理[置顶]</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html">Nginx反向代理实现二级域名与端口的映射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_02.html">Git常用命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_01.html">工作中99%能用到的Git命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/git-cheat-sheet.html">GIT命令清单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+          Hosted by BCC<br/>
+          Copyright 2020 www.ergzcode.com All Rights Reserved <br>
+          苏ICP备19067763号-1
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/contact/me.html" class="mobile-nav-link">Call我</a>
+  
+</nav>
+
+    
+
+<script src="//cdn.jsdelivr.net/gh/jquery/jquery@3/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'false' == true;
+    var verify = 'true' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz",
+        appKey: "bjpKKR1Pq36WNhwSImLKdVNd",
+        placeholder: "Please leave your footprints",
+        pageSize:'10',
+        avatar:'',
+        lang:'zh-cn'
+    });
+</script>
+ 
+
+  </div>
+</body>
+</html>

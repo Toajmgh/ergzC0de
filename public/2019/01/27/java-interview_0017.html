@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  
+
+  
+  <title>面试官：volatile关键字用过吧？说一下作用和实现吧 | ergzC0de</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="极简计算机发展史我们知道，计算机的CPU和内存的交互是最频繁的，内存是我们的高速缓存区。而刚开始是用户磁盘和CPU进行交互，CPU运转速度越来越快，磁盘远远跟不上CPU的读写速度，才设计了内存，但是随着CPU的发展，内存的读写速度也远远跟不上CPU的读写速度，因此，为了解决这一矛盾，CPU厂商在每颗CPU上加上了高速缓存，用来缓解这种症状，因此，现在CPU同内存交互就变成了下面的样子。 CPU&amp;l">
+<meta name="keywords" content="Java,面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试官：volatile关键字用过吧？说一下作用和实现吧">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;2019&#x2F;01&#x2F;27&#x2F;java-interview_0017.html">
+<meta property="og:site_name" content="ergzC0de">
+<meta property="og:description" content="极简计算机发展史我们知道，计算机的CPU和内存的交互是最频繁的，内存是我们的高速缓存区。而刚开始是用户磁盘和CPU进行交互，CPU运转速度越来越快，磁盘远远跟不上CPU的读写速度，才设计了内存，但是随着CPU的发展，内存的读写速度也远远跟不上CPU的读写速度，因此，为了解决这一矛盾，CPU厂商在每颗CPU上加上了高速缓存，用来缓解这种症状，因此，现在CPU同内存交互就变成了下面的样子。 CPU&amp;l">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;vdohcW5.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;tGsWL8n.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;9kKE1wp.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;4SQpPL7.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;b9kvvf2.jpg">
+<meta property="og:updated_time" content="2019-12-31T05:28:45.441Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;vdohcW5.jpg">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ergzC0de</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">代码也是一种艺术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/contact/me.html">Call我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.ergzcode.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-java-interview_0017" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/27/java-interview_0017.html" class="article-date">
+  <time datetime="2019-01-27T06:14:00.000Z" itemprop="datePublished">2019-01-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      面试官：volatile关键字用过吧？说一下作用和实现吧
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="极简计算机发展史"><a href="#极简计算机发展史" class="headerlink" title="极简计算机发展史"></a>极简计算机发展史</h3><p>我们知道，计算机的CPU和内存的交互是最频繁的，内存是我们的高速缓存区。而刚开始是用户磁盘和CPU进行交互，CPU运转速度越来越快，磁盘远远跟不上CPU的读写速度，才设计了内存，但是随着CPU的发展，内存的读写速度也远远跟不上CPU的读写速度，因此，为了解决这一矛盾，CPU厂商在每颗CPU上加上了高速缓存，用来缓解这种症状，因此，现在CPU同内存交互就变成了下面的样子。</p>
+<p><strong>CPU&lt;-&gt;High Speed cache memory&lt;-&gt;Main memory physical menory</strong></p>
+<a id="more"></a>
+<p>单核CPU的性能不可能无限制的增长，要想很多的提升性能，需要多个处理器协同工作，这就是多核处理器的由来。基于高速缓存的存储交互很好的解决了处理器和内存之间的矛盾。也引入了新的问题：缓存一致性的问题。在多核处理器系统中，每个处理器有自己的高速缓存，而他们又共享同一个块内存（下文成主存，main memory主要内存），当多个处理器运算都涉及到同一块内存区域的时候，就有可能发生缓存不一致的现象。为了解决这一问题，需要各个处理器运行时都遵循一些协议，在运行时需要用这些协议来保证数据的一致性。</p>
+<img src="http://cdn.ergzcode.com/b/vdohcW5.jpg" width = "60%" height = "40%" div align=center/>
+
+<p>缓存一致性协议中最出名的就是Intel的MESI协议。MESI协议保证了每个缓存中使用的共享变量的副本是一致的。它的核心的思想是：当CPU写数据时，如果发生操作的变量是共享变量，即在其他CPU中也存在该变量的副本，会发出信号通知其他CPU将该变量的缓存设置为无效状态，因此当其他CPU需要读取这个变量时，发现自己缓存中该变量是无效状态，那么它就会从内存中重新读取</p>
+<h3 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h3><p>Java的内存模型和上面的结构还是挺相似的，此时在看工作内存和主内存的关系，从逻辑上，高速缓存对应工作内存，每个线程分配到CPU时间片时，独自享有高速缓存的使用能力。主内存对应存储的物理内存，这只是逻辑上的对等关系，物理上的具体对应关系十分复杂，这里不讨论。</p>
+<img src="http://cdn.ergzcode.com/b/tGsWL8n.jpg" width = "60%" height = "40%" div align=center/>
+
+<h3 id="volatile的作用是什么"><a href="#volatile的作用是什么" class="headerlink" title="volatile的作用是什么"></a>volatile的作用是什么</h3><p>volatile可以保证可见性，有序性，但不保证原子性：</p>
+<ul>
+<li><p>可见性</p>
+<p>可见性是指当多个线程访问同一个变量时，一个线程修改了这个变量的值，其他线程能够立即看到修改的值</p>
+</li>
+</ul>
+<p>假如说有2个线程对一个变量data进行操作，线程先会把主内存中的值缓存到工作内存，这样做的原因和上面提到的高速缓存类似，提高效率</p>
+<img src="http://cdn.ergzcode.com/b/9kKE1wp.jpg" width = "60%" height = "40%" div align=center/>
+
+<p>但是这样会引入新的问题，假如说线程A把data的值修改为1，线程A的工作内存data的值为1，但是主内存和线程B的工作内存data值为0，此时就有可能出现Java并发编程中的可见性问题</p>
+<img src="http://cdn.ergzcode.com/b/4SQpPL7.jpg" width = "60%" height = "40%" div align=center/>
+
+<p>举个例子，如下面代码，线程A已经将flag的值改变，但是线程B并没有及时感知到，导致一直进行死循环</p>
+<pre><code>public class Test{
+
+    public static boolean flag = false;
+
+    public static void main(String[] args){
+
+        new Thread(()-&gt;{
+            while(!flag){
+            }
+            System.out.println(&quot;threadB end&quot;);
+        }).start();
+        try{
+            TimeUnit.SECONDS.sleep(1);
+        }catch(InterruptedException e){
+            e.printstackTrace();
+        }
+        new Thread(()-&gt;{
+            flag= =true;
+            System.out.println(&quot;threadA end&quot;);
+        }).start();
+    }
+
+}</code></pre><p>线程B一直没有结束,输出为:</p>
+<pre><code>threadA end</code></pre><p>但是如果将data定义为如下形式，线程A对data的变更，线程B立马能感知到</p>
+<pre><code>public static volatile boolean flag = false;</code></pre><p>输出为:</p>
+<pre><code>threadA end
+threadB end</code></pre><p>那么是如何实现的呢？其实volatile保证可见性的方式和上面提到的缓存一致性协议的原理很类似：</p>
+<p>1.线程A将工作内存的data更改后，强制将data值刷回主内存<br>2.如果线程B的工作内存中有data值变量的缓存，会强制让这个data变量缓存失效<br>3.当线程B需要读取data变量的值时，先从工作内存中读，发现已经失效过期，就会从主内存中加载data变量的最新值了</p>
+<p>放个图理解的更清楚</p>
+<img src="http://cdn.ergzcode.com/b/b9kvvf2.jpg" width = "60%" height = "40%" div align=center/>
+
+<ul>
+<li>有序性</li>
+</ul>
+<p>有序性即程序执行的顺序按照代码的先后顺序执行</p>
+<pre><code>int i = 0;
+boolean flag = false;
+i = 1;//语句1
+flag = true;//语句2</code></pre><p>上面的代码定义了一个int型的变量，定义了一个boolean类型的变量，然后分别对这两个变量进行赋值操作。从代码顺序上看，语句1是在语句2前面的，那么JVM在真正执行这段代码的时候会保证语句1一定会在语句2前面执行吗？不一定，为什么？这里可能会发生指令重排序（Instruction Reorder）。</p>
+<p>下面解释一下什么是指令重排序，一般来说，处理器为了提高程序的运行效率，可能会对输入代码进行优化，它不保证程序中各个语句的执行先后顺序同代码中的顺序一致，但是它会保证程序最终执行结果和代码的执行结果是一致的。</p>
+<p>比如上面的代码中，语句1和语句2谁先执行对最终的程序运行结果并没有影响，那么就有可能在执行的过程中，语句2先执行而语句1后执行。</p>
+<p>但是有依赖关系的语句不会进行重排序，如下面求圆面积的代码</p>
+<pre><code>double pi = 4.14;//A
+double r = 1.0;//B
+double area = pi * r * r;//C</code></pre><p>程序的执行顺序只有下面这2种形式</p>
+<p>A-&gt;B-&gt;C和B-&gt;A-&gt;C，因为A和C之间存在依赖关系，同时B和C之间也存在依赖关系。因此最终执行的指令序列中C不能被重排序到A和B前面。</p>
+<p>虽然重排序不会影响单个线程内程序的执行结果，但是多线程呢？下面看一个例子</p>
+<pre><code>//线程1
+context = loadContext();//语句1
+inited = true;//语句2
+
+//线程2
+while(!inited){
+    sleep();    
+}
+doSomethingwithconfig(context);</code></pre><p>上面的代码中，由于语句1和语句2没有数据依赖性，因此可能会被重排序。假如发生了重排序，在线程1执行的过程中先执行语句2，而此时线程2会以为初始化工作已经完成，那么就会跳出while循环，去执行doSomethingwithconfig(context)的方法，而此时context并没有被初始化，就会导致程序出错。</p>
+<p>从上面可以看出，指令重排序不会影响单个线程的执行，但是会影响到线程并发执行的正确性</p>
+<p>当写双重检测锁定版本（double check）的单例模式时，就要用到volatile关键来保证可见性</p>
+<ul>
+<li>原子性</li>
+</ul>
+<p>原子性即一个操作或多个操作，要么全部执行并且执行的过程中不会被任何因素打断，要么就都不会执行。</p>
+<pre><code>public class Test{
+    public static volatile int inc = 0;
+    public static void main(String[] args){
+        //新建一个线程池
+        ExecutorService service = Executors.newCachedThreadPool();
+        for(int i = 0;i &lt; 5;i++){
+            service.execute(()-&gt;{
+                for(int j = 0;j &lt; 1000;j++){
+                    inc++;
+                }
+            });
+        }    
+        //关闭线程池
+        service.shutdown();
+        try{
+            TimeUnit.SECONDS.sleep(1);
+        }cacth(InterruptedException e){
+            e.printStackTrace();
+        }
+        System.out.println(&quot;inc = &quot;+inc);
+    }
+
+}</code></pre><p>执行上面的代码结果并不是每次都是5000，表明volatile并不能保证原子性</p>
+<p>可能回有朋友就会有疑问，不对啊，上面是对变量Inc进行自增操作，由于volatile保证了可见性，那么在每个线程中对Inc自增完之后，其他线程中都能看到修改后的值啊，所以有5个线程分别进行了1000次操作，那么最终Inc的值应该是1000*5=5000。</p>
+<p>这里面就有一个误区了，volatile关键字能保证可见性是没有错，但是上面的程序错在没能保证原子性。可见性只能保证每次读取的是最新的值，但是volatile没办法保证对变量的操作的原子性。</p>
+<p>在前面已经提到过，自增操作是不具备原子性的，它包括读取变量的原始值，进行加1操作，写入工作内存。那么就是说自增操作的三个子操作可能会分割执行，就有可能导致下面这种情况出现：</p>
+<p>加入某个时刻变量Inc的值为10，线程1对变量进行自增操作，线程1先读取变量Inc的原始值，然后线程1倍阻塞了；然后线程2对变量进行自增操作，线程2也去读取inc的原始值，由于线程1只是对变量进行读取操作，而没有对变量进行修改操作，所以不会导致线程2的工作内存中缓存变量inc的缓存失效，也不会导致主内存中inc的值刷新，所以线程2会直接从工作内存中读取Inc的值，发现inc的值是10，然后进行加1操作，并把11写入工作内存，最后写入主存。</p>
+<p>然后线程1接着进行加1操作，由于已经读取了inc的值（inc++，包括3个操作，1.读取inc的值，2.进行加1操作，3.写入新的值），注意此时在线程1的工作内存中inc的值仍然为10，所以线程1对inc进行加1操作后inc的值为11，然后将11写入工作内存，最后写入主存。</p>
+<p>那么两个线程分别进行了一次自增操作后，inc只增加1。</p>
+<p>根源就在这里，自增操作不是原子操作，而且volatile关键字也无法保证对变量的任何操作都是原子性的。</p>
+<p>解决方案：可以通过synchronized或lock，进行加锁，来保证操作的原子性。也可以通过使用AtomicInteger</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>前面已经演示过了</p>
+<p>1.状态标记量</p>
+<p>2.单例模式中的double check</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>volatile有两部分，一个是lock，禁止指令重排序，因为重排序会导致MESI的一致性协议失效；二是push,设置cache line失效。</p>
+<p><strong>本文链接：<a href="">面试官：volatile关键字用过吧？说一下作用和实现吧</a><br>欢迎转载，请注明出处！</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2019/01/27/java-interview_0017.html" data-id="ck4tfm12e0001lpd29j8mcg3g" class="article-share-link">Share</a>
+      
+      
+        <a href="/2019/01/27/java-interview_0017.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2019/01/27/java-interview_0017.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/28/java-interview_0012.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          面试官：写一下单例模式吧，知道单例模式有几种写法吗
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/26/java-interview_0003.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">面试官：说一下Spring StringBuffer StringBuilder的区别</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+  <section id="comments" class="vcomment">
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Json/">Json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%81%8C%E5%9C%BA/">生活职场</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/DesignPattern/" style="font-size: 10px;">DesignPattern</a> <a href="/tags/IDEA/" style="font-size: 12.5px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 12.5px;">Nginx</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 12.5px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 17.5px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">2016年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">2015年 05月</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/resources-collection-top.html">资源整理[置顶]</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html">Nginx反向代理实现二级域名与端口的映射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_02.html">Git常用命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_01.html">工作中99%能用到的Git命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/git-cheat-sheet.html">GIT命令清单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+          Hosted by BCC<br/>
+          Copyright 2020 www.ergzcode.com All Rights Reserved <br>
+          苏ICP备19067763号-1
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/contact/me.html" class="mobile-nav-link">Call我</a>
+  
+</nav>
+
+    
+
+<script src="//cdn.jsdelivr.net/gh/jquery/jquery@3/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'false' == true;
+    var verify = 'true' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz",
+        appKey: "bjpKKR1Pq36WNhwSImLKdVNd",
+        placeholder: "Please leave your footprints",
+        pageSize:'10',
+        avatar:'',
+        lang:'zh-cn'
+    });
+</script>
+ 
+
+  </div>
+</body>
+</html>

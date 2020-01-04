@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  
+
+  
+  <title>面试官：每次你可以爬1或者2个台阶，爬到第n级台阶有多少种方法 | ergzC0de</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍这是leeCode的第70题 题目描述 假设你正在爬楼梯。需要n阶你才能到达楼顶。 每次你可以爬1或者2个台阶。你有多少种不同的方法可以爬到楼顶呢？ 注意：给定n是一个正整数。 示例1： 输入：2 输出：2 解释：有两种方法可以爬到楼顶。 1.1阶 + 1阶 2.2阶">
+<meta name="keywords" content="Java,面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试官：每次你可以爬1或者2个台阶，爬到第n级台阶有多少种方法">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;2019&#x2F;01&#x2F;29&#x2F;java-interview_0019.html">
+<meta property="og:site_name" content="ergzC0de">
+<meta property="og:description" content="介绍这是leeCode的第70题 题目描述 假设你正在爬楼梯。需要n阶你才能到达楼顶。 每次你可以爬1或者2个台阶。你有多少种不同的方法可以爬到楼顶呢？ 注意：给定n是一个正整数。 示例1： 输入：2 输出：2 解释：有两种方法可以爬到楼顶。 1.1阶 + 1阶 2.2阶">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;wS5voBM.jpg">
+<meta property="og:updated_time" content="2019-12-31T10:36:02.184Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;wS5voBM.jpg">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ergzC0de</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">代码也是一种艺术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/contact/me.html">Call我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.ergzcode.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-java-interview_0019" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/29/java-interview_0019.html" class="article-date">
+  <time datetime="2019-01-29T07:38:00.000Z" itemprop="datePublished">2019-01-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      面试官：每次你可以爬1或者2个台阶，爬到第n级台阶有多少种方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>这是leeCode的第70题</p>
+<p><strong>题目描述</strong></p>
+<p>假设你正在爬楼梯。需要n阶你才能到达楼顶。</p>
+<p>每次你可以爬1或者2个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<p>注意：给定n是一个正整数。</p>
+<p>示例1：</p>
+<pre><code>输入：2
+输出：2
+解释：有两种方法可以爬到楼顶。
+1.1阶 + 1阶
+2.2阶</code></pre><a id="more"></a>
+
+<p>示例2：<br>    输入：3<br>    输出：3<br>解释：有三种方法可以爬到楼顶。</p>
+<pre><code>1.1阶 + 1阶 + 1阶
+2.1阶 + 2阶
+3.2阶 + 1阶</code></pre><h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>这是一个简单的递推题目，搞懂了其实就是一个斐波那契数列。你想的没错，就是你开始学编程时，那个兔子繁殖的问题。</p>
+<p>如果一开始有一对兔子，他们每月生育一对兔子，小兔出生后一个月又开始生育繁殖的情况与最初的那对兔子一样，那么一年后有多少对兔子呢？</p>
+<p>答案是，每月兔子的总数可以用一下数列表示：1，1，2，3，5，8，13，21，34，55，89，144，233…</p>
+<p>来想一下，第n阶台阶可以从那一节上爬上来?只能是n-1和n-2啊，所以我们就能得到递推公式<br>f(n)=f(n-1)+f(n-2),f(n)表示到n阶台阶方法数，这不就是典型的斐波那契数列吗？有意思的是斐波那契数列有很多种实现方法，看来一一道来。</p>
+<p><strong>第一种：递归</strong></p>
+<p>递归出口是当n=1的值为1，当n=2时值为2</p>
+<pre><code>class solution{
+    public int climbStairs(int n){
+        if(n==1||n==2)
+            return n;
+    }
+    return climbStairs(n-1)+climbStairs(n-2);
+}</code></pre><p>这种代码在Leecode上会超时，因为递归比较耗时和耗内存。面试的时候也不要回答这种方法。</p>
+<p><strong>第二种：递推</strong><br>当n=1值为1，当n=2时值为2</p>
+<p>当n&gt;=3的递推公式是f(n)=f(n-1)+f(n-2)</p>
+<pre><code>public class solution{
+    public int climbStairs(int n){
+        if(n==1)
+            return 1;
+    }
+    int[] f = new int[n+1];
+    f[1]=1;
+    f[2]=2;
+    for (int i = 3; i &lt;= n; i++) {
+        f[i] = f[i-2] + f[i-1];
+    }
+    return f[n];
+}</code></pre><p>一般回答这种方式即可，时间复杂度为O(n)</p>
+<p><strong>第三种 通向公式</strong></p>
+<p>很多人其实并不知道有通向公式，通向公式如下</p>
+<p><img src="http://cdn.ergzcode.com/b/wS5voBM.jpg" alt=""></p>
+<p>递推过程就不分析了，写这种算法是因为你可以和面试官说一波，因为很多面试官其实也不知道这种方法</p>
+<pre><code>public static int climbStaris1(int n){
+
+    double sqrt5=Math.sqrt(5);
+    double fibn=Math.pow((1+sqrt5)/2,n+1)-Math.pow((1-sqrt5)/2,n+1);
+    return (int) (fibn/sqrt5);
+}
+
+public static void main(String[] args) {
+    System.out.println(climbStaris1(4));
+}</code></pre><p><strong>矩阵快速幂</strong></p>
+<p>这种算法用了矩阵乘法的思想，因为要讲清楚还得复习一遍高等数学的矩阵乘法，面试也很少写这种算法，就不再解释了，有兴趣的可以找相关的资料来看，面试中一般用递推打出来就行。面大厂的可以看一波这个算法，偶尔会问的深一点。</p>
+<p><strong>本文链接：<a href="">面试官：每次你可以爬1或者2个台阶，爬到第n级台阶有多少种方法</a><br>欢迎转载，请注明出处！</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2019/01/29/java-interview_0019.html" data-id="ck4tka04l0000apd2aiwx4py5" class="article-share-link">Share</a>
+      
+      
+        <a href="/2019/01/29/java-interview_0019.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2019/01/29/java-interview_0019.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/30/java-interview_0028.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          面试官：mvn package和mvn install都能打包，他们有区别吗
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/28/java-interview_0012.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">面试官：写一下单例模式吧，知道单例模式有几种写法吗</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+  <section id="comments" class="vcomment">
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Json/">Json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%81%8C%E5%9C%BA/">生活职场</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/DesignPattern/" style="font-size: 10px;">DesignPattern</a> <a href="/tags/IDEA/" style="font-size: 12.5px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 12.5px;">Nginx</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 12.5px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 17.5px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">2016年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">2015年 05月</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/resources-collection-top.html">资源整理[置顶]</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html">Nginx反向代理实现二级域名与端口的映射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_02.html">Git常用命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_01.html">工作中99%能用到的Git命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/git-cheat-sheet.html">GIT命令清单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+          Hosted by BCC<br/>
+          Copyright 2020 www.ergzcode.com All Rights Reserved <br>
+          苏ICP备19067763号-1
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/contact/me.html" class="mobile-nav-link">Call我</a>
+  
+</nav>
+
+    
+
+<script src="//cdn.jsdelivr.net/gh/jquery/jquery@3/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'false' == true;
+    var verify = 'true' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz",
+        appKey: "bjpKKR1Pq36WNhwSImLKdVNd",
+        placeholder: "Please leave your footprints",
+        pageSize:'10',
+        avatar:'',
+        lang:'zh-cn'
+    });
+</script>
+ 
+
+  </div>
+</body>
+</html>

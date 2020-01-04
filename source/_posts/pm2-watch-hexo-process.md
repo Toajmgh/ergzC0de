@@ -35,6 +35,6 @@ exec('hexo server -p 80 & ',(error, stdout, stderr) => {
 ``` bash
 pm2 start hexo_daemon.js
 ```
-**本文链接：[PM2守护hexo的进程](http://www.ergzcode.com/2019/12/08/pm2-watch-hexo-process.html)
+**本文链接：[PM2守护hexo的进程]()
 欢迎转载，请注明出处！
 参考:[PM2使用](https://www.jianshu.com/p/4a3d4d144ab2)**

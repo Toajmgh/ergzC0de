@@ -21,5 +21,5 @@ KfWGDE8/eAgKzpGwrQQoDh+nzX1xoVQ8NAuH+s4UcSeQ==
 **注册完成**
 ![upload successful](/images/markdown_201912251554.png)
 
-**本文链接：[MarkdownPad2.5注册码](http://www.ergzcode.com/2016/05/15/markdownpad2.5-license-key.html)
+**本文链接：[MarkdownPad2.5注册码]()
 欢迎转载，请注明出处！**

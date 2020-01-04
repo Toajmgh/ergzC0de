@@ -58,5 +58,5 @@ pm2 list #列出由pm2管理的所有进程信息，还会显示一个进程会�
 pm2 monit #监视每个node进程的CPU和内存的使用情况。
 ```
 
-**本文链接：[PM2介绍](http://www.ergzcode.com/2019/12/10/pm2-common-commands-introduction.html)
+**本文链接：[PM2介绍]()
 欢迎转载，请注明出处！**

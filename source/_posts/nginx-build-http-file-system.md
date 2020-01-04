@@ -67,5 +67,5 @@ server {
 /etc/init.d/nginx reload
 ```
 
-**本文链接：[Nginx搭建HTTP文件服务器](http://www.ergzcode.com/2019/11/14/nginx-build-http-file-system.html)
+**本文链接：[Nginx搭建HTTP文件服务器]()
 欢迎转载，请注明出处！**

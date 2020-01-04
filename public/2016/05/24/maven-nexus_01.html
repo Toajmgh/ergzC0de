@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  
+
+  
+  <title>Maven之私服nexus | ergzC0de</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍Maven仓库分为本地仓库，远程仓库（私服），中央仓库，本文主要介绍了私服的使用。 将项目发布到私服首先要把代码上传到私服上，必须要能登录到私服上，在Maven的settings.xml文件，配置连接私服的用户和密码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maven之私服nexus">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;2016&#x2F;05&#x2F;24&#x2F;maven-nexus_01.html">
+<meta property="og:site_name" content="ergzC0de">
+<meta property="og:description" content="介绍Maven仓库分为本地仓库，远程仓库（私服），中央仓库，本文主要介绍了私服的使用。 将项目发布到私服首先要把代码上传到私服上，必须要能登录到私服上，在Maven的settings.xml文件，配置连接私服的用户和密码。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-04T11:15:23.562Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ergzC0de</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">代码也是一种艺术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/contact/me.html">Call我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.ergzcode.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-maven-nexus_01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/24/maven-nexus_01.html" class="article-date">
+  <time datetime="2016-05-24T11:03:00.000Z" itemprop="datePublished">2016-05-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Maven之私服nexus
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Maven仓库分为本地仓库，远程仓库（私服），中央仓库，本文主要介绍了私服的使用。</p>
+<h3 id="将项目发布到私服"><a href="#将项目发布到私服" class="headerlink" title="将项目发布到私服"></a>将项目发布到私服</h3><p>首先要把代码上传到私服上，必须要能登录到私服上，在Maven的settings.xml文件，配置连接私服的用户和密码。  </p>
+<a id="more"></a>
+<p>1.在Maven配置文件settings.xml的<servers></servers>域中添加以下代码：</p>
+<pre><code>&lt;server&gt;
+    &lt;id&gt;releases&lt;/id&gt;
+    &lt;username&gt;admin&lt;/username&gt;
+    &lt;password&gt;admin123&lt;/password&gt;
+&lt;/server&gt;
+&lt;server&gt;
+    &lt;id&gt;snapshots&lt;/id&gt;
+    &lt;username&gt;admin&lt;/username&gt;
+    &lt;password&gt;admin123&lt;/password&gt;
+&lt;/server&gt;</code></pre><p>releases 连接发布版本项目仓库<br>snapshots 连接测试版本项目仓库</p>
+<p>2.配置项目pom.xml<br>配置私服仓库的地址，本公司的自己的jar包会上传到私服的宿主仓库，根据工程的版本号决定上传到哪个宿主仓库，如果版本为release则上传到私服的release仓库，如果版本为snapshot则上传到私服的snapshot仓库  </p>
+<pre><code>&lt;distributionManagement&gt;
+    &lt;repository&gt;
+        &lt;id&gt;releases&lt;/id&gt;
+        &lt;url&gt;http://localhost:8081/nexus/content/repositories/releases/&lt;/url&gt;
+    &lt;/repository&gt;
+    &lt;snapshotRepository&gt;
+        &lt;id&gt;snapshots&lt;/id&gt;
+        &lt;url&gt;http://localhost:8081/nexus/content/repositories/snapshots/&lt;/url&gt;
+    &lt;/snapshotRepository&gt;
+&lt;/distributionManagement&gt;</code></pre><p><strong>注意：pom.xml这里<id>和settings.xml配置<id>对应！</strong></p>
+<h3 id="从私服下载jar包"><a href="#从私服下载jar包" class="headerlink" title="从私服下载jar包"></a>从私服下载jar包</h3><p>1.在setting.xml中配置仓库  </p>
+<pre><code>&lt;!-- 下载jar包配置 --&gt;
+&lt;profile&gt; 
+    &lt;!--profile的id --&gt;
+    &lt;id&gt;dev&lt;/id&gt;
+    &lt;repositories&gt;
+        &lt;repository&gt; 
+                &lt;!--仓库id，repositories可以配置多个仓库，保证id不重复 --&gt;
+            &lt;id&gt;nexus&lt;/id&gt;
+                &lt;!--仓库地址，即nexus仓库组的地址 --&gt;
+            &lt;url&gt;http://localhost:8081/nexus/content/groups/public/&lt;/url&gt;
+                &lt;!--是否下载releases构件 --&gt;
+            &lt;releases&gt;
+                &lt;enabled&gt;true&lt;/enabled&gt;
+            &lt;/releases&gt;
+                &lt;!--是否下载snapshots构件 --&gt;
+            &lt;snapshots&gt;
+                &lt;enabled&gt;true&lt;/enabled&gt;
+            &lt;/snapshots&gt;
+        &lt;/repository&gt;
+    &lt;/repositories&gt;
+    &lt;pluginRepositories&gt;
+        &lt;!-- 插件仓库，maven的运行依赖插件，也需要从私服下载插件 --&gt;
+        &lt;pluginRepository&gt; 
+            &lt;!-- 插件仓库的id不允许重复，如果重复后边配置会覆盖前边 --&gt;
+            &lt;id&gt;public&lt;/id&gt;
+            &lt;name&gt;Public Repositories&lt;/name&gt;
+            &lt;url&gt;http://localhost:8081/nexus/content/groups/public/&lt;/url&gt;
+        &lt;/pluginRepository&gt;
+    &lt;/pluginRepositories&gt;
+&lt;/profile&gt;</code></pre><p>使用profile定义仓库需要激活才可生效  </p>
+<pre><code>&lt;activeProfiles&gt;
+    &lt;activeProfile&gt;dev&lt;/activeProfile&gt;
+&lt;/activeProfiles&gt;</code></pre><p>这里的activeProfile必须与上方profile的id一致</p>
+<h3 id="安装第三方jar包到本地仓库"><a href="#安装第三方jar包到本地仓库" class="headerlink" title="安装第三方jar包到本地仓库"></a>安装第三方jar包到本地仓库</h3><p>这里将fastjson-1.1.37.jar上传到本地仓库，有2种方式：<br>1.进入jar包所在目录运行</p>
+<pre><code>mvn install:install-file -DgroupId=com.alibaba -DartifactId=fastjson -Dversion=1.1.37 
+    -Dfile=fastjson-1.1.37.jar -Dpackaging=jar</code></pre><p>2.打开cmd直接运行</p>
+<pre><code>mvn install:install-file -DgroupId=com.alibaba -DartifactId=fastjson -Dversion=1.1.37 
+    -Dpackaging=jar -Dfile=C:\Users\TOAJMER\Desktop\fastjson-1.1.37.jar</code></pre><h3 id="安装第三方jar包到私服"><a href="#安装第三方jar包到私服" class="headerlink" title="安装第三方jar包到私服"></a>安装第三方jar包到私服</h3><p>这里将fastjson-1.1.37.jar上传到私服，在settings配置文件中添加登录私服第三方登录信息：</p>
+<pre><code>&lt;server&gt;
+    &lt;id&gt;thirdparty&lt;/id&gt;
+    &lt;username&gt;admin&lt;/username&gt;
+    &lt;password&gt;admin123&lt;/password&gt;
+&lt;/server&gt;</code></pre><p>有2种方式：<br>1.进入jar包所在目录运行</p>
+<pre><code>mvn deploy:deploy-file -DgroupId=com.alibaba -DartifactId=fastjson -Dversion=1.1.37 
+    -Dpackaging=jar -Dfile=fastjson-1.1.37.jar 
+    -Durl=http://localhost:8081/nexus/content/repositories/thirdparty/ 
+    -DrepositoryId=thirdparty</code></pre><p>2.打开cmd直接运行  </p>
+<pre><code>mvn deploy:deploy-file -DgroupId=com.alibaba -DartifactId=fastjson -Dversion=1.1.37 
+    -Dpackaging=jar -Dfile=C:\Users\TOAJMER\Desktop\fastjson-1.1.37.jar 
+    -Durl=http://localhost:8081/nexus/content/repositories/thirdparty/ 
+    -DrepositoryId=thirdparty</code></pre><p><strong>本文链接：<a href="">Maven之私服nexus</a><br>欢迎转载，请注明出处！</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2016/05/24/maven-nexus_01.html" data-id="ck4zhqtcz0000bod21tav2mph" class="article-share-link">Share</a>
+      
+      
+        <a href="/2016/05/24/maven-nexus_01.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2016/05/24/maven-nexus_01.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/18/tomcat-modifying-memory-configuration-for-optimization.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Tomcat优化之修改内存配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/22/a-few-social-experience-summary-for-fresh-graduates%20.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">应届毕业生踏入社会需要注意的几点社会经验总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+  <section id="comments" class="vcomment">
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Json/">Json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%81%8C%E5%9C%BA/">生活职场</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/DesignPattern/" style="font-size: 10px;">DesignPattern</a> <a href="/tags/IDEA/" style="font-size: 12.5px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 12.5px;">Nginx</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 12.5px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 17.5px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">2016年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">2015年 05月</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/resources-collection-top.html">资源整理[置顶]</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html">Nginx反向代理实现二级域名与端口的映射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_02.html">Git常用命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_01.html">工作中99%能用到的Git命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/git-cheat-sheet.html">GIT命令清单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+          Hosted by BCC<br/>
+          Copyright 2020 www.ergzcode.com All Rights Reserved <br>
+          苏ICP备19067763号-1
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/contact/me.html" class="mobile-nav-link">Call我</a>
+  
+</nav>
+
+    
+
+<script src="//cdn.jsdelivr.net/gh/jquery/jquery@3/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'false' == true;
+    var verify = 'true' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz",
+        appKey: "bjpKKR1Pq36WNhwSImLKdVNd",
+        placeholder: "Please leave your footprints",
+        pageSize:'10',
+        avatar:'',
+        lang:'zh-cn'
+    });
+</script>
+ 
+
+  </div>
+</body>
+</html>

@@ -50,7 +50,7 @@
         
           <a class="main-nav-link" href="/archives">归档</a>
         
-          <a class="main-nav-link" href="/about/me.html">联系站长</a>
+          <a class="main-nav-link" href="/contact/me.html">Call我</a>
         
       </nav>
       <nav id="sub-nav">
@@ -66,10 +66,67 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-git-common-commands-using" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-pm2-watch-hexo-process" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/26/git-common-commands-using.html" class="article-date">
-  <time datetime="2019-11-26T11:26:00.000Z" itemprop="datePublished">2019-11-26</time>
+    <a href="/2019/12/08/pm2-watch-hexo-process.html" class="article-date">
+  <time datetime="2019-12-08T00:01:00.000Z" itemprop="datePublished">2019-12-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/shell/">shell</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在服务器上安装好了hexo，执行hexo sever来启动它的服务，会发现过了一段时间hexo的进程总是莫名其妙的挂掉，然后导致网站无法访问。从网上搜索了一些解决方案，发现能使用PM2来接管hexo的后台进程，从而让hexo进程一直常驻后台。</p>
+<p>操作步骤如下：</p>
+<h5 id="1-首先安装pm2"><a href="#1-首先安装pm2" class="headerlink" title="1.首先安装pm2"></a>1.首先安装pm2</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2019/12/08/pm2-watch-hexo-process.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2019/12/08/pm2-watch-hexo-process.html" data-id="ck3z8h59600002hd2f2uuhb5l" class="article-share-link">Share</a>
+      
+      
+        <a href="/2019/12/08/pm2-watch-hexo-process.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2019/12/08/pm2-watch-hexo-process.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pm2/" rel="tag">pm2</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-git-orders_02" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/26/git-orders_02.html" class="article-date">
+  <time datetime="2019-11-26T14:26:00.000Z" itemprop="datePublished">2019-11-26</time>
 </a>
     
   <div class="article-category">
@@ -84,7 +141,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/26/git-common-commands-using.html">Git常用命令使用</a>
+      <a class="article-title" href="/2019/11/26/git-orders_02.html">Git常用命令使用</a>
     </h1>
   
 
@@ -92,24 +149,154 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.查看工作区的状态：<code>git status</code></p>
-<p>2.查看文件具体修改了什么内容：<code>git diff file</code></p>
-<p>3.查看提交的历史记录，该命令显示从最近到最远的历史记录：<code>git log</code>，如果嫌输出信息太多，可以试试加上<code>--pretty=oneline</code>参数：<code>git log --graph --pretty=oneline --abbrev-commit</code>，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --graph --pretty=oneline --abbrev-commit</span><br><span class="line">eede197ffb267fbda60482da9554ba654ff523e3 init hexo repo</span><br><span class="line">1f2508638115730cb301f73c51b9971fca5c7f09 Initial commit</span><br></pre></td></tr></table></figure>
+        <h3 id="1-查看工作区的状态"><a href="#1-查看工作区的状态" class="headerlink" title="1.查看工作区的状态"></a>1.查看工作区的状态</h3><p><code>$ git status</code></p>
+<h3 id="2-查看文件具体修改了什么内容"><a href="#2-查看文件具体修改了什么内容" class="headerlink" title="2.查看文件具体修改了什么内容"></a>2.查看文件具体修改了什么内容</h3><p><code>$ git diff &lt;file&gt;</code></p>
+<h3 id="3-查看提交的历史记录"><a href="#3-查看提交的历史记录" class="headerlink" title="3.查看提交的历史记录"></a>3.查看提交的历史记录</h3><p>该命令显示从最近到最远的历史记录：<code>$ git log</code>。如果嫌输出信息太多，可以试试加上<code>--pretty=oneline</code>参数：<code>$ git log --graph --pretty=oneline --abbrev-commit</code>，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --graph --pretty=oneline --abbrev-commit</span><br><span class="line">eede197ffb267fbda60482da9554ba654ff523e3 init hexo repo</span><br><span class="line">1f2508638115730cb301f73c51b9971fca5c7f09 Initial commit</span><br></pre></td></tr></table></figure>
 <p>上面输出的一大串数字其实是 commit id(版本号)，这是一个SHA1计算出来的一个非常大的数字，用十六进制表示</p>
         
           <p class="article-more-link">
-            <a href="/2019/11/26/git-common-commands-using.html#more">阅读全文</a>
+            <a href="/2019/11/26/git-orders_02.html#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ergzcode.com/2019/11/26/git-common-commands-using.html" data-id="ck3zcrkvz0000p0d2dqf0h55r" class="article-share-link">Share</a>
+      <a data-url="http://www.ergzcode.com/2019/11/26/git-orders_02.html" data-id="ck4s3tlbz00000id28lt560r5" class="article-share-link">Share</a>
       
       
-        <a href="/2019/11/26/git-common-commands-using.html#comments" class="article-comment-link">
-          <span class="post-comments-count valine-comment-count" data-xid="/2019/11/26/git-common-commands-using.html" itemprop="commentCount"></span>
+        <a href="/2019/11/26/git-orders_02.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2019/11/26/git-orders_02.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-git-orders_01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/26/git-orders_01.html" class="article-date">
+  <time datetime="2019-11-26T13:58:00.000Z" itemprop="datePublished">2019-11-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/26/git-orders_01.html">工作中99%能用到的Git命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="分支操作："><a href="#分支操作：" class="headerlink" title="分支操作："></a>分支操作：</h3><ul>
+<li>git branch 创建分支</li>
+<li>git branch -b 创建并切换到新建的分支上</li>
+<li>git checkout 切换分支</li>
+<li>git branch 查看分支列表</li>
+<li>git branch -v 查看所有分支的最后一次操作</li>
+<li>git branch -vv 查看当前分支</li>
+<li>git brabch -b 分支名 origin/分支名 创建远程分支到本地</li>
+<li>git branch –merged 查看别的分支和当前分支合并过的分支</li>
+<li>git branch –no-merged 查看未与当前分支合并的分支</li>
+<li>git branch -d 分支名 删除本地分支</li>
+<li>git branch -D 分支名 强行删除分支</li>
+<li>git branch origin 分支名 删除远处仓库分支(不可用)</li>
+<li>git push origin :分支名 删除远处仓库分支（可用），冒号前面的空格不能少，原理是把一个空分支push到server上，相当于删除该分支</li>
+<li>git merge 分支名 合并分支到当前分支上</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2019/11/26/git-orders_01.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2019/11/26/git-orders_01.html" data-id="ck4s3m1j50000z8d2bfpxets5" class="article-share-link">Share</a>
+      
+      
+        <a href="/2019/11/26/git-orders_01.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2019/11/26/git-orders_01.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-git-cheat-sheet" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/25/git-cheat-sheet.html" class="article-date">
+  <time datetime="2019-11-24T17:20:00.000Z" itemprop="datePublished">2019-11-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/25/git-cheat-sheet.html">GIT命令清单</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>文档来源于<a href="http://www.git-tower.com/" target="_blank" rel="noopener">Tower</a>&gt;Git版本控制系统-使一切变的简单</p>
+<p>英文原版下载地址：<a href="http://cdn.ergzcode.com/git/git-cheatsheet.pdf" target="_blank" rel="noopener">http://cdn.ergzcode.com/git/git-cheatsheet.pdf</a></p>
+<p>由ergzC0de翻译，如有错误之处，欢迎留言指正</p>
+<hr>
+<h3 id="1-创建库"><a href="#1-创建库" class="headerlink" title="1.创建库"></a>1.创建库</h3><p>克隆一个现有版本库</p>
+<pre><code>$ git clone ssh://user@domain.com/repo.git</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2019/11/25/git-cheat-sheet.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2019/11/25/git-cheat-sheet.html" data-id="ck4s3m1k70003z8d2dms0bid6" class="article-share-link">Share</a>
+      
+      
+        <a href="/2019/11/25/git-cheat-sheet.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2019/11/25/git-cheat-sheet.html" itemprop="commentCount"></span>
       留言
         </a>
       
@@ -181,214 +368,11 @@
 
 
   
-    <article id="post-diagrams-for-various-join-uses-of-sql" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html" class="article-date">
-  <time datetime="2019-11-09T07:50:00.000Z" itemprop="datePublished">2019-11-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html">图解SQL的各种join用法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>下图展示了LEFT JOIN、RIGHT JOIN、INNER JOIN、OUTER JOIN 相关的 7 种用法</strong></p>
-<p><img src="/images/sql_201912121520.png" alt="upload successful"></p>
-        
-          <p class="article-more-link">
-            <a href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.ergzcode.com/2019/11/09/diagrams-for-various-join-uses-of-sql.html" data-id="ck42fq5lv0000m9d2268vbs31" class="article-share-link">Share</a>
-      
-      
-        <a href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html#comments" class="article-comment-link">
-          <span class="post-comments-count valine-comment-count" data-xid="/2019/11/09/diagrams-for-various-join-uses-of-sql.html" itemprop="commentCount"></span>
-      留言
-        </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/" rel="tag">sql</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-java-interview-0003" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/26/java-interview-0003.html" class="article-date">
-  <time datetime="2019-01-26T14:23:00.000Z" itemprop="datePublished">2019-01-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/26/java-interview-0003.html">面试官：说一下Spring StringBuffer StringBuilder的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>先来看String类的实现</p>
-<pre><code>public final class String implements      java.io.serializable,Comparable&lt;String&gt;,CharSequence{
-    /** The value is used for character storage **/
-
-    private final char value[];
-}</code></pre><p>先来说说final关键字的作用</p>
-<ul>
-<li>final修饰类时，表明这个类不能被继承</li>
-<li>final修饰方法时，表明方法不能被重写</li>
-<li>final修饰变量时，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/26/java-interview-0003.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.ergzcode.com/2019/01/26/java-interview-0003.html" data-id="ck4mtnuaj0000iad2b8753r7w" class="article-share-link">Share</a>
-      
-      
-        <a href="/2019/01/26/java-interview-0003.html#comments" class="article-comment-link">
-          <span class="post-comments-count valine-comment-count" data-xid="/2019/01/26/java-interview-0003.html" itemprop="commentCount"></span>
-      留言
-        </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-java-interview-0002" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/25/java-interview-0002.html" class="article-date">
-  <time datetime="2019-01-25T03:00:00.000Z" itemprop="datePublished">2019-01-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/25/java-interview-0002.html">面试官：说一下构造函数，静态代码块，构造代码块的加载顺序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><strong>构造函数，静态代码块，构造代码块的执行顺序</strong></p>
-<pre><code>class Test{
-    //静态代码块1
-    static{
-        System.out.println(&quot;我的静态代码块1&quot;);        
-    }
-    //构造代码块1
-    {
-        System.out.println(&quot;我的构造代码块1&quot;);
-    }
-    //构造函数1
-    public Test(){
-        System.out.println(&quot;我是无参数构造函数&quot;);            
-    }
-    //构造函数2
-    public Test(int t){
-        System.out.println(&quot;我是带参数构造函数，&quot;+&quot;参数是&quot;+t);            
-    }
-
-    //静态代码块2
-    static{
-        System.out.println(&quot;我的静态代码块2&quot;);        
-    }
-    //构造代码块2
-    {
-        System.out.println(&quot;我的构造代码块2&quot;);
-    }
-} </code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/25/java-interview-0002.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.ergzcode.com/2019/01/25/java-interview-0002.html" data-id="ck4m59o3a0000efd2aq738cg9" class="article-share-link">Share</a>
-      
-      
-        <a href="/2019/01/25/java-interview-0002.html#comments" class="article-comment-link">
-          <span class="post-comments-count valine-comment-count" data-xid="/2019/01/25/java-interview-0002.html" itemprop="commentCount"></span>
-      留言
-        </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页 &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">下一页 &amp;raquo;</a>
   </nav>
 
 </section>
@@ -399,7 +383,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Json/">Json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%81%8C%E5%9C%BA/">生活职场</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -409,7 +393,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 15px;">Nginx</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 15px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 20px;">面试题</a>
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/DesignPattern/" style="font-size: 10px;">DesignPattern</a> <a href="/tags/IDEA/" style="font-size: 12.5px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 12.5px;">Nginx</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 12.5px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 17.5px;">面试题</a>
     </div>
   </div>
 
@@ -418,7 +402,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">2016年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">2015年 05月</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -432,6 +416,10 @@
         
           <li>
             <a href="/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/resources-collection-top.html">资源整理[置顶]</a>
           </li>
         
           <li>
@@ -451,23 +439,19 @@
           </li>
         
           <li>
-            <a href="/2019/11/26/git-common-commands-using.html">Git常用命令使用</a>
+            <a href="/2019/11/26/git-orders_02.html">Git常用命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_01.html">工作中99%能用到的Git命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/git-cheat-sheet.html">GIT命令清单</a>
           </li>
         
           <li>
             <a href="/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/09/diagrams-for-various-join-uses-of-sql.html">图解SQL的各种join用法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/26/java-interview-0003.html">面试官：说一下Spring StringBuffer StringBuilder的区别</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/25/java-interview-0002.html">面试官：说一下构造函数，静态代码块，构造代码块的加载顺序</a>
           </li>
         
       </ul>
@@ -484,7 +468,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
           Hosted by BCC<br/>
-          Copyright 2019 www.ergzcode.com All Rights Reserved <br>
+          Copyright 2020 www.ergzcode.com All Rights Reserved <br>
           苏ICP备19067763号-1
     </div>
   </div>
@@ -497,7 +481,7 @@
   
     <a href="/archives" class="mobile-nav-link">归档</a>
   
-    <a href="/about/me.html" class="mobile-nav-link">联系站长</a>
+    <a href="/contact/me.html" class="mobile-nav-link">Call我</a>
   
 </nav>
 
@@ -522,7 +506,7 @@
         return GUEST_INFO.indexOf(item) > -1
     });
     var notify = 'false' == true;
-    var verify = 'false' == true;
+    var verify = 'true' == true;
     new Valine({
         el: '.vcomment',
         notify: notify,

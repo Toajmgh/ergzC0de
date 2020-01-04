@@ -2,7 +2,7 @@
 menu:
   首页: /
   归档: /archives
-  联系站长: /about/me.html
+  Call我: /contact/me.html
 #rss: /atom.xml
 
 # Content
@@ -48,7 +48,7 @@ valine:
   appId: teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz # leancloud application app id
   appKey: bjpKKR1Pq36WNhwSImLKdVNd  # leancloud application app key
   notify: false # valine mail notify (true/false) https://github.com/xCss/Valine/wiki
-  verify: false # valine verify code (true/false)
+  verify: true # valine verify code (true/false)
   pageSize: 10 # comment list page size
   avatar: ''  # gravatar style https://valine.js.org/#/avatar
   lang: zh-cn # i18n: zh-cn/en

@@ -50,7 +50,5 @@ server
 访问HTTP服务器：<http://cdn.ergzcode.com>
 **完成！！**
 
-**本文链接：[Nginx反向代理实现二级域名与端口的映射](http://www.ergzcode.com/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html)
+**本文链接：[Nginx反向代理实现二级域名与端口的映射]()
 欢迎转载，请注明出处！**
-
-
