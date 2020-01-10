@@ -2,6 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.ergzcode.com/2016/06/11/proxy-pattern.html</loc>
+    
+    <lastmod>2020-01-10T17:25:59.751Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ergzcode.com/2016/06/08/design-pattern-intro.html</loc>
+    
+    <lastmod>2020-01-10T17:22:03.479Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ergzcode.com/2016/06/10/abstract-factory-pattern.html</loc>
+    
+    <lastmod>2020-01-10T17:17:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ergzcode.com/2016/06/09/factory-pattern.html</loc>
+    
+    <lastmod>2020-01-10T17:17:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ergzcode.com/2016/06/08/singleton-pattern.html</loc>
+    
+    <lastmod>2020-01-10T17:17:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ergzcode.com/2020/01/05/architect-awesome.html</loc>
+    
+    <lastmod>2020-01-06T04:57:28.312Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.ergzcode.com/2016/05/24/maven-nexus_01.html</loc>
     
     <lastmod>2020-01-04T11:15:23.562Z</lastmod>

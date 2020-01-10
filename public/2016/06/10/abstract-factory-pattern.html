@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  
+
+  
+  <title>设计模式之抽象工厂模式 | ergzC0de</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="抽象工厂模式（Abstract Factory Pattern）是围绕一个超级工厂创建其他工厂。该超级工厂又称为其他工厂的工厂。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。 在抽象工厂模式中，接口是负责创建一个相关对象的工厂，不需要显式指定它们的类。每个生成的工厂都能按照工厂模式提供对象。">
+<meta name="keywords" content="DesignPattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式之抽象工厂模式">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;2016&#x2F;06&#x2F;10&#x2F;abstract-factory-pattern.html">
+<meta property="og:site_name" content="ergzC0de">
+<meta property="og:description" content="抽象工厂模式（Abstract Factory Pattern）是围绕一个超级工厂创建其他工厂。该超级工厂又称为其他工厂的工厂。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。 在抽象工厂模式中，接口是负责创建一个相关对象的工厂，不需要显式指定它们的类。每个生成的工厂都能按照工厂模式提供对象。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;NuksonX.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;fKcJPMf.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;zinarcx.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;sy5DpAF.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;8pAfAdF.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;pA6rOdP.png">
+<meta property="og:updated_time" content="2020-01-10T17:17:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;cdn.ergzcode.com&#x2F;b&#x2F;NuksonX.jpg">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ergzC0de</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">代码也是一种艺术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/contact/me.html">联系我吧</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.ergzcode.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-abstract-factory-pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/10/abstract-factory-pattern.html" class="article-date">
+  <time datetime="2016-06-10T15:03:00.000Z" itemprop="datePublished">2016-06-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式之抽象工厂模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>抽象工厂模式（Abstract Factory Pattern）是围绕一个超级工厂创建其他工厂。该超级工厂又称为其他工厂的工厂。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。</p>
+<p>在抽象工厂模式中，接口是负责创建一个相关对象的工厂，不需要显式指定它们的类。每个生成的工厂都能按照工厂模式提供对象。</p>
+<a id="more"></a>
+
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p><strong>意图：</strong>提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。</p>
+<p><strong>主要解决：</strong>主要解决接口选择的问题。</p>
+<p><strong>何时使用：</strong>系统的产品有多于一个的产品族，而系统只消费其中某一族的产品。</p>
+<p><strong>如何解决：</strong>在一个产品族里面，定义多个产品。</p>
+<p><strong>关键代码：</strong>在一个工厂里聚合多个同类产品。</p>
+<p><strong>应用实例：</strong>工作了，为了参加一些聚会，肯定有两套或多套衣服吧，比如说有商务装（成套，一系列具体产品）、时尚装（成套，一系列具体产品），甚至对于一个家庭来说，可能有商务女装、商务男装、时尚女装、时尚男装，这些也都是成套的，即一系列具体产品。假设一种情况（现实中是不存在的，要不然，没法进入共产主义了，但有利于说明抽象工厂模式），在您的家中，某一个衣柜（具体工厂）只能存放某一种这样的衣服（成套，一系列具体产品），每次拿这种成套的衣服时也自然要从这个衣柜中取出了。用 OOP 的思想去理解，所有的衣柜（具体工厂）都是衣柜类的（抽象工厂）某一个，而每一件成套的衣服又包括具体的上衣（某一具体产品），裤子（某一具体产品），这些具体的上衣其实也都是上衣（抽象产品），具体的裤子也都是裤子（另一个抽象产品）。</p>
+<p><strong>优点：</strong>当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。</p>
+<p><strong>缺点：</strong>产品族扩展非常困难，要增加一个系列的某一产品，既要在抽象的 Creator 里加代码，又要在具体的里面加代码。</p>
+<p><strong>使用场景：</strong> 1、QQ 换皮肤，一整套一起换。 2、生成不同操作系统的程序。</p>
+<p><strong>注意事项：</strong>产品族难扩展，产品等级易扩展。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>我们将创建 Shape 和 Color 接口和实现这些接口的实体类。下一步是创建抽象工厂类 AbstractFactory。接着定义工厂类 ShapeFactory 和 ColorFactory，这两个工厂类都是扩展了 AbstractFactory。然后创建一个工厂创造器/生成器类 FactoryProducer。</p>
+<p>AbstractFactoryPatternDemo，我们的演示类使用 FactoryProducer 来获取 AbstractFactory 对象。它将向 AbstractFactory 传递形状信息 Shape（CIRCLE / RECTANGLE / SQUARE），以便获取它所需对象的类型。同时它还向 AbstractFactory 传递颜色信息 Color（RED / GREEN / BLUE），以便获取它所需对象的类型。</p>
+<p><img src="http://cdn.ergzcode.com/b/NuksonX.jpg" alt=""></p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤 1"></a>步骤 1</h3><p>为形状创建一个接口:Shape.java</p>
+<pre><code>public interface Shape {
+   void draw();
+}</code></pre><h3 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤 2"></a>步骤 2</h3><p>创建实现接口的实体类:<br>Rectangle.java</p>
+<pre><code>public class Rectangle implements Shape {
+
+   @Override
+   public void draw() {
+      System.out.println(&quot;Inside Rectangle::draw() method.&quot;);
+   }
+}</code></pre><p>Square.java</p>
+<pre><code>public class Square implements Shape {
+
+   @Override
+   public void draw() {
+      System.out.println(&quot;Inside Square::draw() method.&quot;);
+   }
+}</code></pre><p>Circle.java</p>
+<pre><code>public class Circle implements Shape {
+
+   @Override
+   public void draw() {
+      System.out.println(&quot;Inside Circle::draw() method.&quot;);
+   }
+}</code></pre><h3 id="步骤-3"><a href="#步骤-3" class="headerlink" title="步骤 3"></a>步骤 3</h3><p>为颜色创建一个接口:Color.java</p>
+<pre><code>public interface Color {
+   void fill();
+}</code></pre><h3 id="步骤4"><a href="#步骤4" class="headerlink" title="步骤4"></a>步骤4</h3><p>创建实现接口的实体类:<br>Red.java</p>
+<pre><code>public class Red implements Color {
+
+   @Override
+   public void fill() {
+      System.out.println(&quot;Inside Red::fill() method.&quot;);
+   }
+}</code></pre><p>Green.java</p>
+<pre><code>public class Green implements Color {
+
+   @Override
+   public void fill() {
+      System.out.println(&quot;Inside Green::fill() method.&quot;);
+   }
+}</code></pre><p>Blue.java</p>
+<pre><code>public class Blue implements Color {
+
+   @Override
+   public void fill() {
+      System.out.println(&quot;Inside Blue::fill() method.&quot;);
+   }
+}</code></pre><h3 id="步骤-5"><a href="#步骤-5" class="headerlink" title="步骤 5"></a>步骤 5</h3><p>为 Color 和 Shape 对象创建抽象类来获取工厂:AbstractFactory.java  </p>
+<pre><code>public abstract class AbstractFactory {
+   public abstract Color getColor(String color);
+   public abstract Shape getShape(String shape) ;
+}</code></pre><h3 id="步骤-6"><a href="#步骤-6" class="headerlink" title="步骤 6"></a>步骤 6</h3><p>创建扩展了 AbstractFactory 的工厂类，基于给定的信息生成实体类的对象:<br>ShapeFactory.java</p>
+<pre><code>public class ShapeFactory extends AbstractFactory {
+
+   @Override
+   public Shape getShape(String shapeType){
+      if(shapeType == null){
+         return null;
+      }        
+      if(shapeType.equalsIgnoreCase(&quot;CIRCLE&quot;)){
+         return new Circle();
+      } else if(shapeType.equalsIgnoreCase(&quot;RECTANGLE&quot;)){
+         return new Rectangle();
+      } else if(shapeType.equalsIgnoreCase(&quot;SQUARE&quot;)){
+         return new Square();
+      }
+      return null;
+   }
+
+   @Override
+   public Color getColor(String color) {
+      return null;
+   }
+}</code></pre><p>ColorFactory.java</p>
+<pre><code>public class ColorFactory extends AbstractFactory {
+
+   @Override
+   public Shape getShape(String shapeType){
+      return null;
+   }
+
+   @Override
+   public Color getColor(String color) {
+      if(color == null){
+         return null;
+      }        
+      if(color.equalsIgnoreCase(&quot;RED&quot;)){
+         return new Red();
+      } else if(color.equalsIgnoreCase(&quot;GREEN&quot;)){
+         return new Green();
+      } else if(color.equalsIgnoreCase(&quot;BLUE&quot;)){
+         return new Blue();
+      }
+      return null;
+   }
+}</code></pre><h3 id="步骤-7"><a href="#步骤-7" class="headerlink" title="步骤 7"></a>步骤 7</h3><p>创建一个工厂创造器/生成器类，通过传递形状或颜色信息来获取工厂:FactoryProducer.java</p>
+<pre><code>public class FactoryProducer {
+   public static AbstractFactory getFactory(String choice){
+      if(choice.equalsIgnoreCase(&quot;SHAPE&quot;)){
+         return new ShapeFactory();
+      } else if(choice.equalsIgnoreCase(&quot;COLOR&quot;)){
+         return new ColorFactory();
+      }
+      return null;
+   }
+}</code></pre><h3 id="步骤-8"><a href="#步骤-8" class="headerlink" title="步骤 8"></a>步骤 8</h3><p>使用 FactoryProducer 来获取 AbstractFactory，通过传递类型信息来获取实体类的对象:AbstractFactoryPatternDemo.java  </p>
+<pre><code>public class AbstractFactoryPatternDemo {
+   public static void main(String[] args) {
+
+      //获取形状工厂
+      AbstractFactory shapeFactory = FactoryProducer.getFactory(&quot;SHAPE&quot;);
+
+      //获取形状为 Circle 的对象
+      Shape shape1 = shapeFactory.getShape(&quot;CIRCLE&quot;);
+
+      //调用 Circle 的 draw 方法
+      shape1.draw();
+
+      //获取形状为 Rectangle 的对象
+      Shape shape2 = shapeFactory.getShape(&quot;RECTANGLE&quot;);
+
+      //调用 Rectangle 的 draw 方法
+      shape2.draw();
+
+      //获取形状为 Square 的对象
+      Shape shape3 = shapeFactory.getShape(&quot;SQUARE&quot;);
+
+      //调用 Square 的 draw 方法
+      shape3.draw();
+
+      //获取颜色工厂
+      AbstractFactory colorFactory = FactoryProducer.getFactory(&quot;COLOR&quot;);
+
+      //获取颜色为 Red 的对象
+      Color color1 = colorFactory.getColor(&quot;RED&quot;);
+
+      //调用 Red 的 fill 方法
+      color1.fill();
+
+      //获取颜色为 Green 的对象
+      Color color2 = colorFactory.getColor(&quot;Green&quot;);
+
+      //调用 Green 的 fill 方法
+      color2.fill();
+
+      //获取颜色为 Blue 的对象
+      Color color3 = colorFactory.getColor(&quot;BLUE&quot;);
+
+      //调用 Blue 的 fill 方法
+      color3.fill();
+   }
+}</code></pre><h3 id="步骤-9"><a href="#步骤-9" class="headerlink" title="步骤 9"></a>步骤 9</h3><p>执行程序，输出结果：</p>
+<pre><code>Inside Circle::draw() method.
+Inside Rectangle::draw() method.
+Inside Square::draw() method.
+Inside Red::fill() method.
+Inside Green::fill() method.
+Inside Blue::fill() method.</code></pre><h1 id="扩展-图文理解"><a href="#扩展-图文理解" class="headerlink" title="扩展(图文理解)"></a>扩展(图文理解)</h1><p>下面例子中鼠标，键盘，耳麦为产品，惠普，戴尔为工厂。</p>
+<h3 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h3><p>简单工厂模式不是 23 种里的一种，简而言之，就是有一个专门生产某个产品的类。<br>比如下图中的鼠标工厂，专业生产鼠标，给参数 0，生产戴尔鼠标，给参数 1，生产惠普鼠标。</p>
+<p><img src="http://cdn.ergzcode.com/b/fKcJPMf.png" alt=""></p>
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><p>工厂模式也就是鼠标工厂是个父类，有生产鼠标这个接口。<br>戴尔鼠标工厂，惠普鼠标工厂继承它，可以分别生产戴尔鼠标，惠普鼠标。<br>生产哪种鼠标不再由参数决定，而是创建鼠标工厂时，由具体鼠标工厂决定。<br>后续直接调用<strong>鼠标工厂.生产鼠标()</strong>方法即可。</p>
+<p><img src="http://cdn.ergzcode.com/b/zinarcx.png" alt=""></p>
+<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><p>抽象工厂模式也就是不仅生产鼠标，同时生产键盘。<br>也就是 PC 厂商是个父类，有生产鼠标，生产键盘两个接口。<br>戴尔工厂，惠普工厂继承它，可以分别生产戴尔鼠标+戴尔键盘，和惠普鼠标+惠普键盘。<br>创建工厂时，由戴尔工厂创建。<br>后续调用<strong>工厂.生产鼠标()</strong>方法则生产戴尔鼠标，调用<strong>工厂.生产键盘()</strong>方法则生产戴尔键盘。</p>
+<p><img src="http://cdn.ergzcode.com/b/sy5DpAF.png" alt=""></p>
+<p><strong>在抽象工厂模式中，假设我们需要增加一个工厂</strong><br>假设我们增加华硕工厂，则我们需要增加华硕工厂，和戴尔工厂一样，继承 PC 厂商，之后创建华硕鼠标，继承鼠标类。创建华硕键盘，继承键盘类即可。</p>
+<p><img src="http://cdn.ergzcode.com/b/8pAfAdF.png" alt=""></p>
+<p><strong>在抽象工厂模式中，假设我们需要增加一个产品</strong><br>假设我们增加耳麦这个产品，则首先我们需要增加耳麦这个父类，再加上戴尔耳麦，惠普耳麦这两个子类。<br>之后在PC厂商这个父类中，增加生产耳麦的接口。最后在戴尔工厂，惠普工厂这两个类中，分别实现生产戴尔耳麦，惠普耳麦的功能。 以上。</p>
+<p><img src="http://cdn.ergzcode.com/b/pA6rOdP.png" alt=""></p>
+<p><strong>原文链接：<a href="https://www.runoob.com/design-pattern/abstract-factory-pattern.html" target="_blank" rel="noopener">抽象工厂模式</a><br>欢饮转载，请注明出处！</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2016/06/10/abstract-factory-pattern.html" data-id="ck58fmgj6000ccyd23py1br0p" class="article-share-link">Share</a>
+      
+      
+        <a href="/2016/06/10/abstract-factory-pattern.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2016/06/10/abstract-factory-pattern.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DesignPattern/" rel="tag">DesignPattern</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/11/proxy-pattern.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          设计模式之代理模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/09/factory-pattern.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">设计模式之工厂模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+  <section id="comments" class="vcomment">
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Json/">Json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84%E6%8A%80%E6%9C%AF/">架构技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%81%8C%E5%9C%BA/">生活职场</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/DesignPattern/" style="font-size: 16px;">DesignPattern</a> <a href="/tags/IDEA/" style="font-size: 12px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 12px;">Nginx</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 12px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 18px;">面试题</a>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">友链&amp;传送门</h3>
+<div class="widget">
+    <ul>
+     <li><a href="https://time.geekbang.org/" target="_blank" rel="noopener" title="极客时间-轻松学习，高效学习-极客邦">极客时间</a></li>
+      <li><a href="http://cmsblogs.com/" target="_blank" rel="noopener" title="Cm's Blog">Cm's Blog</a></li>
+      <li><a href="http://www.ruanyifeng.com/" target="_blank" rel="noopener" title="阮一峰的网络日志">阮一峰的网络日志</a></li>
+      <li><a href="https://coolshell.cn/" target="_blank" rel="noopener" title="酷壳 - COOLSHELL-陈皓">酷壳 - COOLSHELL-陈皓</a></li>
+      <li><a href="http://hellojava.info/" target="_blank" rel="noopener" title="hellojava-阿里毕玄">hellojava-阿里毕玄</a></li>
+      <li><a href="http://blog.didispace.com/" target="_blank" rel="noopener" title="程序猿DD-翟永超-《Spring Cloud微服务实战》作者">程序猿DD-翟永超</a></li>
+      <li><a href="http://jm.taobao.org/" target="_blank" rel="noopener" title="阿里中间件博客">阿里中间件博客</a></li>
+      <li><a href="https://tech.meituan.com" target="_blank" rel="noopener" title="美团点评技术团队博客">美团点评技术团队博客</a></li>
+      <li><a href="http://www.iocoder.cn/" target="_blank" rel="noopener" title="芋道源码 —— 纯源码解析博客">芋道源码</a></li> 
+   </ul>
+</div>
+</div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">2020年 01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">2016年 06月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">2016年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">2015年 05月</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/05/architect-awesome.html">后端架构师技术图谱</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html">Nginx反向代理实现二级域名与端口的映射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_02.html">Git常用命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_01.html">工作中99%能用到的Git命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/git-cheat-sheet.html">GIT命令清单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+          Hosted by BCC<br/>
+          Copyright 2020 www.ergzcode.com All Rights Reserved <br>
+          <a href="http://beian.miit.gov.cn/" target="_blank">苏ICP备19067763号-1</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/contact/me.html" class="mobile-nav-link">联系我吧</a>
+  
+</nav>
+
+    
+
+<script src="//cdn.jsdelivr.net/gh/jquery/jquery@3/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'false' == true;
+    var verify = 'true' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz",
+        appKey: "bjpKKR1Pq36WNhwSImLKdVNd",
+        placeholder: "Please leave your footprints",
+        pageSize:'10',
+        avatar:'',
+        lang:'zh-cn'
+    });
+</script>
+ 
+
+  </div>
+</body>
+</html>
