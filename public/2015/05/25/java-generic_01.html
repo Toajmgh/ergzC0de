@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  
+
+  
+  <title>给程序员和开发者的10道Java泛型面试题 | ergzC0de</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: 给程序员和开发者的10道Java泛型面试题author: ergztags: [面试题]categories:  Java基础date: 2015-05-25 19:03:00   介绍关于泛型的面试题在Java面试中变得越来越常见，因为Java 5问世已经有相当长的时间了，越来越多的应用已经迁移到Java 5上来了，并且几乎所有新的Java开发工作也都是在Tiger(Java 5的">
+<meta name="keywords" content="面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给程序员和开发者的10道Java泛型面试题">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;2015&#x2F;05&#x2F;25&#x2F;java-generic_01.html">
+<meta property="og:site_name" content="ergzC0de">
+<meta property="og:description" content="title: 给程序员和开发者的10道Java泛型面试题author: ergztags: [面试题]categories:  Java基础date: 2015-05-25 19:03:00   介绍关于泛型的面试题在Java面试中变得越来越常见，因为Java 5问世已经有相当长的时间了，越来越多的应用已经迁移到Java 5上来了，并且几乎所有新的Java开发工作也都是在Tiger(Java 5的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-12T06:23:01.170Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ergzC0de</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">代码也是一种艺术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/contact/me.html">联系我吧</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.ergzcode.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-java-generic_01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/25/java-generic_01.html" class="article-date">
+  <time datetime="2015-05-25T11:03:00.000Z" itemprop="datePublished">2015-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      给程序员和开发者的10道Java泛型面试题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: 给程序员和开发者的10道Java泛型面试题<br>author: ergz<br>tags: [面试题]<br>categories:</p>
+<ul>
+<li>Java基础<br>date: 2015-05-25 19:03:00</li>
+</ul>
+<hr>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>关于泛型的面试题在Java面试中变得越来越常见，因为Java 5问世已经有相当长的时间了，越来越多的应用已经迁移到Java 5上来了，并且几乎所有新的Java开发工作也都是在Tiger(Java 5的项目代号)版本上进行的。泛型和其它Java 5特性比如 枚举、自动拆装箱、可变参数，还有集合工具类比如 CountDownLatch、CyclicBarrier和BlockingQueue ，这些在Java面试中变得越来越流行。如果你对 泛型的限定通配符和非限定通配符不熟悉，那么泛型面试题就会变得非常的棘手。 Java内部泛型是怎么工作的呢，答案是<strong>类型擦除</strong>，此外程序员也应当精通于编写带参数的Java泛型类和泛型方法。准备泛型面试的最好的方法是，尝试编写一些简单的程序来了解泛型的各种特性。而本文中，我们将会看到一些流行的Java泛型面试题及其答案。顺便说一下，Javarevisited网站上提供了很多资料来帮助你更好的为Java和J2EE面试做准备，你可以查看<a href="http://javarevisited.blogspot.sg/2011/07/java-multi-threading-interview.html" target="_blank" rel="noopener">15个线程面试题</a>和<a href="http://javarevisited.blogspot.sg/2011/11/collection-interview-questions-answers.html" target="_blank" rel="noopener">排名前10的Java集合类面试题</a>来准备多线程和集合类方面的知识，另外还有关于Spring、Struts、JSP和Servlet的问答文章。如果你是GUI开发人员，并且使用的是Java Swing技术，那么你也可以查看投资银行面试中通常会问到的Java Swing面试题。</p>
+<a id="more"></a>
+
+<h2 id="Java泛型面试题"><a href="#Java泛型面试题" class="headerlink" title="Java泛型面试题"></a>Java泛型面试题</h2><h3 id="1-Java中的泛型是什么-使用泛型的好处是什么"><a href="#1-Java中的泛型是什么-使用泛型的好处是什么" class="headerlink" title="1. Java中的泛型是什么 ? 使用泛型的好处是什么?"></a>1. Java中的泛型是什么 ? 使用泛型的好处是什么?</h3><p>这是在各种Java泛型面试中，一开场你就会被问到的问题中的一个，主要集中在初级和中级面试中。那些拥有Java1.4或更早版本的开发背景的人都知道，在集合中存储对象并在使用前进行<strong>类型转换</strong>是多么的不方便。泛型防止了那种情况的发生。它提供了编译期的类型安全，确保你只能把正确类型的对象放入集合中，避免了在运行时出现ClassCastException。</p>
+<h3 id="2-Java的泛型是如何工作的-什么是类型擦除"><a href="#2-Java的泛型是如何工作的-什么是类型擦除" class="headerlink" title="2. Java的泛型是如何工作的 ? 什么是类型擦除 ?"></a>2. Java的泛型是如何工作的 ? 什么是类型擦除 ?</h3><p>这是一道更好的面试题。泛型是通过<strong>类型擦除</strong>来实现的，编译器在编译时擦除了所有类型的相关信息，所以在运行时不存在任何类型相关的信息。例如List&#60;String&#62;在运行时仅用一个List来表示。这样做的目的，是确保能和Java5之前的版本开发二进制类库（jar）进行兼容。你无法在运行时访问到类型参数，因为编译器已经把泛型类型转换成了<strong>原始类型</strong>。根据你对这个泛型问题的回答情况，你会得到一些后续的提问，比如为什么泛型是由类型擦除来实现的或者给你展示一些会导致编译器出错的泛型代码。请阅读我的<a href="http://javarevisited.blogspot.com/2011/09/generics-java-example-tutorial.html" target="_blank" rel="noopener">Java中泛型是如何工作的</a>来了解更多信息。</p>
+<h3 id="3-什么是泛型中的限定通配符和非限定通配符"><a href="#3-什么是泛型中的限定通配符和非限定通配符" class="headerlink" title="3. 什么是泛型中的限定通配符和非限定通配符 ?"></a>3. 什么是泛型中的限定通配符和非限定通配符 ?</h3><p>这是另外一个非常流行的Java泛型面试题。限定通配符对类型进行了限制。有2种限定通配符，一种是&#60;? extends T&#62;它通过确保类型必须是T的子类来设定类型的上限，另一种是&#60;? super T&#62;它确保类型必须是T的父类来设定类型的下限。泛型类型必须用限定内的类型来进行初始化，否则会导致编译错误。另一方面&#60;?&#62;表示非限定通配符，因为&#60;?&#62;可以使用任意类型来替代。更多信息请参阅我的文章<a href="http://javarevisited.blogspot.com/2012/04/what-is-bounded-and-unbounded-wildcards.html" target="_blank" rel="noopener">泛型中的限定通配符和非限定通配符的区别。</a></p>
+<h3 id="4-List-60-extends-T-62-和List-60-super-T-62-之间有什么区别"><a href="#4-List-60-extends-T-62-和List-60-super-T-62-之间有什么区别" class="headerlink" title="4. List&#60;? extends T&#62;和List &#60;? super T&#62;之间有什么区别 ?"></a>4. List&#60;? extends T&#62;和List &#60;? super T&#62;之间有什么区别 ?</h3><p>这和上一个面试题有联系，有时面试官会用这个问题来评估你对泛型的理解，而不是直接问你什么是限定通配符和非限定通配符。这两个List的声明都是限<a href="http://javarevisited.blogspot.sg/2012/04/what-is-bounded-and-unbounded-wildcards.html" target="_blank" rel="noopener">定通配符的例子</a>，List&#60;? extends T&#62;可以接受任何继承自T的类型的List，而List &#60;? super T&#62;可以接受任何T的父类构成的List。例如List &#60;? super Number&#62;可以接受List&#60;Integer&#62;或List&#60;Float&#62;。在本段出现的链接中可以找到更多信息。</p>
+<h3 id="5-如何编写一个泛型方法，让它能接受泛型参数并返回泛型类型"><a href="#5-如何编写一个泛型方法，让它能接受泛型参数并返回泛型类型" class="headerlink" title="5. 如何编写一个泛型方法，让它能接受泛型参数并返回泛型类型?"></a>5. 如何编写一个泛型方法，让它能接受泛型参数并返回泛型类型?</h3><p>编写泛型方法并不困难，你需要用泛型类型来替代原始类型，比如使用T，E，or K,V等被广泛认可的类型占位符。泛型方法的例子请参阅Java集合框架。最简单的情况下，一个泛型方法可能会像这样：</p>
+<pre><code>public V put(K key, V value) {
+    return cache.put(key, value);
+}</code></pre><h3 id="6-Java中如何使用泛型编写带有参数的类"><a href="#6-Java中如何使用泛型编写带有参数的类" class="headerlink" title="6. Java中如何使用泛型编写带有参数的类?"></a>6. Java中如何使用泛型编写带有参数的类?</h3><p>这是上一道面试题的延伸。面试官可能会要求你用泛型编写一个类型安全的类，文不是编写一个泛型方法。关键仍然是使用泛型替代原始类型，而且要使用JDK中采用的标准占位符。</p>
+<h3 id="7-编写一段泛型程序来实现LRU缓存"><a href="#7-编写一段泛型程序来实现LRU缓存" class="headerlink" title="7. 编写一段泛型程序来实现LRU缓存?"></a>7. 编写一段泛型程序来实现LRU缓存?</h3><p>对于喜欢Java编程的人来说这相当于是一次练习。给你个提示，LinkedHashMap可以用来实现固定大小的LRU缓存，当LRU缓存已经满了的时候，它会把最老的键值对移出缓存。LinkedHashMap提供了一个称为removeEldestEntry()的方法，该方法会被put()和putAll()调用来删除最老的键值对。当然，如果你已经编写了一个可运行的JUnit测试，你也可以随意编写你自己的实现代码。参考：<a href="#">LinkedHashMap实现LRU算法</a></p>
+<h3 id="8-你可以把List-60-String-62-类型的对象传递给一个接受List-60-Object-62-类型参数的方法吗？"><a href="#8-你可以把List-60-String-62-类型的对象传递给一个接受List-60-Object-62-类型参数的方法吗？" class="headerlink" title="8.你可以把List&#60;String&#62;类型的对象传递给一个接受List&#60;Object&#62;类型参数的方法吗？"></a>8.你可以把List&#60;String&#62;类型的对象传递给一个接受List&#60;Object&#62;类型参数的方法吗？</h3><p>对任何一个不太熟悉泛型的人来说，这个Java泛型题目看起来令人困惑，因为乍看起来String是一种Object，所以List&#60;String&#62;应当用在需要List&#60;Object&#62;的地方，但是事实上并非如此。真这样做的话会导致编译出错。如果你再深一步考虑，你会发现Java这样做是有意义的，因为List&#60;Object&#62;可以存储<br>任意类型的对象包括String，Integer等等，而List&#60;String&#62;却只能用来存储Strings。</p>
+<pre><code>List&lt;Object&gt; objectList;
+List&lt;String&gt; stringList;
+
+objectList = stringList;  //compilation error incompatible types</code></pre><h3 id="9-Array中可以用泛型吗"><a href="#9-Array中可以用泛型吗" class="headerlink" title="9. Array中可以用泛型吗?"></a>9. Array中可以用泛型吗?</h3><p>这可能是Java泛型面试题中最简单的一个了，当然前期是你要知道Array事实上并不支持泛型，这也是为什么Joshua Bloch在Effective Java一书中建议使用List来代替Array，因为List可以提供编译器的类型安全，而Array却不能。</p>
+<h3 id="10-如何阻止Java中的类型未检查的警告"><a href="#10-如何阻止Java中的类型未检查的警告" class="headerlink" title="10. 如何阻止Java中的类型未检查的警告?"></a>10. 如何阻止Java中的类型未检查的警告?</h3><p>如果你把泛型和原始类型混合起来使用，例如下列代码，Java5的javac编译器会产生类型未检查的警告，例如：</p>
+<pre><code>List&lt;String&gt; rawList = new ArrayList()
+注意: Hello.java使用了未检查或称为不安全的操作;</code></pre><p>这种警告可以使用@SuppressWarnings(“unchecked”)注解来屏蔽。</p>
+<h2 id="Java泛型面试题补充更新"><a href="#Java泛型面试题补充更新" class="headerlink" title="Java泛型面试题补充更新:"></a>Java泛型面试题补充更新:</h2><p>我手头又拿到了几个Java泛型面试题跟大家分享下，这几道题集中在泛型类型和原始类型的区别上，以及我们是否可以用Object来代替限定通配符的使用等等：</p>
+<h3 id="Java中List-60-Object-62-和原始类型List之间的区别"><a href="#Java中List-60-Object-62-和原始类型List之间的区别" class="headerlink" title="Java中List&#60;Object&#62;和原始类型List之间的区别?"></a>Java中List&#60;Object&#62;和原始类型List之间的区别?</h3><p>原始类型和带参数类型&#60;Object&#62;之间主要区别是，在编译时编译器不会对原始类型进行类型安全检查，却会对带参数的类型进行检查，通过使用Object作为类型，可以告诉编译器该方法可以接受任何类型的对象，比如String或Integer。这道题的考察点在于对泛型中原始类型的正确理解。他们之间的第二点区别是，你可以把任何带参数的类型传递给原始类型List，但却不能把List&#60;String&#62;传递给接受List&#60;Object&#62;的方法，因为会产生编译错误。更多详细信息请参阅<a href="http://javarevisited.blogspot.sg/2011/09/generics-java-example-tutorial.html" target="_blank" rel="noopener">Java中的泛型是如何工作的</a>。</p>
+<h3 id="Java中List-60-62-和List-60-Object-62-之间的区别是什么"><a href="#Java中List-60-62-和List-60-Object-62-之间的区别是什么" class="headerlink" title="Java中List&#60;?&#62;和List&#60;Object&#62;之间的区别是什么?"></a>Java中List&#60;?&#62;和List&#60;Object&#62;之间的区别是什么?</h3><p>这道题跟上一道题看起来很像，实际上却完全不同。List&#60;?&#62;是一个未知类型的List，而List&#60;Object&#62;其实是任意类型的List。你可以把List&#60;String&#62;，List&#60;Integer&#62;赋值给List&#60;?&#62;，却不能把List&#60;String&#62;赋值给List&#60;Object&#62;。</p>
+<pre><code>List&lt;?&gt; listOfAnyType;
+List&lt;Object&gt; listOfObject = new ArrayList&lt;Object&gt;();
+List&lt;String&gt; listOfString = new ArrayList&lt;String&gt;();
+List&lt;Integer&gt; listOfInteger = new ArrayList&lt;Integer&gt;();
+
+listOfAnyType = listOfString; //legal
+listOfAnyType = listOfInteger; //legal
+listOfObject = (List&lt;Object&gt;) listOfString; //compiler error - in-convertible types </code></pre><p>想了解更多关于通配符的信息请查看<a href="http://javarevisited.blogspot.sg/2011/09/generics-java-example-tutorial.html" target="_blank" rel="noopener">Java中的泛型通配符示例</a></p>
+<h3 id="List-60-String-62-和原始类型List之间的区别"><a href="#List-60-String-62-和原始类型List之间的区别" class="headerlink" title="List&#60;String&#62;和原始类型List之间的区别."></a>List&#60;String&#62;和原始类型List之间的区别.</h3><p>该题类似于“原始类型和带参数类型之间有什么区别”。带参数类型是类型安全的，因为编译时会对其进行类型安全检查，其类型安全是由编译器保证的，但原始类型List却不是类型安全的。你不能把String之外的任何其他类型的Object存入String类型的List中。使用泛型的带参数类型你不需要进行类型转换，但是对于原始类型，你则需要进行显示的类型转换。</p>
+<pre><code>List listOfRawTypes = new ArrayList();
+listOfRawTypes.add(&quot;abc&quot;);
+listOfRawTypes.add(123); //编译器允许这样 - 运行时却会出现异常
+String item = (String) listOfRawTypes.get(0); //需要显式的类型转换
+item = (String) listOfRawTypes.get(1); //抛ClassCastException，因为Integer不能被转换为String
+
+List&lt;String&gt; listOfString = new ArrayList();
+listOfString.add(&quot;abcd&quot;);
+listOfString.add(1234); //编译错误，比在运行时抛异常要好
+item = listOfString.get(0); //不需要显式的类型转换 - 编译器自动转换 </code></pre><p>这些都是Java泛型面试中频繁出现的问题及其答案。所有的这些面试题都不困难，其实他们都是基于泛型的基础知识。任何对泛型有不错了解的Java程序员都肯定熟知这些泛型题目。如果你有任何好的面试题，不管是在什么面试中碰到的，或者如果你想知道任何Java泛型面试题的答案，请在评论中留言。</p>
+<p><strong>原文链接：<a href="https://www.oschina.net/translate/10-interview-questions-on-java-generics" target="_blank" rel="noopener">给程序员和开发者的 10 道 Java 泛型面试题</a><br>欢饮转载，请注明出处！</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2015/05/25/java-generic_01.html" data-id="ck5bat3wx0015mcd21r9922ec" class="article-share-link">Share</a>
+      
+      
+        <a href="/2015/05/25/java-generic_01.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2015/05/25/java-generic_01.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/05/26/jackson-hibernateLazyInitializer_01.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hibernate查询Jackson序列化懒加载问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/05/19/jsp-basePath_01.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JSP中basePath作用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+  <section id="comments" class="vcomment">
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Json/">Json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84%E6%8A%80%E6%9C%AF/">架构技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%81%8C%E5%9C%BA/">生活职场</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/DesignPattern/" style="font-size: 16px;">DesignPattern</a> <a href="/tags/IDEA/" style="font-size: 12px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 12px;">Nginx</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/index/" style="font-size: 10px;">index</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 12px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 18px;">面试题</a>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">友链&amp;传送门</h3>
+<div class="widget">
+    <ul>
+     <li><a href="https://time.geekbang.org/" target="_blank" rel="noopener" title="极客时间-轻松学习，高效学习-极客邦">极客时间</a></li>
+      <li><a href="http://cmsblogs.com/" target="_blank" rel="noopener" title="Cm's Blog">Cm's Blog</a></li>
+      <li><a href="http://www.ruanyifeng.com/" target="_blank" rel="noopener" title="阮一峰的网络日志">阮一峰的网络日志</a></li>
+      <li><a href="https://coolshell.cn/" target="_blank" rel="noopener" title="酷壳 - COOLSHELL-陈皓">酷壳 - COOLSHELL-陈皓</a></li>
+      <li><a href="http://hellojava.info/" target="_blank" rel="noopener" title="hellojava-阿里毕玄">hellojava-阿里毕玄</a></li>
+      <li><a href="http://blog.didispace.com/" target="_blank" rel="noopener" title="程序猿DD-翟永超-《Spring Cloud微服务实战》作者">程序猿DD-翟永超</a></li>
+      <li><a href="http://jm.taobao.org/" target="_blank" rel="noopener" title="阿里中间件博客">阿里中间件博客</a></li>
+      <li><a href="https://tech.meituan.com" target="_blank" rel="noopener" title="美团点评技术团队博客">美团点评技术团队博客</a></li>
+      <li><a href="http://www.iocoder.cn/" target="_blank" rel="noopener" title="芋道源码 —— 纯源码解析博客">芋道源码</a></li> 
+   </ul>
+</div>
+</div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">2020年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">2016年 06月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">2016年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">2015年 05月</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/13/effective-java-for-java-developers.html">《Effective Java》— Java进阶必备</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/05/architect-awesome.html">后端架构师技术图谱 [置顶]</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html">Nginx反向代理实现二级域名与端口的映射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_02.html">Git常用命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_01.html">工作中99%能用到的Git命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/git-cheat-sheet.html">GIT命令清单</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+          Hosted by BCC<br/>
+          Copyright 2020 www.ergzcode.com All Rights Reserved <br>
+          <a href="http://beian.miit.gov.cn/" target="_blank">苏ICP备19067763号-1</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/contact/me.html" class="mobile-nav-link">联系我吧</a>
+  
+</nav>
+
+    
+
+<script src="//cdn.jsdelivr.net/gh/jquery/jquery@3/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'false' == true;
+    var verify = 'true' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz",
+        appKey: "bjpKKR1Pq36WNhwSImLKdVNd",
+        placeholder: "Please leave your footprints",
+        pageSize:'10',
+        avatar:'',
+        lang:'zh-cn'
+    });
+</script>
+ 
+
+  </div>
+</body>
+</html>

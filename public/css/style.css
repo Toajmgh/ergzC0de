@@ -206,7 +206,7 @@ body {
   background: #fff;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 3px;
 }
 .article-entry h1,
@@ -236,7 +236,7 @@ body {
 }
 .article-entry hr,
 .widget hr {
-  border: 1px dashed #ddd;
+  border: 1px dashed #ccc;
 }
 .article-entry strong,
 .widget strong {
@@ -310,7 +310,7 @@ body {
 #header {
   height: 300px;
   position: relative;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
 }
 #header:before,
 #header:after {
@@ -348,13 +348,14 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("images/banner.jpg") center #000;
+  background: url("images/banner.jpg") center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   z-index: -1;
 }
 #header-title {
+  color: #1bc3fb;
   text-align: center;
   height: 40px;
   position: absolute;
@@ -365,7 +366,7 @@ body {
 #logo,
 #subtitle {
   text-decoration: none;
-  color: #fff;
+  color: #1bc3fb;
   font-weight: 300;
   text-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
@@ -389,7 +390,7 @@ body {
 .nav-icon,
 .main-nav-link {
   float: left;
-  color: #fff;
+  color: #1bc3fb;
   opacity: 0.6;
   text-decoration: none;
   text-shadow: 0 1px rgba(0,0,0,0.2);
@@ -615,11 +616,11 @@ a.article-title:hover {
 }
 .article-entry th {
   font-weight: bold;
-  border-bottom: 3px solid #ddd;
+  border-bottom: 3px solid #ccc;
   padding-bottom: 0.5em;
 }
 .article-entry td {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
   padding: 10px 0;
 }
 .article-entry blockquote {
@@ -693,7 +694,7 @@ a.article-title:hover {
 .article-footer {
   font-size: 0.85em;
   line-height: 1.6em;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #ccc;
   padding-top: 1.6em;
   margin: 0 20px 20px;
 }
@@ -762,7 +763,7 @@ a.article-title:hover {
     margin-left: -4px;
     content: "";
     border-radius: 50%;
-    background: #ddd;
+    background: #ccc;
     -webkit-box-shadow: 0 1px 2px #fff;
     box-shadow: 0 1px 2px #fff;
   }
@@ -804,7 +805,7 @@ a.article-title:hover {
 .article-nav-caption {
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #ddd;
+  color: #ccc;
   line-height: 1em;
   font-weight: bold;
 }
@@ -840,7 +841,7 @@ a.article-title:hover {
   padding: 0 15px;
   color: #555;
   outline: none;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 3px 3px 0 0;
   height: 36px;
   line-height: 36px;
@@ -946,7 +947,7 @@ a.article-title:hover {
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 3px;
   margin: 50px 0;
 }
@@ -1025,7 +1026,7 @@ a.article-title:hover {
   background: #fff;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 3px;
   text-align: center;
   color: #999;
@@ -1072,12 +1073,12 @@ a.article-title:hover {
   font-weight: bold;
 }
 #page-nav .space {
-  color: #ddd;
+  color: #ccc;
 }
 #footer {
   background: #262a30;
   padding: 50px 0;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #ccc;
   color: #999;
 }
 #footer a {
@@ -1093,14 +1094,14 @@ a.article-title:hover {
 }
 .article-entry pre,
 .article-entry .highlight {
-  background: #2d2d2d;
+  background: #f4f5f6;
   margin: 0 -20px;
   padding: 15px 20px;
   border-style: solid;
-  border-color: #ddd;
+  border-color: #ccc;
   border-width: 1px 0;
   overflow: auto;
-  color: #ccc;
+  color: #4d4d4c;
   line-height: 22.400000000000002px;
 }
 .article-entry .highlight .gutter pre,
@@ -1165,7 +1166,7 @@ a.article-title:hover {
 .article-entry .gist {
   margin: 0 -20px;
   border-style: solid;
-  border-color: #ddd;
+  border-color: #ccc;
   border-width: 1px 0;
   background: #2d2d2d;
   padding: 15px 20px 15px 0;
@@ -1271,8 +1272,8 @@ pre .javascript .function {
     left: 0;
     width: 280px;
     height: 100%;
-    background: #191919;
-    border-right: 1px solid #fff;
+    background: #eee;
+    border-right: 1px solid #eee;
   }
 }
 @media screen and (max-width: 479px) {
@@ -1299,9 +1300,9 @@ pre .javascript .function {
   margin: 50px 0;
 }
 .widget {
-  color: #777;
+  color: #eee;
   text-shadow: 0 1px #fff;
-  background: #ddd;
+  background: #eee;
   -webkit-box-shadow: 0 -1px 4px #ccc inset;
   box-shadow: 0 -1px 4px #ccc inset;
   border: 1px solid #ccc;

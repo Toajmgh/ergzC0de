@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>后端架构师技术图谱</title>
+    <title>《Effective Java》— Java进阶必备</title>
+    <url>/2020/01/13/effective-java-for-java-developers.html</url>
+    <content><![CDATA[<p>《Effective Java》是 Java 领域的经典之作，其影响力不亚于《Think in Java》。它是每个 Java 开发者的必读书籍，值得多次阅读品味，并不断实践其中的经验技巧。</p>
+<p><strong>《Effective Java》第三版英文原版下载地址：</strong><a href="http://cdn.ergzcode.com/%E6%96%87%E6%A1%A3/Effective-Java-3rd%20%E8%8B%B1%E6%96%87%E5%8E%9F%E7%89%88.pdf" target="_blank" rel="noopener">Effective-Java-3rd.pdf</a><br><strong>《Effective Java》第三版中文翻译下载地址：</strong><a href="http://cdn.ergzcode.com/%E6%96%87%E6%A1%A3/Effective-Java-3rd-LaTex-Pattern.pdf" target="_blank" rel="noopener">Effective-Java-3rd-LaTex-Pattern.pdf</a>  </p>
+<p>两年前读过此书，当时自身技术水平并不算高，对于其中的原则不求甚解。现在重温以前的笔记，加上这两年的编程经验，竟然有种豁然开朗的感觉。<br>「书读百遍，其义自见。」古人说得有道理啊。</p>
+<p>这里简单介绍几条开发中经常用到的技巧，比如 Builder、对象方法、接口定义等。</p>
+<a id="more"></a>
+
+<h1 id="1-存在多个构造参数时，考虑使用构建器（Builder）"><a href="#1-存在多个构造参数时，考虑使用构建器（Builder）" class="headerlink" title="1. 存在多个构造参数时，考虑使用构建器（Builder）"></a>1. 存在多个构造参数时，考虑使用构建器（Builder）</h1><p>这里讲的就是构建者模式，使用 Builder 给对象设置构造参数，从而去除重叠的构造方法。</p>
+<p>在第三方库中，比如 OkHttp、Retrofit，经常见到这样的设计。我们用 Builder 设置参数，然后调用 build 方法构造对象，代码看起来非常清爽，没有多余的构造参数，使用起来也方便。</p>
+<p>如果类的构造方法中有多个参数，而且参数可选，Builder 模式是不错的选择。</p>
+<h1 id="2-使用私有构造器或者枚举类型强化-Singleton-属性"><a href="#2-使用私有构造器或者枚举类型强化-Singleton-属性" class="headerlink" title="2. 使用私有构造器或者枚举类型强化 Singleton 属性"></a>2. 使用私有构造器或者枚举类型强化 Singleton 属性</h1><p>单例模式推荐使用静态内部类，保证线程安全的同时，延迟对象的初始化。枚举的话，不是很推荐。</p>
+<h1 id="3-避免创建不必要的对象"><a href="#3-避免创建不必要的对象" class="headerlink" title="3. 避免创建不必要的对象"></a>3. 避免创建不必要的对象</h1><p>创建对象是有开销的，对于不可变的（可以理解为无状态的）对象，可以始终被重用。善于使用缓存（cache）是好的习惯，我们要做一个环保的程序员。比如 Android Message 里面的对象池，就是一种优化策略。</p>
+<p>优先使用基本数据类型而不是装箱数据类型，因为基本类型占用更少的内存空间，对于移动端来说，内存优化是一个永恒的话题。</p>
+<h1 id="4-覆盖-equals-时总要覆盖-hashCode，始终覆盖-toString"><a href="#4-覆盖-equals-时总要覆盖-hashCode，始终覆盖-toString" class="headerlink" title="4. 覆盖 equals 时总要覆盖 hashCode，始终覆盖 toString"></a>4. 覆盖 equals 时总要覆盖 hashCode，始终覆盖 toString</h1><p>对于一般的 Java Bean 对象，我都会重写其 toString 方法， 这样在打印日志的时候，就能看见它的内部数据，这点非常有用。</p>
+<p>对于需要作为 HashMap 的键的对象，一定要重写 hashCode 和 equals 方法，这样有利于散列表均匀分布，提升查找的性能。<br>另外，两个对象 equals 相等，hashCode 必须相等；hashCode 相等，equals不一定相等。这个很好理解，equals 保证 HashMap 键的唯一性；hashCode 相等表示两个对象放在 HashMap 数组的同一个位置上。</p>
+<p>提示：现在的 IDE 实在是太傻瓜式了，可以一键生成 toString, equals 和 hashCode 方法，这时候有什么理由不重写呢。</p>
+<h1 id="5-接口优于抽象类"><a href="#5-接口优于抽象类" class="headerlink" title="5. 接口优于抽象类"></a>5. 接口优于抽象类</h1><p>接口本质上是一种规范，用来定义通用的规则，然后各个功能提供者进行不同的实现。这里，我想到了一条软件设计原则–接口隔离，是说一个接口只用来定义一种规范，每个接口都是独立的，不能让一个接口有多个定义。</p>
+<p>骨架实现，AbstractXXX，为抽象类提供了实现上的帮助，又不强加抽象类定义类型的限制。比如 Java 里面的 AbstractList，是列表类的抽象实现，其子类有 ArrayList 和 LinkedList 等。</p>
+<h1 id="6-优先考虑静态成员类"><a href="#6-优先考虑静态成员类" class="headerlink" title="6. 优先考虑静态成员类"></a>6. 优先考虑静态成员类</h1><p>静态成员类不持有外部类的引用，所以不会造成内存泄漏问题，主要是用来辅助外部类。还有匿名内部类，比如直接创建的 Runnable，建议内部保持简短，大约 10 行或者更少些，否则影响程序的可读性。</p>
+<h1 id="7-列表优先于数组"><a href="#7-列表优先于数组" class="headerlink" title="7. 列表优先于数组"></a>7. 列表优先于数组</h1><p>列表和数组的不同点：</p>
+<p>数组是可变的，泛型是不可变的。<br>数组是具体化的，泛型通过擦除来实现的。<br>数组提供了运行时的类型安全，但是没有编译时的类型安全。列表里面有许多实用的方法，而数组就没有提供哦。建议优先使用集合类型 List<E>，而不是数组类型 E[]。</p>
+<h1 id="8-使用枚举代替-int-常量"><a href="#8-使用枚举代替-int-常量" class="headerlink" title="8. 使用枚举代替 int 常量"></a>8. 使用枚举代替 int 常量</h1><p>枚举类型是实例受控的，它们是单例的泛化，本质上是单元素的枚举。枚举的优点是易读性好，更加安全，功能强大。但是与 int 类型相比，枚举有些性能缺点：装载和初始化枚举时会有时间和空间的成本。在 Android 端，通常不建议使用。</p>
+<h1 id="9-for-each-循环优先于传统的-for-循环"><a href="#9-for-each-循环优先于传统的-for-循环" class="headerlink" title="9. for-each 循环优先于传统的 for 循环"></a>9. for-each 循环优先于传统的 for 循环</h1><p>for-each 循环在简洁性和预防 bug 方面优于传统的 for 循环，而且没有性能损失，应该尽可能地使用 for-each。</p>
+<p>这一点深有感触，IDE 通常会提示使用 for-each，毕竟简洁就是美啊。</p>
+<h1 id="10-如果需要精确的答案，请避免使用-float-和-double"><a href="#10-如果需要精确的答案，请避免使用-float-和-double" class="headerlink" title="10. 如果需要精确的答案，请避免使用 float 和 double"></a>10. 如果需要精确的答案，请避免使用 float 和 double</h1><p>float 和 double 并没有提供完全精确的结果，所以不应该用于需要精确计算的场合，尤其是货币计算。如果想要系统记录十进制小数点，可以使用 BigDecimal。</p>
+<p>float 类型确实是个坑，经常会出现计算不准确的问题，一般推荐使用双精度浮点型 double。</p>
+<p>以上就是从《Effective Java》里面摘录的十条编程建议，另外还有好多干货呢，赶快去阅读吧。</p>
+<p><strong>链接：<a href="https://www.jianshu.com/p/54e122c8e765" target="_blank" rel="noopener">https://www.jianshu.com/p/54e122c8e765</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处</strong></p>
+]]></content>
+      <categories>
+        <category>Java进阶</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>后端架构师技术图谱 [置顶]</title>
     <url>/2020/01/05/architect-awesome.html</url>
     <content><![CDATA[<p><b style="color:red">推荐:</b> <a href="https://github.com/sorenduan/awesome-java-books" target="_blank" rel="noopener">《Java技术书籍大全》 - awesome-java-books</a>，从初级开发者到资深架构师，看这些书就够了</p>
-<p>原文链接：<a href="https://github.com/xingshaocheng/architect-awesome" target="_blank" rel="noopener">后端架构师技术图谱</a><br>MD文件：<a href="http://cdn.ergzcode.com/awesome/architect-awesome.md" target="_blank" rel="noopener">http://cdn.ergzcode.com/awesome/architect-awesome.md</a></p>
+<p>原文链接：<a href="https://github.com/xingshaocheng/architect-awesome" target="_blank" rel="noopener">https://github.com/xingshaocheng/architect-awesome</a><br>MD文件：<a href="http://cdn.ergzcode.com/awesome/architect-awesome.md" target="_blank" rel="noopener">architect-awesome.md</a><br>PDF文件：<a href="http://cdn.ergzcode.com/%E6%96%87%E6%A1%A3/%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E5%B8%88%E6%8A%80%E6%9C%AF%E5%9B%BE%E8%B0%B1.pdf" target="_blank" rel="noopener">后端架构师技术图谱.pdf</a>  </p>
 <hr/>
 
 
@@ -2289,6 +2327,9 @@
       <categories>
         <category>架构技术</category>
       </categories>
+      <tags>
+        <tag>index</tag>
+      </tags>
   </entry>
   <entry>
     <title>最新IDEA永久激活</title>
@@ -5094,6 +5135,65 @@ disable SerializationConfig.SerializationFeature.FAIL_ON_EMPTY_BEANS</code></pre
       </tags>
   </entry>
   <entry>
+    <title>给程序员和开发者的10道Java泛型面试题</title>
+    <url>/2015/05/25/java-generic_01.html</url>
+    <content><![CDATA[<p>title: 给程序员和开发者的10道Java泛型面试题<br>author: ergz<br>tags: [面试题]<br>categories:</p>
+<ul>
+<li>Java基础<br>date: 2015-05-25 19:03:00</li>
+</ul>
+<hr>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>关于泛型的面试题在Java面试中变得越来越常见，因为Java 5问世已经有相当长的时间了，越来越多的应用已经迁移到Java 5上来了，并且几乎所有新的Java开发工作也都是在Tiger(Java 5的项目代号)版本上进行的。泛型和其它Java 5特性比如 枚举、自动拆装箱、可变参数，还有集合工具类比如 CountDownLatch、CyclicBarrier和BlockingQueue ，这些在Java面试中变得越来越流行。如果你对 泛型的限定通配符和非限定通配符不熟悉，那么泛型面试题就会变得非常的棘手。 Java内部泛型是怎么工作的呢，答案是<strong>类型擦除</strong>，此外程序员也应当精通于编写带参数的Java泛型类和泛型方法。准备泛型面试的最好的方法是，尝试编写一些简单的程序来了解泛型的各种特性。而本文中，我们将会看到一些流行的Java泛型面试题及其答案。顺便说一下，Javarevisited网站上提供了很多资料来帮助你更好的为Java和J2EE面试做准备，你可以查看<a href="http://javarevisited.blogspot.sg/2011/07/java-multi-threading-interview.html" target="_blank" rel="noopener">15个线程面试题</a>和<a href="http://javarevisited.blogspot.sg/2011/11/collection-interview-questions-answers.html" target="_blank" rel="noopener">排名前10的Java集合类面试题</a>来准备多线程和集合类方面的知识，另外还有关于Spring、Struts、JSP和Servlet的问答文章。如果你是GUI开发人员，并且使用的是Java Swing技术，那么你也可以查看投资银行面试中通常会问到的Java Swing面试题。</p>
+<a id="more"></a>
+
+<h2 id="Java泛型面试题"><a href="#Java泛型面试题" class="headerlink" title="Java泛型面试题"></a>Java泛型面试题</h2><h3 id="1-Java中的泛型是什么-使用泛型的好处是什么"><a href="#1-Java中的泛型是什么-使用泛型的好处是什么" class="headerlink" title="1. Java中的泛型是什么 ? 使用泛型的好处是什么?"></a>1. Java中的泛型是什么 ? 使用泛型的好处是什么?</h3><p>这是在各种Java泛型面试中，一开场你就会被问到的问题中的一个，主要集中在初级和中级面试中。那些拥有Java1.4或更早版本的开发背景的人都知道，在集合中存储对象并在使用前进行<strong>类型转换</strong>是多么的不方便。泛型防止了那种情况的发生。它提供了编译期的类型安全，确保你只能把正确类型的对象放入集合中，避免了在运行时出现ClassCastException。</p>
+<h3 id="2-Java的泛型是如何工作的-什么是类型擦除"><a href="#2-Java的泛型是如何工作的-什么是类型擦除" class="headerlink" title="2. Java的泛型是如何工作的 ? 什么是类型擦除 ?"></a>2. Java的泛型是如何工作的 ? 什么是类型擦除 ?</h3><p>这是一道更好的面试题。泛型是通过<strong>类型擦除</strong>来实现的，编译器在编译时擦除了所有类型的相关信息，所以在运行时不存在任何类型相关的信息。例如List&#60;String&#62;在运行时仅用一个List来表示。这样做的目的，是确保能和Java5之前的版本开发二进制类库（jar）进行兼容。你无法在运行时访问到类型参数，因为编译器已经把泛型类型转换成了<strong>原始类型</strong>。根据你对这个泛型问题的回答情况，你会得到一些后续的提问，比如为什么泛型是由类型擦除来实现的或者给你展示一些会导致编译器出错的泛型代码。请阅读我的<a href="http://javarevisited.blogspot.com/2011/09/generics-java-example-tutorial.html" target="_blank" rel="noopener">Java中泛型是如何工作的</a>来了解更多信息。</p>
+<h3 id="3-什么是泛型中的限定通配符和非限定通配符"><a href="#3-什么是泛型中的限定通配符和非限定通配符" class="headerlink" title="3. 什么是泛型中的限定通配符和非限定通配符 ?"></a>3. 什么是泛型中的限定通配符和非限定通配符 ?</h3><p>这是另外一个非常流行的Java泛型面试题。限定通配符对类型进行了限制。有2种限定通配符，一种是&#60;? extends T&#62;它通过确保类型必须是T的子类来设定类型的上限，另一种是&#60;? super T&#62;它确保类型必须是T的父类来设定类型的下限。泛型类型必须用限定内的类型来进行初始化，否则会导致编译错误。另一方面&#60;?&#62;表示非限定通配符，因为&#60;?&#62;可以使用任意类型来替代。更多信息请参阅我的文章<a href="http://javarevisited.blogspot.com/2012/04/what-is-bounded-and-unbounded-wildcards.html" target="_blank" rel="noopener">泛型中的限定通配符和非限定通配符的区别。</a></p>
+<h3 id="4-List-60-extends-T-62-和List-60-super-T-62-之间有什么区别"><a href="#4-List-60-extends-T-62-和List-60-super-T-62-之间有什么区别" class="headerlink" title="4. List&#60;? extends T&#62;和List &#60;? super T&#62;之间有什么区别 ?"></a>4. List&#60;? extends T&#62;和List &#60;? super T&#62;之间有什么区别 ?</h3><p>这和上一个面试题有联系，有时面试官会用这个问题来评估你对泛型的理解，而不是直接问你什么是限定通配符和非限定通配符。这两个List的声明都是限<a href="http://javarevisited.blogspot.sg/2012/04/what-is-bounded-and-unbounded-wildcards.html" target="_blank" rel="noopener">定通配符的例子</a>，List&#60;? extends T&#62;可以接受任何继承自T的类型的List，而List &#60;? super T&#62;可以接受任何T的父类构成的List。例如List &#60;? super Number&#62;可以接受List&#60;Integer&#62;或List&#60;Float&#62;。在本段出现的链接中可以找到更多信息。</p>
+<h3 id="5-如何编写一个泛型方法，让它能接受泛型参数并返回泛型类型"><a href="#5-如何编写一个泛型方法，让它能接受泛型参数并返回泛型类型" class="headerlink" title="5. 如何编写一个泛型方法，让它能接受泛型参数并返回泛型类型?"></a>5. 如何编写一个泛型方法，让它能接受泛型参数并返回泛型类型?</h3><p>编写泛型方法并不困难，你需要用泛型类型来替代原始类型，比如使用T，E，or K,V等被广泛认可的类型占位符。泛型方法的例子请参阅Java集合框架。最简单的情况下，一个泛型方法可能会像这样：</p>
+<pre><code>public V put(K key, V value) {
+    return cache.put(key, value);
+}</code></pre><h3 id="6-Java中如何使用泛型编写带有参数的类"><a href="#6-Java中如何使用泛型编写带有参数的类" class="headerlink" title="6. Java中如何使用泛型编写带有参数的类?"></a>6. Java中如何使用泛型编写带有参数的类?</h3><p>这是上一道面试题的延伸。面试官可能会要求你用泛型编写一个类型安全的类，文不是编写一个泛型方法。关键仍然是使用泛型替代原始类型，而且要使用JDK中采用的标准占位符。</p>
+<h3 id="7-编写一段泛型程序来实现LRU缓存"><a href="#7-编写一段泛型程序来实现LRU缓存" class="headerlink" title="7. 编写一段泛型程序来实现LRU缓存?"></a>7. 编写一段泛型程序来实现LRU缓存?</h3><p>对于喜欢Java编程的人来说这相当于是一次练习。给你个提示，LinkedHashMap可以用来实现固定大小的LRU缓存，当LRU缓存已经满了的时候，它会把最老的键值对移出缓存。LinkedHashMap提供了一个称为removeEldestEntry()的方法，该方法会被put()和putAll()调用来删除最老的键值对。当然，如果你已经编写了一个可运行的JUnit测试，你也可以随意编写你自己的实现代码。参考：<a href="#">LinkedHashMap实现LRU算法</a></p>
+<h3 id="8-你可以把List-60-String-62-类型的对象传递给一个接受List-60-Object-62-类型参数的方法吗？"><a href="#8-你可以把List-60-String-62-类型的对象传递给一个接受List-60-Object-62-类型参数的方法吗？" class="headerlink" title="8.你可以把List&#60;String&#62;类型的对象传递给一个接受List&#60;Object&#62;类型参数的方法吗？"></a>8.你可以把List&#60;String&#62;类型的对象传递给一个接受List&#60;Object&#62;类型参数的方法吗？</h3><p>对任何一个不太熟悉泛型的人来说，这个Java泛型题目看起来令人困惑，因为乍看起来String是一种Object，所以List&#60;String&#62;应当用在需要List&#60;Object&#62;的地方，但是事实上并非如此。真这样做的话会导致编译出错。如果你再深一步考虑，你会发现Java这样做是有意义的，因为List&#60;Object&#62;可以存储<br>任意类型的对象包括String，Integer等等，而List&#60;String&#62;却只能用来存储Strings。</p>
+<pre><code>List&lt;Object&gt; objectList;
+List&lt;String&gt; stringList;
+
+objectList = stringList;  //compilation error incompatible types</code></pre><h3 id="9-Array中可以用泛型吗"><a href="#9-Array中可以用泛型吗" class="headerlink" title="9. Array中可以用泛型吗?"></a>9. Array中可以用泛型吗?</h3><p>这可能是Java泛型面试题中最简单的一个了，当然前期是你要知道Array事实上并不支持泛型，这也是为什么Joshua Bloch在Effective Java一书中建议使用List来代替Array，因为List可以提供编译器的类型安全，而Array却不能。</p>
+<h3 id="10-如何阻止Java中的类型未检查的警告"><a href="#10-如何阻止Java中的类型未检查的警告" class="headerlink" title="10. 如何阻止Java中的类型未检查的警告?"></a>10. 如何阻止Java中的类型未检查的警告?</h3><p>如果你把泛型和原始类型混合起来使用，例如下列代码，Java5的javac编译器会产生类型未检查的警告，例如：</p>
+<pre><code>List&lt;String&gt; rawList = new ArrayList()
+注意: Hello.java使用了未检查或称为不安全的操作;</code></pre><p>这种警告可以使用@SuppressWarnings(“unchecked”)注解来屏蔽。</p>
+<h2 id="Java泛型面试题补充更新"><a href="#Java泛型面试题补充更新" class="headerlink" title="Java泛型面试题补充更新:"></a>Java泛型面试题补充更新:</h2><p>我手头又拿到了几个Java泛型面试题跟大家分享下，这几道题集中在泛型类型和原始类型的区别上，以及我们是否可以用Object来代替限定通配符的使用等等：</p>
+<h3 id="Java中List-60-Object-62-和原始类型List之间的区别"><a href="#Java中List-60-Object-62-和原始类型List之间的区别" class="headerlink" title="Java中List&#60;Object&#62;和原始类型List之间的区别?"></a>Java中List&#60;Object&#62;和原始类型List之间的区别?</h3><p>原始类型和带参数类型&#60;Object&#62;之间主要区别是，在编译时编译器不会对原始类型进行类型安全检查，却会对带参数的类型进行检查，通过使用Object作为类型，可以告诉编译器该方法可以接受任何类型的对象，比如String或Integer。这道题的考察点在于对泛型中原始类型的正确理解。他们之间的第二点区别是，你可以把任何带参数的类型传递给原始类型List，但却不能把List&#60;String&#62;传递给接受List&#60;Object&#62;的方法，因为会产生编译错误。更多详细信息请参阅<a href="http://javarevisited.blogspot.sg/2011/09/generics-java-example-tutorial.html" target="_blank" rel="noopener">Java中的泛型是如何工作的</a>。</p>
+<h3 id="Java中List-60-62-和List-60-Object-62-之间的区别是什么"><a href="#Java中List-60-62-和List-60-Object-62-之间的区别是什么" class="headerlink" title="Java中List&#60;?&#62;和List&#60;Object&#62;之间的区别是什么?"></a>Java中List&#60;?&#62;和List&#60;Object&#62;之间的区别是什么?</h3><p>这道题跟上一道题看起来很像，实际上却完全不同。List&#60;?&#62;是一个未知类型的List，而List&#60;Object&#62;其实是任意类型的List。你可以把List&#60;String&#62;，List&#60;Integer&#62;赋值给List&#60;?&#62;，却不能把List&#60;String&#62;赋值给List&#60;Object&#62;。</p>
+<pre><code>List&lt;?&gt; listOfAnyType;
+List&lt;Object&gt; listOfObject = new ArrayList&lt;Object&gt;();
+List&lt;String&gt; listOfString = new ArrayList&lt;String&gt;();
+List&lt;Integer&gt; listOfInteger = new ArrayList&lt;Integer&gt;();
+
+listOfAnyType = listOfString; //legal
+listOfAnyType = listOfInteger; //legal
+listOfObject = (List&lt;Object&gt;) listOfString; //compiler error - in-convertible types </code></pre><p>想了解更多关于通配符的信息请查看<a href="http://javarevisited.blogspot.sg/2011/09/generics-java-example-tutorial.html" target="_blank" rel="noopener">Java中的泛型通配符示例</a></p>
+<h3 id="List-60-String-62-和原始类型List之间的区别"><a href="#List-60-String-62-和原始类型List之间的区别" class="headerlink" title="List&#60;String&#62;和原始类型List之间的区别."></a>List&#60;String&#62;和原始类型List之间的区别.</h3><p>该题类似于“原始类型和带参数类型之间有什么区别”。带参数类型是类型安全的，因为编译时会对其进行类型安全检查，其类型安全是由编译器保证的，但原始类型List却不是类型安全的。你不能把String之外的任何其他类型的Object存入String类型的List中。使用泛型的带参数类型你不需要进行类型转换，但是对于原始类型，你则需要进行显示的类型转换。</p>
+<pre><code>List listOfRawTypes = new ArrayList();
+listOfRawTypes.add(&quot;abc&quot;);
+listOfRawTypes.add(123); //编译器允许这样 - 运行时却会出现异常
+String item = (String) listOfRawTypes.get(0); //需要显式的类型转换
+item = (String) listOfRawTypes.get(1); //抛ClassCastException，因为Integer不能被转换为String
+
+List&lt;String&gt; listOfString = new ArrayList();
+listOfString.add(&quot;abcd&quot;);
+listOfString.add(1234); //编译错误，比在运行时抛异常要好
+item = listOfString.get(0); //不需要显式的类型转换 - 编译器自动转换 </code></pre><p>这些都是Java泛型面试中频繁出现的问题及其答案。所有的这些面试题都不困难，其实他们都是基于泛型的基础知识。任何对泛型有不错了解的Java程序员都肯定熟知这些泛型题目。如果你有任何好的面试题，不管是在什么面试中碰到的，或者如果你想知道任何Java泛型面试题的答案，请在评论中留言。</p>
+<p><strong>原文链接：<a href="https://www.oschina.net/translate/10-interview-questions-on-java-generics" target="_blank" rel="noopener">给程序员和开发者的 10 道 Java 泛型面试题</a><br>欢饮转载，请注明出处！</strong></p>
+]]></content>
+      <categories>
+        <category>Java基础</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JSP中basePath作用</title>
     <url>/2015/05/19/jsp-basePath_01.html</url>
     <content><![CDATA[<p>通常在JSP页面中有如下代码：</p>
@@ -5123,6 +5223,725 @@ disable SerializationConfig.SerializationFeature.FAIL_ON_EMPTY_BEANS</code></pre
 <h3 id="还原"><a href="#还原" class="headerlink" title="还原"></a>还原</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">recover</span><span class="params">(String path)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">       Runtime runtime = Runtime.getRuntime();</span><br><span class="line">       Process process = runtime.exec(<span class="string">"mysql -u root -p123456 --default-character-set=utf8 db"</span>);</span><br><span class="line">       OutputStream outputStream = process.getOutputStream();</span><br><span class="line">       BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(path)));</span><br><span class="line">       String str = <span class="keyword">null</span>;</span><br><span class="line">       StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">       <span class="keyword">while</span> ((str = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">           sb.append(str + <span class="string">"\r\n"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       str = sb.toString();</span><br><span class="line">       System.out.println(str);</span><br><span class="line">       OutputStreamWriter writer = <span class="keyword">new</span> OutputStreamWriter(outputStream, <span class="string">"utf-8"</span>);</span><br><span class="line">       writer.write(str);</span><br><span class="line">       writer.flush();</span><br><span class="line">       outputStream.close();</span><br><span class="line">       br.close();</span><br><span class="line">       writer.close();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 
+]]></content>
+      <categories>
+        <category>Java基础</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>深入Java反射机制</title>
+    <url>/2015/05/14/java-reflect_01.html</url>
+    <content><![CDATA[<h3 id="java反射机制的认识"><a href="#java反射机制的认识" class="headerlink" title="java反射机制的认识"></a>java反射机制的认识</h3><p>Java的反射机制是在<strong>运行状态中</strong>（程序运行时），对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取类自身的信息及动态调用对象的方法的功能称为Java语言的反射机制。<br>简单来说，反射机制是指程序运行时能够获取自身的信息。在java中，只要给定类的名称，那么久可以通过反射机制来获取来的所有信息。</p>
+<a id="more"></a>
+
+<p>在Object中有个getClass的方法,此方法被所有的子类继承。</p>
+<pre><code>public final Class&lt;?&gt; getClass()</code></pre><p>以上的方法返回值是一个<strong>Class类型</strong>,实际上此类是java反射的源头,也就是说可以通过对象反射来获得类的所有信息.<br>Class本身表示一个类的本身,通过Class可以完整的得到一个类的完整结构,包括此类中的方法定义,属性定义.</p>
+<h3 id="Class类的常用方法："><a href="#Class类的常用方法：" class="headerlink" title="Class类的常用方法："></a>Class类的常用方法：</h3><table>
+<thead>
+<tr>
+<th>方法摘要</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static Class&lt;?&gt; forName(String className) throws ClassNotFoundException</td>
+<td>传入完整的“包.类”名称实例化Class对象</td>
+</tr>
+<tr>
+<td>public Constructor&lt;?&gt;[] getConstructors() throws SecurityException</td>
+<td>得到一个类中的全部构造方法</td>
+</tr>
+<tr>
+<td>public Field[] getDeclaredFields() throws SecurityException</td>
+<td>得到一个类父类中的全部属性</td>
+</tr>
+<tr>
+<td>public Field[] getFields() throws SecurityException</td>
+<td>取得本类中的全部属性</td>
+</tr>
+<tr>
+<td>public Method[] getMethods() throws SecurityException</td>
+<td>取得一个类中的全部方法</td>
+</tr>
+<tr>
+<td>public Method getMethod(String name,Class&lt;?&gt;… parameterTypes) throws NoSuchMethodException,SecurityException</td>
+<td>返回一个Method对象，并设置一个方法中的全部参数类型</td>
+</tr>
+<tr>
+<td>public Class&lt;?&gt;[] getInterfaces()</td>
+<td>得到一个类中所实现的全部接口</td>
+</tr>
+<tr>
+<td>public String getName()</td>
+<td>得到一个类完整的“包.类”名称</td>
+</tr>
+<tr>
+<td>public Package getPackage()</td>
+<td>得到一个类的包</td>
+</tr>
+<tr>
+<td>public Class&lt;? super T&gt; getSuperclass()</td>
+<td>得到一个类的父类Class对象</td>
+</tr>
+<tr>
+<td>public T newInstance() throws InstantiationException,IllegalAccessException</td>
+<td>根据Class定义的类实例化对象</td>
+</tr>
+<tr>
+<td>public Class&lt;?&gt; getComponentType()</td>
+<td>返回表示数组类型的Class</td>
+</tr>
+<tr>
+<td>public boolean isArray()</td>
+<td>判断此Class是否是一个数组</td>
+</tr>
+</tbody></table>
+<h3 id="实例化Class对象的三种方式："><a href="#实例化Class对象的三种方式：" class="headerlink" title="实例化Class对象的三种方式："></a>实例化Class对象的三种方式：</h3><ul>
+<li>通过forName()方法</li>
+<li>类.class</li>
+<li>对象.getClass()</li>
+</ul>
+<p><strong>实例化Class类对象</strong></p>
+<pre><code>package 反射机制01;
+public class getClassDemo02 {
+
+ public static void main(String[] args) {
+  //返回值类型为Class类型,支持泛型(通配符)
+  Class&lt;?&gt; c1=null;
+  Class&lt;?&gt; c2=null;
+  Class&lt;?&gt; c3=null;
+
+  try{
+   c1=Class.forName(&quot;反射机制01.Y&quot;);
+  }catch(ClassNotFoundException e){
+   e.printStackTrace();
+  }
+  c2=new Y().getClass();
+  c3=Y.class;
+  System.out.println(c1.getName());//getName()方法的得到完整的类路径,&quot;包.类&quot;名称
+  System.out.println(c2.getName());
+  System.out.println(c3.getName());
+ }
+
+}
+class Y{
+
+}</code></pre><p><strong>Class类的使用</strong><br>1.可以使用Class类完成类对象的实例化的操作(一般情况下使用new关键字实例化对象)  </p>
+<p>代码：</p>
+<pre><code>package 反射机制02;
+public class getClassDemo01 {
+
+ public static void main(String[] args) {
+  Person per=null;
+  Class&lt;?&gt; c=null;
+  try {
+   c=Class.forName(&quot;反射机制02.Person&quot;);
+   per=(Person)c.newInstance();//通过反射实例化对象
+  } catch (Exception e) {
+   e.printStackTrace();
+  }
+  per.setName(&quot;xxx&quot;);
+  per.setAge(23);
+  System.out.println(per);
+
+ }
+
+}
+class Person{
+
+ private String name;
+ private int age;
+
+ public String getName() {
+  return name;
+ }
+ public void setName(String name) {
+  this.name = name;
+ }
+ public int getAge() {
+  return age;
+ }
+ public void setAge(int age) {
+  this.age = age;
+ }
+ @Override
+ public String toString() {
+  return &quot;Person [name=&quot; + name + &quot;, age=&quot; + age + &quot;]&quot;;
+ }
+}</code></pre><p>注意：类中必须存在无参构造函数，否则无法进行实例化的操作。要记住的是，使用Class类完成类对象的实例化，也需要类中构造方法的支持，这样才符合对象实例化的要求。</p>
+<p>2.可以通过Constructor类调用<strong>有参构造方法</strong>完成对象的实例化</p>
+<pre><code>package 反射机制02;
+import java.lang.reflect.Constructor;
+public class getClassDemo02 {
+
+ public static void main(String[] args) {
+  Student stu=null;
+  Class&lt;?&gt; c=null;
+  try {
+   c=Class.forName(&quot;反射机制02.Student&quot;);
+   Constructor cons[]=null;
+   cons=c.getConstructors();
+   stu=(Student)cons[0].newInstance(&quot;xxx&quot;,23);
+  } catch (Exception e) {
+   e.printStackTrace();
+  }
+  System.out.println(stu);
+
+ }
+
+}
+class Student{
+
+ private String name;
+ private int age;
+ //使用Class类实例化对象,必须存在无参构造函数,否则无法进行实例化的操作
+ /*public Student() {
+  // TODO Auto-generated constructor stub
+ }*/
+ public Student(String name,int age) {
+  this.name=name;
+  this.age=age;
+ }
+
+ public String getName() {
+  return name;
+ }
+ public void setName(String name) {
+  this.name = name;
+ }
+ public int getAge() {
+  return age;
+ }
+ public void setAge(int age) {
+  this.age = age;
+ }
+ @Override
+ public String toString() {
+  return &quot;Student [name=&quot; + name + &quot;, age=&quot; + age + &quot;]&quot;;
+ }
+}</code></pre><p><strong>取得类的结构</strong><br>定义一个接口:China.java</p>
+<pre><code>package 取得类结构 ;
+interface China{    // 定义China接口
+ public static final String NATIONAL = &quot;China&quot; ;    // 定义全局常量
+ public static final String AUTHOR = &quot;xxx&quot; ;    // 定义全局常量
+ public void sayChina() ;     // 无参的，没有返回值的方法
+ public String sayHello(String name,int age) ;    // 定义有两个参数的方法，并返回内容
+}</code></pre><p>定义一个实现类：Person.java</p>
+<pre><code>public class Person implements China{
+ private String name ;
+ private int age ;
+ public Person(){    // 无参构造
+ }
+ public Person(String name){
+  this.name = name ;    // 设置name属性
+ }
+ public Person(String name,int age){
+  this(name) ;
+  this.age = age ;
+ }
+ public void sayChina(){    // 覆写方法
+  System.out.println(&quot;作者：&quot; + AUTHOR + &quot;，国籍：&quot; + NATIONAL) ;
+ }
+ public String sayHello(String name,int age){
+  return name + &quot;，你好！我今年：&quot; + age + &quot;岁了！&quot; ;
+ }
+ public void setName(String name){
+  this.name = name ;
+ }
+ public void setAge(int age){
+  this.age = age ;
+ }
+ public String getName(){
+  return this.name ;
+ }
+ public int getAge(){
+  return this.age ;
+ }
+};</code></pre><p>获取类的接口:GetInterfaceDemo.java  </p>
+<pre><code>package 取得类结构;
+public class GetInterfaceDemo {
+
+ public static void main(String[] args) {
+  Class&lt;?&gt; c1=null;
+   try {
+    c1=Class.forName(&quot;取得类结构.Person&quot;);
+   } catch (ClassNotFoundException e) {
+    e.printStackTrace();
+   }
+   Class&lt;?&gt; c2[]=c1.getInterfaces();
+   for(int i=0;i&lt;c2.length;i++){
+    System.out.println(c2[i].getName());
+   }
+ }
+}</code></pre><p>获得类的父类:GetSuperclassDemo.java</p>
+<pre><code>package 取得类结构;
+public class GetSuperclassDemo {
+
+ public static void main(String[] args) {
+  Class&lt;?&gt; c1=null;
+   try {
+    c1=Class.forName(&quot;取得类结构.Person&quot;);
+   } catch (ClassNotFoundException e) {
+    e.printStackTrace();
+   }
+   //一个类只能继承一个父类,如果没有指明的继承父类,默认直接父类为Object
+   Class&lt;?&gt; c2=c1.getSuperclass();
+    System.out.println(c2.getName());
+ }
+}</code></pre><p>获得类的全部构造方法:GetConstructorDemo.java</p>
+<pre><code>package 取得类结构;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
+public class GetConstructorDemo {
+
+ public static void main(String[] args) {
+  Class&lt;?&gt; c1=null;
+   try {
+    c1=Class.forName(&quot;取得类结构.Person&quot;);
+   } catch (ClassNotFoundException e) {
+    e.printStackTrace();
+   }
+   Constructor&lt;?&gt; cons[]=c1.getConstructors();
+   for(int i=0;i&lt;cons.length;i++){
+    //得到构造函数的详细信息
+    String modifier=Modifier.toString(cons[i].getModifiers());// 得到修饰符
+    Class&lt;?&gt; p[]=cons[i].getParameterTypes();//得到构造方法的所有参数
+    System.out.print(modifier+&quot; &quot;);
+    System.out.print(cons[i].getName()+&quot;(&quot;);
+    for(int j=0;j&lt;p.length;j++){
+     System.out.print(p[j].getName()+&quot; arg&quot;+j);
+     if(j&lt;p.length-1){
+      System.out.print(&quot;,&quot;);
+     }
+    }
+    System.out.println(&quot;){}&quot;);
+   //System.out.println(cons[i]);
+   }
+ }
+}</code></pre><p>获得类的全部属性，成员变量:GetFieldDemo.java</p>
+<pre><code>package 取得类结构;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+public class GetFieldDemo {
+ public static void main(String[] args) {
+  Class&lt;?&gt; c1 = null;// 声明Class实例
+  try {
+   c1 = Class.forName(&quot;取得类结构.Person&quot;);
+  } catch (ClassNotFoundException e) {
+   e.printStackTrace();
+  }
+  {// 这是一个块
+   Field f[] = c1.getFields();// 得到本类的公共属性,成员变量
+   for (int i = 0; i &lt; f.length; i++) {
+    Class&lt;?&gt; type = f[i].getType();// 得到属性的返回值的类型
+    String modifier = Modifier.toString(f[i].getModifiers());
+    System.out.print(modifier + &quot; &quot; + type.getName() + &quot; &quot;);
+    System.out.println(f[i].getName() + &quot;;&quot;);
+   }
+  }
+  System.out.println(&quot;----------------------------------&quot;);
+  {// 这是一个块
+   Field f[] = c1.getDeclaredFields(); //得到本类中的属性,该类的成员变量
+   for (int i = 0; i &lt; f.length; i++) {
+    Class&lt;?&gt; type = f[i].getType();// 得到属性的返回值的类型
+    String modifier = Modifier.toString(f[i].getModifiers());
+    System.out.print(modifier + &quot; &quot; + type.getName() + &quot; &quot;);
+    System.out.println(f[i].getName() + &quot;;&quot;);
+   }
+  }
+ }
+}</code></pre><p>获得类中的方法：GetMethodDemo.java</p>
+<pre><code>package 取得类结构;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+public class GetMethodDemo {
+ public static void main(String[] args) {
+  Class&lt;?&gt; c1 = null;// 声明Class实例
+  try {
+   c1 = Class.forName(&quot;取得类结构.Person&quot;);
+  } catch (ClassNotFoundException e) {
+   e.printStackTrace();
+  }
+  {// 这是一个块
+   Method m[] = c1.getMethods();// 得到全部方法 ,包括继承父类的方法
+   for (int i = 0; i &lt; m.length; i++) {
+    String modifier = Modifier.toString(m[i].getModifiers());//得到修饰符
+    Class&lt;?&gt; p[]=m[i].getParameterTypes();//得到所有的形参类型
+    Class&lt;?&gt; type=m[i].getReturnType();//得到该方法的返回类型
+    Class&lt;?&gt; ex[]=m[i].getExceptionTypes();//取出方法可能抛出的异常
+    System.out.print(modifier+&quot; &quot;+type.getName()+&quot; &quot;);
+    System.out.print(m[i].getName()+&quot;(&quot;);
+    for(int j=0;j&lt;p.length;j++){
+     System.out.print(p[j].getName()+&quot; arg&quot;+j+&quot; &quot;);
+     if(j&lt;p.length-1){
+      System.out.print(&quot;,&quot;);
+     }
+    }
+    if(ex.length&gt;0){
+     System.out.print(&quot;) throws &quot;);
+     for(int j=0;j&lt;ex.length;j++){
+      System.out.println(ex[j].getName());
+     }
+
+    }else{
+     System.out.println(&quot;)&quot;);
+    }
+   }
+  }
+  System.out.println(&quot;----------------------------------&quot;);
+  {// 这是一个块
+   Method m[] = c1.getDeclaredMethods();// 得到本类中的方法
+   for (int i = 0; i &lt; m.length; i++) {
+    String modifier = Modifier.toString(m[i].getModifiers());//得到修饰符
+    Class&lt;?&gt; p[]=m[i].getParameterTypes();//得到所有的形参类型
+    Class&lt;?&gt; type=m[i].getReturnType();//得到该方法的返回类型
+    Class&lt;?&gt; ex[]=m[i].getExceptionTypes();//取出方法可能抛出的异常
+    System.out.print(modifier+&quot; &quot;+type.getName()+&quot; &quot;);
+    System.out.print(m[i].getName()+&quot;(&quot;);
+    for(int j=0;j&lt;p.length;j++){
+     System.out.print(p[j].getName()+&quot; arg&quot;+j+&quot; &quot;);
+     if(j&lt;p.length-1){
+      System.out.print(&quot;,&quot;);
+     }
+    }
+    if(ex.length&gt;0){
+     System.out.print(&quot;) throw &quot;);
+     for(int j=0;j&lt;ex.length;j++){
+      System.out.println(ex[j].getName());
+     }
+
+    }else{
+     System.out.println(&quot;)&quot;);
+    }
+   }
+  }
+ }
+}</code></pre><p><strong>任何引用数据类型也都可以用Object对象接收(比如:数组)</strong>  </p>
+<p><strong>反射的深入</strong><br>我们知道类实例化对象后,就可以调用该类的方法,但是调用的时候必须要知道方法的名称.<br>java中的反射机制让我们不仅可以通过对象调用方法,也可以通过反射来调用类的方法.</p>
+<p>调用无参方法，无返回值：InvokeSayChinaDemo.java</p>
+<pre><code>package 反射的深入研究;
+import java.lang.reflect.Method;
+public class InvokeSayChinaDemo {
+
+ public static void main(String[] args) {
+  Class&lt;?&gt; c1=null;
+  try {
+   c1=Class.forName(&quot;反射的深入研究.Person&quot;);
+   Method m=c1.getMethod(&quot;sayChina&quot;);
+   //通过反射调用方法
+   m.invoke(c1.newInstance());
+  } catch (Exception e) {
+   e.printStackTrace();
+  }
+ }
+}</code></pre><p>调用有参方法，有返回值：InvokeSayHelloDemo.java</p>
+<pre><code>package 反射的深入研究;
+import java.lang.reflect.Method;
+public class InvokeSayHelloDemo {
+
+ public static void main(String[] args) {
+  Class&lt;?&gt; c1=null;
+  try {
+   c1=Class.forName(&quot;反射的深入研究.Person&quot;);
+   Method m=c1.getMethod(&quot;sayHello&quot;,String.class,int.class);
+   //通过反射调用方法,这个方法有个String的返回值
+   String val=null;
+       //c1.newInstance()表示此Class对象表示的类的一个新实例
+                   //对带有指定参数的指定对象调用由此 Method 对象表示的底层方法
+   val=(String)m.invoke(c1.newInstance(),&quot;xxx&quot;,23);
+   System.out.println(val);
+  } catch (Exception e) {
+   e.printStackTrace();
+  }
+ }
+}</code></pre><p>属性赋值：InvokeSetDemo.java</p>
+<pre><code>package 反射的深入研究;
+import java.lang.reflect.Method;
+public class InvokeSetDemo {
+
+ public static void main(String[] args) {
+  Class&lt;?&gt; c1=null;
+  Object obj=null;
+  try {
+   c1=Class.forName(&quot;反射的深入研究.Person&quot;);
+   obj=c1.newInstance();
+  } catch (Exception e) {}
+  setter(obj,&quot;name&quot;,&quot;xxx&quot;,String.class) ;    // 调用setter方法
+  setter(obj,&quot;age&quot;,23,int.class) ;    // 调用setter方法
+  System.out.print(&quot;姓名：&quot;) ;
+  getter(obj,&quot;name&quot;) ;
+  System.out.print(&quot;年龄：&quot;) ;
+  getter(obj,&quot;age&quot;);
+ }
+
+ public static void setter(Object obj,String attr,Object value,Class&lt;?&gt; type){
+  try {
+   Method m=obj.getClass().getMethod(&quot;set&quot;+initStr(attr), type);
+   //set没有返回值,所以m.invoke(obj, value)为空值
+   //System.out.println(m.invoke(obj, value));
+   m.invoke(obj, value);
+  } catch (Exception e) {
+   e.printStackTrace();
+   }
+ }
+
+ public static void getter(Object obj,String attr){
+  try {
+   Method m=obj.getClass().getMethod(&quot;get&quot;+initStr(attr));
+    System.out.println(m.invoke(obj));
+  } catch (Exception e) {
+   e.printStackTrace();
+   }
+ }
+ //单词首字母大写的实现
+ public static String initStr(String val){
+  String str=val.substring(0, 1).toUpperCase()+val.substring(1, val.length());
+  return str;
+ }
+}</code></pre><p>私有属性的赋值：InvokeFieldDemo.java</p>
+<pre><code>package 反射的深入研究;
+import java.lang.reflect.Field;
+//私有属性的操作
+public class InvokeFieldDemo {
+
+ public static void main(String[] args) throws Exception {
+
+  Class&lt;?&gt; c1=Class.forName(&quot;反射的深入研究.Person&quot;);
+  Object obj=c1.newInstance();//表示此Class对象表示的类的实例
+  Field nameField = null ;
+  Field ageField = null ;
+  nameField=c1.getDeclaredField(&quot;name&quot;);
+  ageField=c1.getDeclaredField(&quot;age&quot;);
+  nameField.setAccessible(true);//设置此属性对外部可见
+  ageField.setAccessible(true);//设置此属性对外部可见
+  //设置值
+  nameField.set(obj, &quot;xxx&quot;);
+  ageField.set(obj, 23);
+
+  System.out.println(&quot;姓名：&quot; + nameField.get(obj)) ;//返回指定对象上此 Field 表示的字段的值。
+  System.out.println(&quot;年龄：&quot; + ageField.get(obj)) ;
+
+
+ }
+}</code></pre><p><strong>注意：</strong>注意：不建议这样使用,因为用反射操作set和get会破坏程序的封装性.<br>反射在数组方面的应用:<br>根据反射得到指定对象数组的信息,并通过java.lang.reflect包下的Array类操作数组里的值<br>ClassArrayDemo.java</p>
+<pre><code>package 反射的深入研究;
+import java.lang.reflect.Array;
+public class ClassArrayDemo {
+
+ public static void main(String[] args) {
+  //指定一个整型数组
+  int temp[]={3,2,1};// 返回表示数组类型的Class。
+  Class&lt;?&gt; c1=temp.getClass().getComponentType();
+  //以 String 的形式返回此 Class 对象所表示的实体（类、接口、数组类、基本类型或 void）名称。
+  System.out.println(&quot;类型: &quot;+c1.getName());
+  System.out.println(&quot;长度: &quot;+Array.getLength(temp));
+  System.out.println(&quot;第一个内容：&quot; +Array.get(temp, 0));
+  Array.set(temp, 0, 9);//将指定对象数组temp中的索引组件的值设置为指定的新值。
+  System.out.println(&quot;第一个内容：&quot; +Array.get(temp,0));
+
+ }
+}</code></pre><p>通过反射改变指定对象数组的开辟大小(长度):ChangeArrayDemo.java</p>
+<pre><code>package 反射的深入研究;
+import java.lang.reflect.Array;
+public class ChangeArrayDemo {
+
+ public static void main(String[] args) {
+  //指定一个整型数组
+  int temp[]={3,4,1};
+  int newInt[]=(int[])arrayInc(temp,5);
+  print(temp);
+  System.out.println(&quot;\n--------------------------&quot;);
+  print(newInt);
+  System.out.println(&quot;\n--------------------------&quot;);
+  String t[] = {&quot;lxh&quot;,&quot;mldn&quot;,&quot;mldnjava&quot;} ;
+  String nt[] = (String [])arrayInc(t,8) ;
+  print(nt);
+
+ }
+ //写一个方法根据指定数组对象得到新的数组
+ //任何引用数据类型都可以用Object对象接受
+ public static Object arrayInc(Object obj,int len){
+  //obj--&gt;temp
+  Class&lt;?&gt; c=obj.getClass();
+  Class&lt;?&gt; attr=c.getComponentType();//得到数组组件类型的Class对象
+  Object newObj=Array.newInstance(attr, len);//创建一个具有指定的数组组件类型和长度的新数组
+  //数组拷贝
+  System.arraycopy(obj, 0, newObj, 0, Array.getLength(obj));
+  return newObj;
+ }
+
+ //写一个方法输出数组的信息
+ public static void print(Object obj){
+  Class&lt;?&gt; c=obj.getClass();
+  //判断是否是数组
+  if(!c.isArray()){
+   return;
+  }
+  Class&lt;?&gt; attr=c.getComponentType();
+  System.out.println(&quot;类型: &quot;+attr.getName()+&quot;, 数组长度: &quot;+Array.getLength(obj));
+  for(int i=0;i&lt;Array.getLength(obj);i++){
+   System.out.print(Array.get(obj, i)+&quot;,&quot;);
+  }
+ }
+
+}</code></pre><p><strong>反射工厂模式实现</strong><br>1.简单工厂实现</p>
+<pre><code>package 反射实现工厂模式;
+interface Fruit{
+ public void eat();
+}
+class Apple implements Fruit{
+ @Override
+ public void eat() {
+  System.out.println(&quot;...apple&quot;);
+ }
+}
+class orange implements Fruit{
+ @Override
+ public void eat() {
+  System.out.println(&quot;...orange&quot;);
+ }
+}
+class Factory{//工厂类
+
+ public static Fruit getInstance(String name){
+  Fruit fruit=null;
+  if(&quot;apple&quot;.equals(name)){
+   fruit=new Apple();
+  }else if(&quot;orange&quot;.equals(name)){
+   fruit=new orange();
+  }
+  return fruit;
+ }
+
+}
+public class FactoryDemo01 {
+
+ public static void main(String[] args) {
+  Fruit fruit=Factory.getInstance(&quot;apple&quot;);
+  fruit.eat();
+ }
+}</code></pre><p>2.通过反射实现(通过配置文件与程序代码分离)</p>
+<pre><code>package 反射实现工厂模式;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+class Init{
+ public Properties getPro(String PropName){
+  Properties prop=new Properties();
+  //this.getClass().getClassLoader().getResourceAsStream(PropName);
+  InputStream in=this.getClass().getResourceAsStream(PropName);
+  try {
+   prop.load(in);
+  } catch (IOException e) {
+   e.printStackTrace();
+  }
+  return prop;
+ }
+}
+class Factory03{//工厂类
+
+ public static Fruit getInstance(String name){
+  Fruit fruit=null;
+  try{
+   fruit=(Fruit)Class.forName(name).newInstance();//根据此Class对象得到所表示的类的一个实例(对象)
+
+  }catch(Exception e){
+   e.printStackTrace();
+  }
+  return fruit;
+ }
+}
+public class CopyOfFactoryDemo03 {
+
+ public static void main(String[] args) {
+  Properties prop=new Init().getPro(&quot;/反射实现工厂模式/config.properties&quot;);
+  Fruit fruit=Factory03.getInstance(prop.getProperty(&quot;apple&quot;));
+  if(fruit!=null){
+   fruit.eat();
+  }
+ }
+}</code></pre><p><strong>反射代理模式实现</strong><br>1.静态代理实现<br>代理设计：一个操作的接口有两个子类，其中一个是真实主题的实现类，另外一个是代理类。代理类要完成比真实主题实现类更多的内容，而且本身还需要处理一些与具体业务相关的代码。</p>
+<pre><code>package 反射代理的实现Proxy;
+interface Subject{
+ public String say(String name,int age);
+}
+//真实主题类
+class RealSubject implements Subject{
+
+ @Override
+ public String say(String name, int age) {
+  return &quot;姓名: &quot;+name+&quot;, 年龄: &quot;+age;
+ }
+
+}
+//代理主题类
+class ProxySubject implements Subject{
+
+ private Subject sub=null;
+ public ProxySubject(Subject sub) {
+  this.sub=sub;
+ }
+ @Override
+ public String say(String name, int age) {
+  return this.sub.say(name, age);
+ }
+
+}
+public class DynaProxyDemo {
+
+ public static void main(String[] args) {
+  Subject sub=new ProxySubject(new RealSubject());
+  System.out.println(sub.say(&quot;xxx&quot;, 23));
+ }
+}</code></pre><p>2.动态代理的实现<br>静态代理的缺陷是:一个代理类只能为一个接口服务,那么多个接口的话,就需要多个代理类来服务,而所有的的代理操作除了调用的方法不一样,其他的操作都一样,这样就会有重复的代码.<br>在Java中要想实现动态代理机制，则需要java.lang.reflect.Proxy类和java.lang.reflect.InvocationHandler接口的支持。</p>
+<p>InvocationHandler接口中的invoke方法说明：  </p>
+<pre><code>public Object invoke(Object proxy, Method method, Object[] args) 
+    throws Throwable;</code></pre><ul>
+<li>Object proxy：要代理的对象</li>
+<li>Method method:调用的方法</li>
+<li>Object[] args:方法调用时需要的参数</li>
+</ul>
+<p>可以将InvocationHandler接口的实现类想象成一个代理最终操作类,替换掉ProxySubject.<br>Proxy类是专门完成代理的操作类.</p>
+<p><strong>关于类加载器的说明</strong><br>在Proxy中的newProxyInstance()方法中需要一个ClassLoader类的实例，ClassLoader实际上对应的是类加载器，在Java中有如下三种类加载器：</p>
+<ul>
+<li>Bootstrap ClassLoader：此加载器采用C++编写，一般开发中看不到</li>
+<li>Extension ClassLoader：用来进行扩展类的加载，一般对应的是jre/lib/ext目录下的类</li>
+<li>APPClassLoader：加载classpath下指定的类，是最常用的一种加载器</li>
+</ul>
+<p>动态代理反射的代码实现：</p>
+<pre><code>package 反射代理的实现Proxy;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+class myInvocationHandler implements InvocationHandler{
+
+ private Object obj;//真实主题类
+
+ public Object bind(Object obj){//绑定真实主题类,可以说是初始化操作
+  this.obj=obj;
+  return Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(),this);
+ }
+
+ @Override
+ public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+  //调用方法前进行一些业务的处理
+  Object object=method.invoke(this.obj, args);//调用方法
+  //调用方法后进行一些处理
+  return object;
+ }
+
+}
+public class DynaProxyDemo {
+
+ public static void main(String[] args) {
+  Subject sub=(Subject) new myInvocationHandler().bind(new RealSubject());
+  System.out.println(sub.say(&quot;xxx&quot;, 23));
+ }
+}</code></pre><p><strong>原文链接：<a href="">深入Java反射机制</a><br>欢饮转载，请注明出处！</strong></p>
 ]]></content>
       <categories>
         <category>Java基础</category>

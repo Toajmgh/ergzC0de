@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.ergzcode.com/2020/01/05/architect-awesome.html</loc>
+    
+    <lastmod>2020-01-12T17:25:55.535Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ergzcode.com/2020/01/13/effective-java-for-java-developers.html</loc>
+    
+    <lastmod>2020-01-12T17:24:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ergzcode.com/2015/05/25/java-generic_01.html</loc>
+    
+    <lastmod>2020-01-12T06:23:01.170Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ergzcode.com/2015/05/14/java-reflect_01.html</loc>
+    
+    <lastmod>2020-01-11T14:04:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.ergzcode.com/2016/06/11/proxy-pattern.html</loc>
     
     <lastmod>2020-01-10T17:25:59.751Z</lastmod>
@@ -37,9 +65,9 @@
   </url>
   
   <url>
-    <loc>http://www.ergzcode.com/2020/01/05/architect-awesome.html</loc>
+    <loc>http://www.ergzcode.com/2019/11/26/git-orders_01.html</loc>
     
-    <lastmod>2020-01-06T04:57:28.312Z</lastmod>
+    <lastmod>2020-01-05T18:06:34.307Z</lastmod>
     
   </url>
   
@@ -131,13 +159,6 @@
     <loc>http://www.ergzcode.com/contact/me.html</loc>
     
     <lastmod>2019-12-31T09:58:04.119Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.ergzcode.com/2019/11/26/git-orders_01.html</loc>
-    
-    <lastmod>2019-12-31T09:19:03.086Z</lastmod>
     
   </url>
   

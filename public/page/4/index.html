@@ -66,119 +66,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-java-interview_0012" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/28/java-interview_0012.html" class="article-date">
-  <time datetime="2019-01-28T04:24:00.000Z" itemprop="datePublished">2019-01-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/28/java-interview_0012.html">面试官：写一下单例模式吧，知道单例模式有几种写法吗</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>参考之前的一篇文章：<a href="http://www.ergzcode.com/2016/05/22/design-pattern-for-singleton.html">深入Java单例模式</a></p>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>设计模式很多，单例模式绝对是问的最多的一个了，也是让手写的最多的一个设计模式。很多人只会写双重检测的设计模式，但问的深一点其实很多人答不上来。比如，变量为什么要用volatile修饰，为什么要写2个if，一个if不行吗？还有就是单例模式有很多种写法。我以演进的方式写一个单例模式的5种写法，面试的时候建议写双重检测的写法和静态内部类的写法。</p>
-<p>有一些对象其实我们只需要一个，比如说：线程池，缓存，对话框，处理偏好设置和注册表的对象，日志对象，充当打印机，显卡等设备的驱动程序的对象。事实上，这类对象只能看到一个实例，如果制造出多个实例，就会导致许多问题产生，例如：程序的行为异常，资源使用过量，或者不一致的结果。</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/28/java-interview_0012.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.ergzcode.com/2019/01/28/java-interview_0012.html" data-id="ck51a41b5000zevd26gn16t8x" class="article-share-link">Share</a>
-      
-      
-        <a href="/2019/01/28/java-interview_0012.html#comments" class="article-comment-link">
-          <span class="post-comments-count valine-comment-count" data-xid="/2019/01/28/java-interview_0012.html" itemprop="commentCount"></span>
-      留言
-        </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-java-interview_0017" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/27/java-interview_0017.html" class="article-date">
-  <time datetime="2019-01-27T06:14:00.000Z" itemprop="datePublished">2019-01-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/27/java-interview_0017.html">面试官：volatile关键字用过吧？说一下作用和实现吧</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="极简计算机发展史"><a href="#极简计算机发展史" class="headerlink" title="极简计算机发展史"></a>极简计算机发展史</h3><p>我们知道，计算机的CPU和内存的交互是最频繁的，内存是我们的高速缓存区。而刚开始是用户磁盘和CPU进行交互，CPU运转速度越来越快，磁盘远远跟不上CPU的读写速度，才设计了内存，但是随着CPU的发展，内存的读写速度也远远跟不上CPU的读写速度，因此，为了解决这一矛盾，CPU厂商在每颗CPU上加上了高速缓存，用来缓解这种症状，因此，现在CPU同内存交互就变成了下面的样子。</p>
-<p><strong>CPU&lt;-&gt;High Speed cache memory&lt;-&gt;Main memory physical menory</strong></p>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/27/java-interview_0017.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.ergzcode.com/2019/01/27/java-interview_0017.html" data-id="ck51a41b90013evd2dfk22d82" class="article-share-link">Share</a>
-      
-      
-        <a href="/2019/01/27/java-interview_0017.html#comments" class="article-comment-link">
-          <span class="post-comments-count valine-comment-count" data-xid="/2019/01/27/java-interview_0017.html" itemprop="commentCount"></span>
-      留言
-        </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
     <article id="post-java-interview_0003" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/26/java-interview_0003.html" class="article-date">
@@ -224,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ergzcode.com/2019/01/26/java-interview_0003.html" data-id="ck51a41b0000xevd2cu6s2vj0" class="article-share-link">Share</a>
+      <a data-url="http://www.ergzcode.com/2019/01/26/java-interview_0003.html" data-id="ck5bat3x9001emcd25lu05aax" class="article-share-link">Share</a>
       
       
         <a href="/2019/01/26/java-interview_0003.html#comments" class="article-comment-link">
@@ -306,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ergzcode.com/2019/01/25/java-interview_0002.html" data-id="ck51a41aw000tevd23g8kc7qt" class="article-share-link">Share</a>
+      <a data-url="http://www.ergzcode.com/2019/01/25/java-interview_0002.html" data-id="ck5bat3x4001bmcd215y3ehc1" class="article-share-link">Share</a>
       
       
         <a href="/2019/01/25/java-interview_0002.html#comments" class="article-comment-link">
@@ -416,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.ergzcode.com/2019/01/24/java-interview_0001.html" data-id="ck51a41as000revd2bc6vgyey" class="article-share-link">Share</a>
+      <a data-url="http://www.ergzcode.com/2019/01/24/java-interview_0001.html" data-id="ck5bat3x10018mcd2bkq1ctj6" class="article-share-link">Share</a>
       
       
         <a href="/2019/01/24/java-interview_0001.html#comments" class="article-comment-link">
@@ -436,11 +323,180 @@
 
 
   
+    <article id="post-mysql-database-optimization-this-article-is-enough" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/18/mysql-database-optimization-this-article-is-enough.html" class="article-date">
+  <time datetime="2018-10-18T15:00:00.000Z" itemprop="datePublished">2018-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/18/mysql-database-optimization-this-article-is-enough.html">MySQL数据库优化，看这篇就够了</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>数据库优化一方面是找出系统的瓶颈,提高MySQL数据库的整体性能,而另一方面需要合理的结构设计和参数调整,以提高用户的相应速度,同时还要尽可能的节约系统资源,以便让系统提供更大的负荷.</strong></p>
+<h3 id="1-优化一览图"><a href="#1-优化一览图" class="headerlink" title="1. 优化一览图"></a>1. 优化一览图</h3><p><img src="/images/mysql_201912182301.png" alt="upload successful"></p>
+        
+          <p class="article-more-link">
+            <a href="/2018/10/18/mysql-database-optimization-this-article-is-enough.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2018/10/18/mysql-database-optimization-this-article-is-enough.html" data-id="ck5bat3yi002bmcd2150pcid6" class="article-share-link">Share</a>
+      
+      
+        <a href="/2018/10/18/mysql-database-optimization-this-article-is-enough.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2018/10/18/mysql-database-optimization-this-article-is-enough.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-tomcat-modifying-memory-configuration-for-optimization" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/18/tomcat-modifying-memory-configuration-for-optimization.html" class="article-date">
+  <time datetime="2018-10-18T14:17:00.000Z" itemprop="datePublished">2018-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/18/tomcat-modifying-memory-configuration-for-optimization.html">Tomcat优化之修改内存配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="一、配置"><a href="#一、配置" class="headerlink" title="一、配置"></a>一、配置</h5><p><strong>Tomcat/conf/server.xml修改配置</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">connector</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"org.apache.coyote.http11.Http11NioProtocol"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">redirectPort</span>=<span class="string">"8443"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">URIEncoding</span>=<span class="string">"UTF-8"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">minSpareThreads</span>=<span class="string">"25"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">maxSpareThreads</span>=<span class="string">"300"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">maxThreads</span>=<span class="string">"500"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">acceptCount</span>=<span class="string">"500"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">connectionTimeout</span>=<span class="string">"30000"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">enableLookups</span>=<span class="string">"false"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="二、参数说明"><a href="#二、参数说明" class="headerlink" title="二、参数说明"></a>二、参数说明</h5>
+        
+          <p class="article-more-link">
+            <a href="/2018/10/18/tomcat-modifying-memory-configuration-for-optimization.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2018/10/18/tomcat-modifying-memory-configuration-for-optimization.html" data-id="ck5bat3zf003dmcd221rlbhx3" class="article-share-link">Share</a>
+      
+      
+        <a href="/2018/10/18/tomcat-modifying-memory-configuration-for-optimization.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2018/10/18/tomcat-modifying-memory-configuration-for-optimization.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/" rel="tag">tomcat</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-proxy-pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/11/proxy-pattern.html" class="article-date">
+  <time datetime="2016-06-11T12:32:00.000Z" itemprop="datePublished">2016-06-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/11/proxy-pattern.html">设计模式之代理模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在代理模式（Proxy Pattern）中，一个类代表另一个类的功能。这种类型的设计模式属于结构型模式。  </p>
+<p>在代理模式中，我们创建具有现有对象的对象，以便向外界提供功能接口。</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/06/11/proxy-pattern.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2016/06/11/proxy-pattern.html" data-id="ck5bat3z4002ymcd231n31v0x" class="article-share-link">Share</a>
+      
+      
+        <a href="/2016/06/11/proxy-pattern.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2016/06/11/proxy-pattern.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DesignPattern/" rel="tag">DesignPattern</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">下一页 &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">下一页 &amp;raquo;</a>
   </nav>
 
 </section>
@@ -451,7 +507,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Json/">Json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84%E6%8A%80%E6%9C%AF/">架构技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%81%8C%E5%9C%BA/">生活职场</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Json/">Json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84%E6%8A%80%E6%9C%AF/">架构技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%81%8C%E5%9C%BA/">生活职场</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -461,7 +517,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/DesignPattern/" style="font-size: 16px;">DesignPattern</a> <a href="/tags/IDEA/" style="font-size: 12px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 12px;">Nginx</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 12px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 18px;">面试题</a>
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/DesignPattern/" style="font-size: 16px;">DesignPattern</a> <a href="/tags/IDEA/" style="font-size: 12px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 12px;">Nginx</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/index/" style="font-size: 10px;">index</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 12px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 18px;">面试题</a>
     </div>
   </div>
 
@@ -489,7 +545,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">2020年 01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">2016年 06月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">2016年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">2015年 05月</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">2020年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">2016年 06月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">2016年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">2015年 05月</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -502,7 +558,11 @@
       <ul>
         
           <li>
-            <a href="/2020/01/05/architect-awesome.html">后端架构师技术图谱</a>
+            <a href="/2020/01/13/effective-java-for-java-developers.html">《Effective Java》— Java进阶必备</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/05/architect-awesome.html">后端架构师技术图谱 [置顶]</a>
           </li>
         
           <li>
@@ -535,10 +595,6 @@
         
           <li>
             <a href="/2019/11/25/git-cheat-sheet.html">GIT命令清单</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/14/nginx-build-http-file-system.html">Nginx搭建HTTP文件服务器</a>
           </li>
         
       </ul>

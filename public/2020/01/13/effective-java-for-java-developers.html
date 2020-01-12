@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  
+
+  
+  <title>《Effective Java》— Java进阶必备 | ergzC0de</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="《Effective Java》是 Java 领域的经典之作，其影响力不亚于《Think in Java》。它是每个 Java 开发者的必读书籍，值得多次阅读品味，并不断实践其中的经验技巧。 《Effective Java》第三版英文原版下载地址：Effective-Java-3rd.pdf《Effective Java》第三版中文翻译下载地址：Effective-Java-3rd-LaTex-P">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Effective Java》— Java进阶必备">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.ergzcode.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;effective-java-for-java-developers.html">
+<meta property="og:site_name" content="ergzC0de">
+<meta property="og:description" content="《Effective Java》是 Java 领域的经典之作，其影响力不亚于《Think in Java》。它是每个 Java 开发者的必读书籍，值得多次阅读品味，并不断实践其中的经验技巧。 《Effective Java》第三版英文原版下载地址：Effective-Java-3rd.pdf《Effective Java》第三版中文翻译下载地址：Effective-Java-3rd-LaTex-P">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-12T17:24:51.000Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ergzC0de</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">代码也是一种艺术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/contact/me.html">联系我吧</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.ergzcode.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-effective-java-for-java-developers" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/13/effective-java-for-java-developers.html" class="article-date">
+  <time datetime="2020-01-12T17:24:53.511Z" itemprop="datePublished">2020-01-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《Effective Java》— Java进阶必备
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>《Effective Java》是 Java 领域的经典之作，其影响力不亚于《Think in Java》。它是每个 Java 开发者的必读书籍，值得多次阅读品味，并不断实践其中的经验技巧。</p>
+<p><strong>《Effective Java》第三版英文原版下载地址：</strong><a href="http://cdn.ergzcode.com/%E6%96%87%E6%A1%A3/Effective-Java-3rd%20%E8%8B%B1%E6%96%87%E5%8E%9F%E7%89%88.pdf" target="_blank" rel="noopener">Effective-Java-3rd.pdf</a><br><strong>《Effective Java》第三版中文翻译下载地址：</strong><a href="http://cdn.ergzcode.com/%E6%96%87%E6%A1%A3/Effective-Java-3rd-LaTex-Pattern.pdf" target="_blank" rel="noopener">Effective-Java-3rd-LaTex-Pattern.pdf</a>  </p>
+<p>两年前读过此书，当时自身技术水平并不算高，对于其中的原则不求甚解。现在重温以前的笔记，加上这两年的编程经验，竟然有种豁然开朗的感觉。<br>「书读百遍，其义自见。」古人说得有道理啊。</p>
+<p>这里简单介绍几条开发中经常用到的技巧，比如 Builder、对象方法、接口定义等。</p>
+<a id="more"></a>
+
+<h1 id="1-存在多个构造参数时，考虑使用构建器（Builder）"><a href="#1-存在多个构造参数时，考虑使用构建器（Builder）" class="headerlink" title="1. 存在多个构造参数时，考虑使用构建器（Builder）"></a>1. 存在多个构造参数时，考虑使用构建器（Builder）</h1><p>这里讲的就是构建者模式，使用 Builder 给对象设置构造参数，从而去除重叠的构造方法。</p>
+<p>在第三方库中，比如 OkHttp、Retrofit，经常见到这样的设计。我们用 Builder 设置参数，然后调用 build 方法构造对象，代码看起来非常清爽，没有多余的构造参数，使用起来也方便。</p>
+<p>如果类的构造方法中有多个参数，而且参数可选，Builder 模式是不错的选择。</p>
+<h1 id="2-使用私有构造器或者枚举类型强化-Singleton-属性"><a href="#2-使用私有构造器或者枚举类型强化-Singleton-属性" class="headerlink" title="2. 使用私有构造器或者枚举类型强化 Singleton 属性"></a>2. 使用私有构造器或者枚举类型强化 Singleton 属性</h1><p>单例模式推荐使用静态内部类，保证线程安全的同时，延迟对象的初始化。枚举的话，不是很推荐。</p>
+<h1 id="3-避免创建不必要的对象"><a href="#3-避免创建不必要的对象" class="headerlink" title="3. 避免创建不必要的对象"></a>3. 避免创建不必要的对象</h1><p>创建对象是有开销的，对于不可变的（可以理解为无状态的）对象，可以始终被重用。善于使用缓存（cache）是好的习惯，我们要做一个环保的程序员。比如 Android Message 里面的对象池，就是一种优化策略。</p>
+<p>优先使用基本数据类型而不是装箱数据类型，因为基本类型占用更少的内存空间，对于移动端来说，内存优化是一个永恒的话题。</p>
+<h1 id="4-覆盖-equals-时总要覆盖-hashCode，始终覆盖-toString"><a href="#4-覆盖-equals-时总要覆盖-hashCode，始终覆盖-toString" class="headerlink" title="4. 覆盖 equals 时总要覆盖 hashCode，始终覆盖 toString"></a>4. 覆盖 equals 时总要覆盖 hashCode，始终覆盖 toString</h1><p>对于一般的 Java Bean 对象，我都会重写其 toString 方法， 这样在打印日志的时候，就能看见它的内部数据，这点非常有用。</p>
+<p>对于需要作为 HashMap 的键的对象，一定要重写 hashCode 和 equals 方法，这样有利于散列表均匀分布，提升查找的性能。<br>另外，两个对象 equals 相等，hashCode 必须相等；hashCode 相等，equals不一定相等。这个很好理解，equals 保证 HashMap 键的唯一性；hashCode 相等表示两个对象放在 HashMap 数组的同一个位置上。</p>
+<p>提示：现在的 IDE 实在是太傻瓜式了，可以一键生成 toString, equals 和 hashCode 方法，这时候有什么理由不重写呢。</p>
+<h1 id="5-接口优于抽象类"><a href="#5-接口优于抽象类" class="headerlink" title="5. 接口优于抽象类"></a>5. 接口优于抽象类</h1><p>接口本质上是一种规范，用来定义通用的规则，然后各个功能提供者进行不同的实现。这里，我想到了一条软件设计原则–接口隔离，是说一个接口只用来定义一种规范，每个接口都是独立的，不能让一个接口有多个定义。</p>
+<p>骨架实现，AbstractXXX，为抽象类提供了实现上的帮助，又不强加抽象类定义类型的限制。比如 Java 里面的 AbstractList，是列表类的抽象实现，其子类有 ArrayList 和 LinkedList 等。</p>
+<h1 id="6-优先考虑静态成员类"><a href="#6-优先考虑静态成员类" class="headerlink" title="6. 优先考虑静态成员类"></a>6. 优先考虑静态成员类</h1><p>静态成员类不持有外部类的引用，所以不会造成内存泄漏问题，主要是用来辅助外部类。还有匿名内部类，比如直接创建的 Runnable，建议内部保持简短，大约 10 行或者更少些，否则影响程序的可读性。</p>
+<h1 id="7-列表优先于数组"><a href="#7-列表优先于数组" class="headerlink" title="7. 列表优先于数组"></a>7. 列表优先于数组</h1><p>列表和数组的不同点：</p>
+<p>数组是可变的，泛型是不可变的。<br>数组是具体化的，泛型通过擦除来实现的。<br>数组提供了运行时的类型安全，但是没有编译时的类型安全。列表里面有许多实用的方法，而数组就没有提供哦。建议优先使用集合类型 List<E>，而不是数组类型 E[]。</p>
+<h1 id="8-使用枚举代替-int-常量"><a href="#8-使用枚举代替-int-常量" class="headerlink" title="8. 使用枚举代替 int 常量"></a>8. 使用枚举代替 int 常量</h1><p>枚举类型是实例受控的，它们是单例的泛化，本质上是单元素的枚举。枚举的优点是易读性好，更加安全，功能强大。但是与 int 类型相比，枚举有些性能缺点：装载和初始化枚举时会有时间和空间的成本。在 Android 端，通常不建议使用。</p>
+<h1 id="9-for-each-循环优先于传统的-for-循环"><a href="#9-for-each-循环优先于传统的-for-循环" class="headerlink" title="9. for-each 循环优先于传统的 for 循环"></a>9. for-each 循环优先于传统的 for 循环</h1><p>for-each 循环在简洁性和预防 bug 方面优于传统的 for 循环，而且没有性能损失，应该尽可能地使用 for-each。</p>
+<p>这一点深有感触，IDE 通常会提示使用 for-each，毕竟简洁就是美啊。</p>
+<h1 id="10-如果需要精确的答案，请避免使用-float-和-double"><a href="#10-如果需要精确的答案，请避免使用-float-和-double" class="headerlink" title="10. 如果需要精确的答案，请避免使用 float 和 double"></a>10. 如果需要精确的答案，请避免使用 float 和 double</h1><p>float 和 double 并没有提供完全精确的结果，所以不应该用于需要精确计算的场合，尤其是货币计算。如果想要系统记录十进制小数点，可以使用 BigDecimal。</p>
+<p>float 类型确实是个坑，经常会出现计算不准确的问题，一般推荐使用双精度浮点型 double。</p>
+<p>以上就是从《Effective Java》里面摘录的十条编程建议，另外还有好多干货呢，赶快去阅读吧。</p>
+<p><strong>链接：<a href="https://www.jianshu.com/p/54e122c8e765" target="_blank" rel="noopener">https://www.jianshu.com/p/54e122c8e765</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.ergzcode.com/2020/01/13/effective-java-for-java-developers.html" data-id="ck5bat3vg0009mcd2bgyh8328" class="article-share-link">Share</a>
+      
+      
+        <a href="/2020/01/13/effective-java-for-java-developers.html#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2020/01/13/effective-java-for-java-developers.html" itemprop="commentCount"></span>
+      留言
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/05/architect-awesome.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">后端架构师技术图谱 [置顶]</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+  <section id="comments" class="vcomment">
+  </section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Json/">Json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E5%AE%9AJava%E9%9D%A2%E8%AF%95%E9%A2%98/">搞定Java面试题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84%E6%8A%80%E6%9C%AF/">架构技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%81%8C%E5%9C%BA/">生活职场</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/DesignPattern/" style="font-size: 16px;">DesignPattern</a> <a href="/tags/IDEA/" style="font-size: 12px;">IDEA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 12px;">Nginx</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/index/" style="font-size: 10px;">index</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/pm2/" style="font-size: 12px;">pm2</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 18px;">面试题</a>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">友链&amp;传送门</h3>
+<div class="widget">
+    <ul>
+     <li><a href="https://time.geekbang.org/" target="_blank" rel="noopener" title="极客时间-轻松学习，高效学习-极客邦">极客时间</a></li>
+      <li><a href="http://cmsblogs.com/" target="_blank" rel="noopener" title="Cm's Blog">Cm's Blog</a></li>
+      <li><a href="http://www.ruanyifeng.com/" target="_blank" rel="noopener" title="阮一峰的网络日志">阮一峰的网络日志</a></li>
+      <li><a href="https://coolshell.cn/" target="_blank" rel="noopener" title="酷壳 - COOLSHELL-陈皓">酷壳 - COOLSHELL-陈皓</a></li>
+      <li><a href="http://hellojava.info/" target="_blank" rel="noopener" title="hellojava-阿里毕玄">hellojava-阿里毕玄</a></li>
+      <li><a href="http://blog.didispace.com/" target="_blank" rel="noopener" title="程序猿DD-翟永超-《Spring Cloud微服务实战》作者">程序猿DD-翟永超</a></li>
+      <li><a href="http://jm.taobao.org/" target="_blank" rel="noopener" title="阿里中间件博客">阿里中间件博客</a></li>
+      <li><a href="https://tech.meituan.com" target="_blank" rel="noopener" title="美团点评技术团队博客">美团点评技术团队博客</a></li>
+      <li><a href="http://www.iocoder.cn/" target="_blank" rel="noopener" title="芋道源码 —— 纯源码解析博客">芋道源码</a></li> 
+   </ul>
+</div>
+</div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">2020年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">2019年 12月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年 01月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">2016年 06月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">2016年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">2015年 05月</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/13/effective-java-for-java-developers.html">《Effective Java》— Java进阶必备</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/05/architect-awesome.html">后端架构师技术图谱 [置顶]</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/25/idea-latest-active.html">最新IDEA永久激活</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/14/nginx-reverse-proxy-implements-the-mapping-of-secondary-domain-names-to-ports.html">Nginx反向代理实现二级域名与端口的映射</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/11/some-common-and-free-apis-for-developing.html">开发中常用的一些免费API</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/10/pm2-common-commands-introduction.html">PM2介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/08/pm2-watch-hexo-process.html">PM2守护hexo的进程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_02.html">Git常用命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/git-orders_01.html">工作中99%能用到的Git命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/git-cheat-sheet.html">GIT命令清单</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+          Hosted by BCC<br/>
+          Copyright 2020 www.ergzcode.com All Rights Reserved <br>
+          <a href="http://beian.miit.gov.cn/" target="_blank">苏ICP备19067763号-1</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/contact/me.html" class="mobile-nav-link">联系我吧</a>
+  
+</nav>
+
+    
+
+<script src="//cdn.jsdelivr.net/gh/jquery/jquery@3/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'false' == true;
+    var verify = 'true' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "teNimxGC1bQqqmwTFIUtEsi1-gzGzoHsz",
+        appKey: "bjpKKR1Pq36WNhwSImLKdVNd",
+        placeholder: "Please leave your footprints",
+        pageSize:'10',
+        avatar:'',
+        lang:'zh-cn'
+    });
+</script>
+ 
+
+  </div>
+</body>
+</html>

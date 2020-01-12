@@ -1,15 +1,17 @@
-title: 后端架构师技术图谱
+title: '后端架构师技术图谱 [置顶]'
 author: ergz
 top: true
-tags: []
+tags:
+  - index
 categories:
   - 架构技术
 date: 2020-01-05 19:03:00
 ---
 <b style="color:red">推荐:</b> [《Java技术书籍大全》 - awesome-java-books](https://github.com/sorenduan/awesome-java-books)，从初级开发者到资深架构师，看这些书就够了
 
-原文链接：[后端架构师技术图谱](https://github.com/xingshaocheng/architect-awesome)  
-MD文件：<http://cdn.ergzcode.com/awesome/architect-awesome.md>
+原文链接：<https://github.com/xingshaocheng/architect-awesome>    
+MD文件：[architect-awesome.md](http://cdn.ergzcode.com/awesome/architect-awesome.md)  
+PDF文件：[后端架构师技术图谱.pdf](http://cdn.ergzcode.com/%E6%96%87%E6%A1%A3/%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E5%B8%88%E6%8A%80%E6%9C%AF%E5%9B%BE%E8%B0%B1.pdf)  
 
 <hr/>
 
